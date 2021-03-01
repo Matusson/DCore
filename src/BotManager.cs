@@ -41,7 +41,7 @@ namespace DCore
             for (int i = 0; i < lines.Length; i++)
             {
                 string line = lines[i].Trim();
-                string[] perLineInformation = line.Split(' ');
+                string[] perLineInformation = line.Split(' ', ',');
 
                 //Throw an exception if the data is incorrectly formatted
                 if (perLineInformation.Length != 2)

@@ -8,6 +8,7 @@ using System.IO;
 namespace DCore.Tests
 {
     [TestClass()]
+    [DeploymentItem("TokenFiles\\", "TokenFiles")]
     public class BotManagerTests
     {
         [TestMethod()]
@@ -21,7 +22,6 @@ namespace DCore.Tests
         }
 
         [TestMethod()]
-        [DeploymentItem("TokenFiles\\tokensEmpty.txt", "TokenFiles")]
         public void LoadAccounts_EmptyFile()
         {
             var manager = new BotManager();
@@ -35,9 +35,6 @@ namespace DCore.Tests
         [DataRow(1)]
         [DataRow(2)]
         [DataRow(3)]
-        [DeploymentItem("TokenFiles\\tokensParameterCount1.txt", "TokenFiles")]
-        [DeploymentItem("TokenFiles\\tokensParameterCount2.txt", "TokenFiles")]
-        [DeploymentItem("TokenFiles\\tokensParameterCount3.txt", "TokenFiles")]
         public void LoadAccounts_InvalidParameterCount(int testId)
         {
             var manager = new BotManager();
@@ -45,6 +42,30 @@ namespace DCore.Tests
             void load() => manager.LoadAccounts($"TokenFiles\\tokensParameterCount{testId}.txt");
 
             Assert.ThrowsException<ArgumentException>(load);
+        }
+
+        [TestMethod()]
+        public void LoadAccounts_InvalidDataType()
+        {
+            var manager = new BotManager();
+
+            void load() => manager.LoadAccounts("TokenFiles\\tokensDataType1.txt");
+
+            Assert.ThrowsException<ArgumentException>(load);
+        }
+
+        [DataTestMethod]
+        [DataRow(1, 1)]
+        [DataRow(2, 1)]
+        [DataRow(3, 1)]
+        [DataRow(4, 3)]
+        public void LoadAccounts_CorrectResult(int testId, int expectedBotCount)
+        {
+            var manager = new BotManager();
+
+            int actualBotCount = manager.LoadAccounts($"TokenFiles\\tokensCorrect{testId}.txt");
+
+            Assert.AreEqual(expectedBotCount, actualBotCount);
         }
     }
 }
