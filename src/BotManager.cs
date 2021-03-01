@@ -23,7 +23,7 @@ namespace DCore
         /// <returns> The amount of accounts that were loaded. </returns>
         public int LoadAccounts(string pathToFile)
         {
-            if (File.Exists(pathToFile))
+            if (!File.Exists(pathToFile))
                 throw new FileNotFoundException("The specified file does not exist.");
 
             //Open the file
