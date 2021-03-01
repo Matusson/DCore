@@ -7,7 +7,7 @@ namespace DCore.Structs
     /// <summary>
     /// Stores information related to a <see cref="DiscordBot"/> token.
     /// </summary>
-    struct TokenInfo
+    public struct TokenInfo
     {
         /// <summary>
         /// The ID of the <see cref="DiscordBot"/>.
