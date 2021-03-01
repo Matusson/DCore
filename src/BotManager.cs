@@ -12,6 +12,28 @@ namespace DCore
     /// </summary>
     public class BotManager
     {
+        /// <summary>
+        /// The total amount of bot accounts loaded.
+        /// </summary>
+        public int TotalBotCount
+        {
+            get
+            {
+                return _tokens.Count();
+            }
+        }
+
+        /// <summary>
+        /// The amount of bot accounts that aren't in use.
+        /// </summary>
+        public int AvailableBotCount
+        {
+            get
+            {
+                return TotalBotCount - _activeBots.Count();
+            }
+        }
+
         private readonly List<DiscordBot> _activeBots = new List<DiscordBot>();
         private readonly List<TokenInfo> _tokens = new List<TokenInfo>();
 
