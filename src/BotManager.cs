@@ -95,10 +95,18 @@ namespace DCore
         /// Creates <paramref name="count"/> new <see cref="DiscordBot"/> instances.
         /// </summary>
         /// <param name="count"> How many instances to create. </param>
+        /// <exception cref="ArgumentOutOfRangeException"> Thrown when requesting more bots than available. </exception>
         /// <returns> List of all bots created. </returns>
         public List<DiscordBot> CreateBots(int count)
         {
+            //Ensure there are enough accounts
+            if (count > AvailableBotCount)
+                throw new ArgumentOutOfRangeException($"Not enough available bots to fulfill the request. " +
+                    $"({AvailableBotCount} available, {count} requested)");
 
+            //Create the requested amount of bots
+            //Find unused IDs
+            var unusedTokens = _tokens.Where(x => !_activeBots.Any(y => y.TokenInfo == x)).ToList();
         }
     }
 }

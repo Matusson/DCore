@@ -19,6 +19,7 @@ namespace DCore.Structs
         /// </summary>
         public string token;
 
+
         /// <summary>
         /// Constructs a <see cref="TokenInfo"/>.
         /// </summary>
@@ -28,6 +29,33 @@ namespace DCore.Structs
         {
             this.id = id;
             this.token = token;
+        }
+
+
+        public static bool operator ==(TokenInfo c1, TokenInfo c2)
+        {
+            return c1.Equals(c2);
+        }
+
+        public static bool operator !=(TokenInfo c1, TokenInfo c2)
+        {
+            return !c1.Equals(c2);
+        }
+
+
+        public override bool Equals(object obj)
+        {
+            return obj is TokenInfo info &&
+                   id == info.id &&
+                   token == info.token;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = 73361426;
+            hashCode = hashCode * -1521134295 + id.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(token);
+            return hashCode;
         }
     }
 }
