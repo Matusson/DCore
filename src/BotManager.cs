@@ -91,6 +91,7 @@ namespace DCore
             return addedTokens;
         }
 
+
         /// <summary>
         /// Creates <paramref name="count"/> new <see cref="DiscordBot"/> instances.
         /// </summary>
@@ -105,8 +106,18 @@ namespace DCore
                     $"({AvailableBotCount} available, {count} requested)");
 
             //Create the requested amount of bots
-            //Find unused IDs
-            var unusedTokens = _tokens.Where(x => !_activeBots.Any(y => y.TokenInfo == x)).ToList();
+            //Find x unused tokens
+            var unusedTokens = _tokens.Where(x => !_activeBots.Any(y => y.TokenInfo == x)).Take(count).ToList();
+
+            //Then use each token to create a Discord bot
+            List<DiscordBot> bots = new List<DiscordBot>();
+            foreach(TokenInfo token in unusedTokens)
+            {
+                DiscordBot bot = new DiscordBot(token);
+                bots.Add(bot);
+            }
+
+            return bots;
         }
     }
 }
