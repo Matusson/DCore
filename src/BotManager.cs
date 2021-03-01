@@ -12,7 +12,8 @@ namespace DCore
     /// </summary>
     public class BotManager
     {
-        private List<TokenInfo> _tokens = new List<TokenInfo>();
+        private readonly List<DiscordBot> _activeBots = new List<DiscordBot>();
+        private readonly List<TokenInfo> _tokens = new List<TokenInfo>();
 
         /// <summary>
         /// Loads ID and token information from a .txt file.
@@ -68,6 +69,14 @@ namespace DCore
             return addedTokens;
         }
 
+        /// <summary>
+        /// Creates <paramref name="count"/> new <see cref="DiscordBot"/> instances.
+        /// </summary>
+        /// <param name="count"> How many instances to create. </param>
+        /// <returns> List of all bots created. </returns>
+        public List<DiscordBot> CreateBots(int count)
+        {
 
+        }
     }
 }
