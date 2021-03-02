@@ -13,7 +13,7 @@ namespace DCore.Tests
     public class BotAccountLoaderTests
     {
         [TestMethod()]
-        public void LoadAccounts_NoFile()
+        public void LoadAccountsFromFile_NoFile()
         {
             var loader = new BotAccountLoader();
 
@@ -23,7 +23,7 @@ namespace DCore.Tests
         }
 
         [TestMethod()]
-        public void LoadAccounts_EmptyFile()
+        public void LoadAccountsFromFile_EmptyFile()
         {
             var loader = new BotAccountLoader();
 
@@ -36,7 +36,7 @@ namespace DCore.Tests
         [DataRow(1)]
         [DataRow(2)]
         [DataRow(3)]
-        public void LoadAccounts_InvalidParameterCount(int testId)
+        public void LoadAccountsFromFile_InvalidParameterCount(int testId)
         {
             var loader = new BotAccountLoader();
 
@@ -46,7 +46,7 @@ namespace DCore.Tests
         }
 
         [TestMethod()]
-        public void LoadAccounts_InvalidDataType()
+        public void LoadAccountsFromFile_InvalidDataType()
         {
             var loader = new BotAccountLoader();
 
@@ -60,7 +60,7 @@ namespace DCore.Tests
         [DataRow(2, 1)]
         [DataRow(3, 1)]
         [DataRow(4, 3)]
-        public void LoadAccounts_CorrectResult(int testId, int expectedBotCount)
+        public void LoadAccountsFromFile_CorrectResult(int testId, int expectedBotCount)
         {
             var loader = new BotAccountLoader();
 
