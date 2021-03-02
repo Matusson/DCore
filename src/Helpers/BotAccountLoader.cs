@@ -30,9 +30,6 @@ namespace DCore.Helpers
             if (lines.Length == 0)
                 throw new ArgumentException("The specified file was empty.");
 
-            string incorrectlyFormattedException = "File was incorrectly formatted. Make sure that each line starts with the ID " +
-                        "followed by a token, separated by a space.";
-
             List<TokenInfo> loadedTokens = new List<TokenInfo>();
 
             //In every line, there should be an ulong ID and a string TOKEN separated by a space
@@ -42,12 +39,13 @@ namespace DCore.Helpers
                 string[] perLineInformation = line.Split(' ', ',');
 
                 //Throw an exception if the data is incorrectly formatted
-                if (perLineInformation.Length != 2)
-                    throw new ArgumentException(incorrectlyFormattedException);
-
                 //The first value should be an ULONG
-                if (!ulong.TryParse(perLineInformation[0], out ulong id))
-                    throw new ArgumentException(incorrectlyFormattedException);
+                if (perLineInformation.Length != 2 ||
+                    !ulong.TryParse(perLineInformation[0], out ulong id))
+                {
+                    throw new ArgumentException("File was incorrectly formatted. Make sure that each line starts with the ID " +
+                        "followed by a token, separated by a space.");
+                }
 
                 //The second value should be a string
                 string token = perLineInformation[1];
