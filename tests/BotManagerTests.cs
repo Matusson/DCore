@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using DCore.Structs;
+using System.Linq;
 
 namespace DCore.Tests
 {
@@ -107,6 +108,111 @@ namespace DCore.Tests
             int result = manager.TotalBotCount;
 
             Assert.AreEqual(4, result);
+        }
+
+
+
+        [DataTestMethod]
+        [DataRow(1, 0, 1)]
+        [DataRow(3, 3, 0)]
+        [DataRow(3, 2, 1)]
+        public void AvailableBotAccounts(int total, int activated, int expected)
+        {
+            BotManager manager = CreateBotManager(total);
+
+            if (activated > 0)
+                manager.ActivateBots(activated);
+            int result = manager.AvailableBotCount;
+
+            Assert.AreEqual(expected, result);
+        }
+
+        [DataTestMethod]
+        [DataRow(0)]
+        [DataRow(-1)]
+        [DataRow(10)]
+        public void ActivateBots_IncorrectParameter(int parameter)
+        {
+            BotManager manager = CreateBotManager(5);
+
+            void activate() => manager.ActivateBots(parameter);
+
+            Assert.ThrowsException<ArgumentOutOfRangeException>(activate);
+        }
+
+        [DataTestMethod]
+        [DataRow(1)]
+        [DataRow(5)]
+        public void ActivateBots_Single(int toActivate)
+        {
+            BotManager manager = CreateBotManager(5);
+
+            int result = manager.ActivateBots(toActivate).Count;
+
+            Assert.AreEqual(toActivate, result);
+        }
+
+        [DataTestMethod]
+        [DataRow(1, 2)]
+        [DataRow(4, 1)]
+        public void ActivateBots_DoubleCorrect_Count(int toActivateFirst, int toActivateSecond)
+        {
+            BotManager manager = CreateBotManager(5);
+
+            int result = manager.ActivateBots(toActivateFirst).Count;
+            result += manager.ActivateBots(toActivateSecond).Count;
+
+            Assert.AreEqual(toActivateFirst + toActivateSecond, result);
+        }
+
+        [DataTestMethod]
+        [DataRow(1, 1)]
+        [DataRow(1, 2)]
+        [DataRow(4, 1)]
+        public void ActivateBots_DoubleCorrect_IsUnique(int toActivateFirst, int toActivateSecond)
+        {
+            BotManager manager = CreateBotManager(5);
+
+            var bots1 = manager.ActivateBots(toActivateFirst);
+            var bots2 = manager.ActivateBots(toActivateSecond);
+
+            //Ensure that the tokens aren't duplicated
+            bool areUnique = bots1.All(x => bots2.Where(y => y.TokenInfo == x.TokenInfo).Count() == 0);
+            Assert.IsTrue(areUnique);
+        }
+
+        [DataTestMethod]
+        [DataRow(1, 5)]
+        [DataRow(5, 5)]
+        public void ActivateBots_DoubleErorr(int toActivateFirst, int toActivateSecond)
+        {
+            BotManager manager = CreateBotManager(5);
+
+            manager.ActivateBots(toActivateFirst);
+            void activate() => manager.ActivateBots(toActivateSecond);
+
+            Assert.ThrowsException<ArgumentOutOfRangeException>(activate);
+        }
+
+        /// <summary>
+        /// Creates a bot manager with x arguments. Must be less or equal 5.
+        /// </summary>
+        /// <param name="accountCount"> The amount of accounts to initalize with. Must be less or equal 5. </param>
+        /// <returns></returns>
+        public BotManager CreateBotManager(int accountCount)
+        {
+            BotManager manager = new BotManager();
+            List<TokenInfo> accounts = new List<TokenInfo>
+            {
+                new TokenInfo(012345, "TOKEN"),
+                new TokenInfo(123456, "TOKEN"),
+                new TokenInfo(234567, "TOKEN"),
+                new TokenInfo(345678, "TOKEN"),
+                new TokenInfo(456789, "TOKEN")
+            }.Take(accountCount).ToList();
+
+            manager.LoadAccounts(accounts);
+            return manager;
         }
     }
 }
