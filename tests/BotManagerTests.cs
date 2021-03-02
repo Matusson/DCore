@@ -194,6 +194,20 @@ namespace DCore.Tests
             Assert.ThrowsException<ArgumentOutOfRangeException>(activate);
         }
 
+
+        [DataTestMethod]
+        [DataRow(1)]
+        [DataRow(5)]
+        public void GetAllBotsTest(int botCount)
+        {
+            BotManager manager = CreateBotManager(5);
+            manager.ActivateBots(botCount);
+
+            var result = manager.GetAllBots().Count();
+
+            Assert.AreEqual(botCount, result);
+        }
+
         /// <summary>
         /// Creates a bot manager with x arguments. Must be less or equal 5.
         /// </summary>

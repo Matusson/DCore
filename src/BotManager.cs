@@ -52,7 +52,6 @@ namespace DCore
             return accounts.Count;
         }
 
-
         /// <summary>
         /// Creates <paramref name="count"/> new <see cref="DiscordBot"/> instances.
         /// </summary>
@@ -84,6 +83,16 @@ namespace DCore
             _activeBots.AddRange(bots);
 
             return bots;
+        }
+
+
+        /// <summary>
+        /// Fetches all active bots.
+        /// </summary>
+        /// <returns> List of all currently active bots. </returns>
+        public List<DiscordBot> GetAllBots()
+        {
+            return _activeBots;
         }
     }
 }
