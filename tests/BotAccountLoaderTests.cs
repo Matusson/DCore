@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DCore;
+using DCore.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,14 +10,14 @@ namespace DCore.Tests
 {
     [TestClass()]
     [DeploymentItem("TokenFiles\\", "TokenFiles")]
-    public class BotManagerTests
+    public class BotAccountLoaderTests
     {
         [TestMethod()]
         public void LoadAccounts_NoFile()
         {
-            var manager = new BotManager();
+            var loader = new BotAccountLoader();
 
-            void load() => manager.LoadAccounts("TokenFiles\\tokensNotExisting.txt");
+            void load() => loader.LoadAccountsFromFile("TokenFiles\\tokensNotExisting.txt");
 
             Assert.ThrowsException<FileNotFoundException>(load);
         }
@@ -24,9 +25,9 @@ namespace DCore.Tests
         [TestMethod()]
         public void LoadAccounts_EmptyFile()
         {
-            var manager = new BotManager();
+            var loader = new BotAccountLoader();
 
-            void load() => manager.LoadAccounts("TokenFiles\\tokensEmpty.txt");
+            void load() => loader.LoadAccountsFromFile("TokenFiles\\tokensEmpty.txt");
 
             Assert.ThrowsException<ArgumentException>(load);
         }
@@ -37,9 +38,9 @@ namespace DCore.Tests
         [DataRow(3)]
         public void LoadAccounts_InvalidParameterCount(int testId)
         {
-            var manager = new BotManager();
+            var loader = new BotAccountLoader();
 
-            void load() => manager.LoadAccounts($"TokenFiles\\tokensParameterCount{testId}.txt");
+            void load() => loader.LoadAccountsFromFile($"TokenFiles\\tokensParameterCount{testId}.txt");
 
             Assert.ThrowsException<ArgumentException>(load);
         }
@@ -47,9 +48,9 @@ namespace DCore.Tests
         [TestMethod()]
         public void LoadAccounts_InvalidDataType()
         {
-            var manager = new BotManager();
+            var loader = new BotAccountLoader();
 
-            void load() => manager.LoadAccounts("TokenFiles\\tokensDataType1.txt");
+            void load() => loader.LoadAccountsFromFile("TokenFiles\\tokensDataType1.txt");
 
             Assert.ThrowsException<ArgumentException>(load);
         }
@@ -61,9 +62,9 @@ namespace DCore.Tests
         [DataRow(4, 3)]
         public void LoadAccounts_CorrectResult(int testId, int expectedBotCount)
         {
-            var manager = new BotManager();
+            var loader = new BotAccountLoader();
 
-            int actualBotCount = manager.LoadAccounts($"TokenFiles\\tokensCorrect{testId}.txt");
+            int actualBotCount = loader.LoadAccountsFromFile($"TokenFiles\\tokensCorrect{testId}.txt").Count;
 
             Assert.AreEqual(expectedBotCount, actualBotCount);
         }

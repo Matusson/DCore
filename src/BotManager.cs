@@ -39,22 +39,17 @@ namespace DCore
         private readonly List<TokenInfo> _tokens = new List<TokenInfo>();
 
         /// <summary>
-        /// Loads ID and token information from a .txt file.
+        /// Loads the accounts into <see cref="BotManager"/>.
         /// </summary>
-        /// <param name="pathToFile"> The path to the .txt file containing data. </param>
-        /// <exception cref="FileNotFoundException"> Thrown when <paramref name="pathToFile"/> does not exist. </exception>
-        /// <exception cref="ArgumentException"> Thrown when the file is empty or incorrectly formatted. </exception>
-        /// <returns> The amount of accounts that were loaded. </returns>
-        public int LoadAccounts(string pathToFile)
+        /// <param name="accounts"> The accounts to load. </param>
+        /// <returns> The amount of accounts that was loaded. </returns>
+        public int LoadAccounts(List<TokenInfo> accounts)
         {
-            BotAccountLoader loader = new BotAccountLoader();
-            var tokens = loader.LoadAccountsFromFile(pathToFile);
-
             //Ensure only unique information is loaded
-            tokens = tokens.Except(_tokens).ToList();
+            accounts = accounts.Except(_tokens).ToList();
 
-            _tokens.AddRange(tokens);
-            return tokens.Count;
+            _tokens.AddRange(accounts);
+            return accounts.Count;
         }
 
 
@@ -64,7 +59,7 @@ namespace DCore
         /// <param name="count"> How many instances to create. </param>
         /// <exception cref="ArgumentOutOfRangeException"> Thrown when requesting more bots than available. </exception>
         /// <returns> List of all bots created. </returns>
-        public List<DiscordBot> CreateBots(int count)
+        public List<DiscordBot> ActivateBots(int count)
         {
             //Ensure there are enough accounts
             if (count > AvailableBotCount)

@@ -9,7 +9,7 @@ namespace DCore.Helpers
     /// <summary>
     /// Handles loading <see cref="DiscordBot"/> accounts for <see cref="BotManager"/>.
     /// </summary>
-    class BotAccountLoader
+    public class BotAccountLoader
     {
         /// <summary>
         /// Loads ID and token information from a .txt file.
@@ -52,9 +52,11 @@ namespace DCore.Helpers
                 //The second value should be a string
                 string token = perLineInformation[1];
 
-
                 TokenInfo tokenInfo = new TokenInfo(id, token);
-                loadedTokens.Add(tokenInfo);
+
+                //Add only if unique
+                if (!loadedTokens.Contains(tokenInfo))
+                    loadedTokens.Add(tokenInfo);
             }
 
             return loadedTokens;
