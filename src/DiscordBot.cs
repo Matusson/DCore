@@ -33,10 +33,28 @@ namespace DCore
             if (Client == null)
                 Client = new DiscordSocketClient(config);
 
+            Client.Ready += Ready;
+
             //Log in and start
             await Client.LoginAsync(Discord.TokenType.Bot, TokenInfo.token);
             await Client.StartAsync();
         }
+
+        /// <summary>
+        /// Called when the bot has finished downloading guild data.
+        /// </summary>
+        /// <returns></returns>
+        private Task Ready()
+        {
+            BotReadyEvent();
+            return Task.CompletedTask;
+        }
+
+        /// <summary>
+        /// Fires when the bot is ready.
+        /// </summary>
+        public event BotReady BotReadyEvent;
+        public delegate void BotReady();
 
         /// <summary>
         /// Constructs a new <see cref="DiscordBot"/>.
