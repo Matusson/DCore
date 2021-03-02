@@ -103,7 +103,7 @@ namespace DCore
         /// <exception cref="ArgumentException"> Thrown when a bot with this <paramref name="id"/> doesn't exist or isn't active. </exception>
         public DiscordBot GetBot(ulong id)
         {
-            TokenInfo? token = _tokens.Where(x => x.id == id).First();
+            TokenInfo? token = _tokens.Where(x => x.id == id).FirstOrDefault();
 
             if (!token.HasValue)
                 throw new ArgumentException("No tokens with this ID are loaded.");
@@ -119,7 +119,7 @@ namespace DCore
         /// <exception cref="ArgumentException"> Thrown when a bot with this <see cref="TokenInfo"/> doesn't exist or isn't active. </exception>
         public DiscordBot GetBot(TokenInfo token)
         {
-            DiscordBot bot = _activeBots.Where(x => x.TokenInfo == token).First();
+            DiscordBot bot = _activeBots.Where(x => x.TokenInfo == token).FirstOrDefault();
 
             if (bot == null)
                 throw new ArgumentException("No bots with this ID are active.");

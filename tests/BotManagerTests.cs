@@ -208,6 +208,52 @@ namespace DCore.Tests
             Assert.AreEqual(botCount, result);
         }
 
+        [TestMethod]
+        public void GetBot_ID()
+        {
+            BotManager manager = CreateBotManager(5);
+            manager.ActivateBots(5);
+
+            var result = manager.GetBot(012345);
+
+            Assert.AreEqual(result.TokenInfo.id, (ulong)012345);
+        }
+
+        [TestMethod]
+        public void GetBot_ID_Error()
+        {
+            BotManager manager = CreateBotManager(5);
+            manager.ActivateBots(5);
+
+            void get() => manager.GetBot(98765);
+
+            Assert.ThrowsException<ArgumentException>(get);
+        }
+
+        [TestMethod]
+        public void GetBot_Token()
+        {
+            BotManager manager = CreateBotManager(5);
+            manager.ActivateBots(5);
+            TokenInfo info = new TokenInfo(012345, "TOKEN");
+
+            var result = manager.GetBot(info);
+
+            Assert.AreEqual(result.TokenInfo, info);
+        }
+
+        [TestMethod]
+        public void GetBot_Token_Error()
+        {
+            BotManager manager = CreateBotManager(5);
+            manager.ActivateBots(5);
+            TokenInfo info = new TokenInfo(98765, "TOKEN");
+
+            void get() => manager.GetBot(info);
+
+            Assert.ThrowsException<ArgumentException>(get);
+        }
+
         /// <summary>
         /// Creates a bot manager with x arguments. Must be less or equal 5.
         /// </summary>
