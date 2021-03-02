@@ -94,5 +94,37 @@ namespace DCore
         {
             return _activeBots;
         }
+
+        /// <summary>
+        /// Fetches a <see cref="DiscordBot"/> with the specified <paramref name="id"/> assigned.
+        /// </summary>
+        /// <param name="id"> The ID of the matching bot. </param>
+        /// <returns> The <see cref="DiscordBot"/> with this <paramref name="id"/> assigned. </returns>
+        /// <exception cref="ArgumentException"> Thrown when a bot with this <paramref name="id"/> doesn't exist or isn't active. </exception>
+        public DiscordBot GetBot(ulong id)
+        {
+            TokenInfo? token = _tokens.Where(x => x.id == id).First();
+
+            if (!token.HasValue)
+                throw new ArgumentException("No tokens with this ID are loaded.");
+
+            return GetBot(token.Value);
+        }
+
+        /// <summary>
+        /// Fetches a <see cref="DiscordBot"/> with the specified <see cref="TokenInfo"/> assigned.
+        /// </summary>
+        /// <param name="token"> The <see cref="TokenInfo"/> of the matching bot. </param>
+        /// <returns> The <see cref="DiscordBot"/> with this <see cref="TokenInfo"/>. </returns>
+        /// <exception cref="ArgumentException"> Thrown when a bot with this <see cref="TokenInfo"/> doesn't exist or isn't active. </exception>
+        public DiscordBot GetBot(TokenInfo token)
+        {
+            DiscordBot bot = _activeBots.Where(x => x.TokenInfo == token).First();
+
+            if (bot == null)
+                throw new ArgumentException("No bots with this ID are active.");
+
+            return bot;
+        }
     }
 }
