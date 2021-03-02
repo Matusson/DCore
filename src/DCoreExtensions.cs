@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using DCore.Helpers;
 
-namespace DCore.Extensions
+namespace DCore
 {
-    static class DCoreExtensions
+    public static class DCoreExtensions
     {
         /// <summary>
         /// <inheritdoc cref="BotAccountLoader.LoadAccountsFromFile(string)"/>
