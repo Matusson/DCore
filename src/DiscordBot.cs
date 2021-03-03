@@ -22,6 +22,16 @@ namespace DCore
         /// </summary>
         public TokenInfo TokenInfo { get; set; }
 
+        /// <summary>
+        /// Has the client started and is maintaining the connection?
+        /// </summary>
+        public bool HasStarted
+        {
+            get
+            {
+                return Client.ConnectionState == Discord.ConnectionState.Connected;
+            }
+        }
         private DiscordSocketConfig _lastConfig;
 
 
