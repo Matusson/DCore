@@ -35,7 +35,7 @@ namespace DCore
             }
         }
 
-        private readonly List<DiscordBot> _activeBots = new List<DiscordBot>();
+        internal readonly List<DiscordBot> _activeBots = new List<DiscordBot>();
         private readonly List<TokenInfo> _tokens = new List<TokenInfo>();
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace DCore
             List<DiscordBot> bots = new List<DiscordBot>();
             foreach(TokenInfo token in unusedTokens)
             {
-                DiscordBot bot = new DiscordBot(token);
+                DiscordBot bot = new DiscordBot(this, token);
                 bots.Add(bot);
             }
 

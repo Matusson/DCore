@@ -11,7 +11,7 @@ namespace DCore
     /// <summary>
     /// Represents a single Discord bot account.
     /// </summary>
-    public class DiscordBot
+    public class DiscordBot : IDisposable
     {
         /// <summary>
         /// The underlying Discord.NET client.
@@ -38,6 +38,7 @@ namespace DCore
         }
 
 
+        private BotManager _manager;
         private DiscordSocketConfig _lastConfig;
 
 
@@ -127,6 +128,7 @@ namespace DCore
             throw new NotImplementedException();
         }
 
+
         /// <summary>
         /// Called when the bot has finished downloading guild data.
         /// </summary>
@@ -136,6 +138,8 @@ namespace DCore
             BotReadyEvent();
             return Task.CompletedTask;
         }
+
+
 
         /// <summary>
         /// Fires when the bot is ready.
@@ -147,9 +151,40 @@ namespace DCore
         /// Constructs a new <see cref="DiscordBot"/>.
         /// </summary>
         /// <param name="token"> The token information to use. </param>
-        public DiscordBot (TokenInfo token)
+        public DiscordBot (BotManager manager, TokenInfo token)
         {
+            _manager = manager;
             TokenInfo = token;
+        }
+
+
+        private bool disposedValue;
+        /// <summary>
+        /// Disconnects the bot, removes from list in <see cref="BotManager"/>, and disposes of the resources.
+        /// </summary>
+        /// <param name="disposing"></param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    Client.StopAsync().ConfigureAwait(false);
+                    _manager._activeBots.Remove(this);
+                    _lastConfig = null;
+
+                    Client = null;
+                }
+
+                disposedValue = true;
+            }
+        }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }
