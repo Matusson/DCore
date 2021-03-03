@@ -43,6 +43,17 @@ namespace DCore
             //Log in and start
             await Client.LoginAsync(Discord.TokenType.Bot, TokenInfo.token);
             await Client.StartAsync();
+
+            //Wait for the connection
+            DateTime beganWaiting = DateTime.UtcNow;
+            while(Client.ConnectionState != Discord.ConnectionState.Connected)
+            {
+                await Task.Delay(20);
+
+                //10 second timeout (TODO:Make this configurable)
+                if (beganWaiting + TimeSpan.FromSeconds(10) < DateTime.UtcNow)
+                    break;
+            }
         }
 
         /// <summary>
