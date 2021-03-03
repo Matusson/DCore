@@ -30,8 +30,13 @@ namespace DCore
         /// </summary>
         /// <param name="config"> The <see cref="DiscordSocketConfig"/> to use. Null to use default. </param>
         /// <returns> The task that starts up the <see cref="DiscordBot"/>. </returns>
+        /// <exception cref="InvalidOperationException"> Thrown when attempting starting on already running bot. </exception>
         public async Task StartAsync(DiscordSocketConfig config = null)
         {
+            //If already running, can't start again
+            if (Client.ConnectionState == Discord.ConnectionState.Connected)
+                throw new InvalidOperationException("The bot has already started.");
+
             //If config is null, use the default one
             if (config == null)
                 config = new DiscordSocketConfig();
@@ -63,8 +68,12 @@ namespace DCore
         /// Stops the connection between Discord and the application.
         /// </summary>
         /// <returns> The task that stops the bot. </returns>
+        /// <exception cref="InvalidOperationException"> Thrown when attempting to stop a bot that's not running. </exception>
         public async Task StopAsync()
         {
+            if (Client.ConnectionState == Discord.ConnectionState.Disconnected)
+                throw new InvalidOperationException("The bot is not running.");
+
             await Client.StopAsync();
             await Client.LogoutAsync();
         }
