@@ -22,6 +22,8 @@ namespace DCore
         /// </summary>
         public TokenInfo TokenInfo { get; set; }
 
+        private DiscordSocketConfig _lastConfig;
+
 
         /// <summary>
         /// Logs in and starts the <see cref="DiscordBot"/>.
@@ -33,6 +35,7 @@ namespace DCore
             //If config is null, use the default one
             if (config == null)
                 config = new DiscordSocketConfig();
+            _lastConfig = config;
 
             //Initialize the client
             if (Client == null)
@@ -65,6 +68,17 @@ namespace DCore
             await Client.StopAsync();
             await Client.LogoutAsync();
         }
+
+        /// <summary>
+        /// Restarts the bot connection.
+        /// </summary>
+        /// <returns></returns>
+        public async Task RestartAsync()
+        {
+            await StopAsync();
+            await StartAsync(_lastConfig);
+        }
+
 
         /// <summary>
         /// Called when the bot has finished downloading guild data.
