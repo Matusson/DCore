@@ -23,6 +23,11 @@ namespace DCore
         public TokenInfo TokenInfo { get; set; }
 
 
+        /// <summary>
+        /// Logs in and starts the <see cref="DiscordBot"/>.
+        /// </summary>
+        /// <param name="config"> The <see cref="DiscordSocketConfig"/> to use. Null to use default. </param>
+        /// <returns> The task that starts up the <see cref="DiscordBot"/>. </returns>
         public async Task StartAsync(DiscordSocketConfig config = null)
         {
             //If config is null, use the default one
