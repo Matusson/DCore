@@ -32,6 +32,19 @@ namespace DCore.Tests
         }
 
         [TestMethod()]
+        public async Task StartAsync_ThrowsException()
+        {
+            BotAccountLoader loader = new BotAccountLoader();
+            var token = loader.LoadAccountsFromFile("TestToken.txt").FirstOrDefault();
+            DiscordBot bot = new DiscordBot(token);
+            await bot.StartAsync();
+
+            Task func() => bot.StartAsync();
+
+            await Assert.ThrowsExceptionAsync<InvalidOperationException>(func);
+        }
+
+        [TestMethod()]
         public async Task StartAsync_ExampleConfig()
         {
             BotAccountLoader loader = new BotAccountLoader();
@@ -62,6 +75,34 @@ namespace DCore.Tests
             var state = bot.Client.ConnectionState;
             Assert.IsTrue((state == Discord.ConnectionState.Disconnected || state == Discord.ConnectionState.Disconnecting)
                 && bot.Client.LoginState == Discord.LoginState.LoggedOut);
+        }
+
+        [TestMethod()]
+        public async Task StopAsync_ThrowsException()
+        {
+            BotAccountLoader loader = new BotAccountLoader();
+            var token = loader.LoadAccountsFromFile("TestToken.txt").FirstOrDefault();
+            DiscordBot bot = new DiscordBot(token);
+
+            Task func() => bot.StopAsync();
+
+            await Assert.ThrowsExceptionAsync<InvalidOperationException>(func);
+        }
+
+        [DataTestMethod]
+        [DataRow(false)]
+        [DataRow(true)]
+        public async Task HasStarted(bool start)
+        {
+            BotAccountLoader loader = new BotAccountLoader();
+            var token = loader.LoadAccountsFromFile("TestToken.txt").FirstOrDefault();
+            DiscordBot bot = new DiscordBot(token);
+
+            if (start)
+                await bot.StartAsync();
+            bool result = bot.HasStarted;
+
+            Assert.AreEqual(start, result);
         }
     }
 }

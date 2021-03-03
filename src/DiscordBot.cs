@@ -29,6 +29,9 @@ namespace DCore
         {
             get
             {
+                if (Client == null)
+                    return false;
+
                 return Client.ConnectionState == Discord.ConnectionState.Connected;
             }
         }
@@ -44,7 +47,7 @@ namespace DCore
         public async Task StartAsync(DiscordSocketConfig config = null)
         {
             //If already running, can't start again
-            if (Client.ConnectionState == Discord.ConnectionState.Connected)
+            if (Client?.ConnectionState == Discord.ConnectionState.Connected)
                 throw new InvalidOperationException("The bot has already started.");
 
             //If config is null, use the default one
@@ -81,7 +84,7 @@ namespace DCore
         /// <exception cref="InvalidOperationException"> Thrown when attempting to stop a bot that's not running. </exception>
         public async Task StopAsync()
         {
-            if (Client.ConnectionState == Discord.ConnectionState.Disconnected)
+            if (Client == null || Client.ConnectionState == Discord.ConnectionState.Disconnected)
                 throw new InvalidOperationException("The bot is not running.");
 
             await Client.StopAsync();
