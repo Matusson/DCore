@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DCore
 {
@@ -125,6 +126,18 @@ namespace DCore
                 throw new ArgumentException("No bots with this ID are active.");
 
             return bot;
+        }
+
+
+        /// <summary>
+        /// Restarts all bots.
+        /// </summary>
+        public async Task RestartAllAsync()
+        {
+            foreach(var bot in _activeBots)
+            {
+                await bot.RestartAsync();
+            }
         }
     }
 }

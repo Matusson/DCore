@@ -101,6 +101,9 @@ namespace DCore
         /// <returns></returns>
         public async Task RestartAsync()
         {
+            if (!HasStarted)
+                return;
+
             await StopAsync();
             await StartAsync(_lastConfig);
         }
