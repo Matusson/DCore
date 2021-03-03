@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DCore
 {
@@ -35,7 +36,7 @@ namespace DCore
             }
         }
 
-        private readonly List<DiscordBot> _activeBots = new List<DiscordBot>();
+        internal readonly List<DiscordBot> _activeBots = new List<DiscordBot>();
         private readonly List<TokenInfo> _tokens = new List<TokenInfo>();
 
         /// <summary>
@@ -76,7 +77,7 @@ namespace DCore
             List<DiscordBot> bots = new List<DiscordBot>();
             foreach(TokenInfo token in unusedTokens)
             {
-                DiscordBot bot = new DiscordBot(token);
+                DiscordBot bot = new DiscordBot(this, token);
                 bots.Add(bot);
             }
 
@@ -125,6 +126,18 @@ namespace DCore
                 throw new ArgumentException("No bots with this ID are active.");
 
             return bot;
+        }
+
+
+        /// <summary>
+        /// Restarts all bots.
+        /// </summary>
+        public async Task RestartAllAsync()
+        {
+            foreach(var bot in _activeBots)
+            {
+                await bot.RestartAsync();
+            }
         }
     }
 }
