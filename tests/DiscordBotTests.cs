@@ -6,6 +6,7 @@ using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using Discord.WebSocket;
+using DCore.Helpers;
 
 namespace DCore.Tests
 {
@@ -21,9 +22,9 @@ namespace DCore.Tests
         [TestMethod()]
         public async Task StartAsync_DefaultConfig()
         {
-            BotManager manager = new BotManager();
-            manager.LoadAccountsFromFile("TestToken.txt");
-            DiscordBot bot = manager.ActivateBots(1).FirstOrDefault();
+            BotAccountLoader loader = new BotAccountLoader();
+            var token = loader.LoadAccountsFromFile("TestToken.txt").FirstOrDefault();
+            DiscordBot bot = new DiscordBot(token);
 
             await bot.StartAsync();
 
@@ -33,9 +34,9 @@ namespace DCore.Tests
         [TestMethod()]
         public async Task StartAsync_ExampleConfig()
         {
-            BotManager manager = new BotManager();
-            manager.LoadAccountsFromFile("TestToken.txt");
-            DiscordBot bot = manager.ActivateBots(1).FirstOrDefault();
+            BotAccountLoader loader = new BotAccountLoader();
+            var token = loader.LoadAccountsFromFile("TestToken.txt").FirstOrDefault();
+            DiscordBot bot = new DiscordBot(token);
             DiscordSocketConfig config = new DiscordSocketConfig()
             {
                 AlwaysDownloadUsers = false,
@@ -51,9 +52,9 @@ namespace DCore.Tests
         [TestMethod()]
         public async Task StopAsync()
         {
-            BotManager manager = new BotManager();
-            manager.LoadAccountsFromFile("TestToken.txt");
-            DiscordBot bot = manager.ActivateBots(1).FirstOrDefault();
+            BotAccountLoader loader = new BotAccountLoader();
+            var token = loader.LoadAccountsFromFile("TestToken.txt").FirstOrDefault();
+            DiscordBot bot = new DiscordBot(token);
 
             await bot.StartAsync();
             await bot.StopAsync();
