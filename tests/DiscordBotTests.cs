@@ -47,5 +47,20 @@ namespace DCore.Tests
 
             Assert.IsTrue(bot.Client.ConnectionState == Discord.ConnectionState.Connected);
         }
+
+        [TestMethod()]
+        public async Task StopAsync()
+        {
+            BotManager manager = new BotManager();
+            manager.LoadAccountsFromFile("TestToken.txt");
+            DiscordBot bot = manager.ActivateBots(1).FirstOrDefault();
+
+            await bot.StartAsync();
+            await bot.StopAsync();
+
+            var state = bot.Client.ConnectionState;
+            Assert.IsTrue((state == Discord.ConnectionState.Disconnected || state == Discord.ConnectionState.Disconnecting)
+                && bot.Client.LoginState == Discord.LoginState.LoggedOut);
+        }
     }
 }
