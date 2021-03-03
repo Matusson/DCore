@@ -1,4 +1,5 @@
 ﻿using DCore.Structs;
+using Discord;
 using Discord.WebSocket;
 using System;
 using System.Collections.Generic;
@@ -35,6 +36,8 @@ namespace DCore
                 return Client.ConnectionState == Discord.ConnectionState.Connected;
             }
         }
+
+
         private DiscordSocketConfig _lastConfig;
 
 
@@ -101,6 +104,28 @@ namespace DCore
             await StartAsync(_lastConfig);
         }
 
+
+        /// <summary>
+        /// Sets game status using provided values.
+        /// </summary>
+        /// <param name="activity"> The type of activity. </param>
+        /// <param name="game"> The displayed string. </param>
+        /// <param name="streamUrl"> The link to the stream, if <see cref="ActivityType"/> is <see cref="ActivityType.Streaming"/>. </param>
+        /// <returns> The task that sets the game status. </returns>
+        public async Task SetGameAsync(ActivityType activity, string game, string streamUrl = null)
+        {
+            await Client.SetGameAsync(game, streamUrl, activity);
+        }
+
+        /// <summary>
+        /// Sets the game status using values from config.
+        /// </summary>
+        /// <returns> The task that sets the game status. </returns>
+        public Task SetGameAsync()
+        {
+            //TODO:Implement this once Configuration system is complete
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// Called when the bot has finished downloading guild data.
