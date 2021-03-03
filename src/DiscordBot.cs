@@ -46,6 +46,16 @@ namespace DCore
         }
 
         /// <summary>
+        /// Stops the connection between Discord and the application.
+        /// </summary>
+        /// <returns> The task that stops the bot. </returns>
+        public async Task StopAsync()
+        {
+            await Client.StopAsync();
+            await Client.LogoutAsync();
+        }
+
+        /// <summary>
         /// Called when the bot has finished downloading guild data.
         /// </summary>
         /// <returns></returns>
