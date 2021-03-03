@@ -38,7 +38,7 @@ namespace DCore
         }
 
 
-        private BotManager _manager;
+        private readonly BotManager _manager;
         private DiscordSocketConfig _lastConfig;
 
 

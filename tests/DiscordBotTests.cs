@@ -24,7 +24,7 @@ namespace DCore.Tests
         {
             BotAccountLoader loader = new BotAccountLoader();
             var token = loader.LoadAccountsFromFile("TestToken.txt").FirstOrDefault();
-            DiscordBot bot = new DiscordBot(token);
+            DiscordBot bot = new DiscordBot(null, token);
 
             await bot.StartAsync();
 
@@ -36,7 +36,7 @@ namespace DCore.Tests
         {
             BotAccountLoader loader = new BotAccountLoader();
             var token = loader.LoadAccountsFromFile("TestToken.txt").FirstOrDefault();
-            DiscordBot bot = new DiscordBot(token);
+            DiscordBot bot = new DiscordBot(null, token);
             await bot.StartAsync();
 
             Task func() => bot.StartAsync();
@@ -49,7 +49,7 @@ namespace DCore.Tests
         {
             BotAccountLoader loader = new BotAccountLoader();
             var token = loader.LoadAccountsFromFile("TestToken.txt").FirstOrDefault();
-            DiscordBot bot = new DiscordBot(token);
+            DiscordBot bot = new DiscordBot(null, token);
             DiscordSocketConfig config = new DiscordSocketConfig()
             {
                 AlwaysDownloadUsers = false,
@@ -67,7 +67,7 @@ namespace DCore.Tests
         {
             BotAccountLoader loader = new BotAccountLoader();
             var token = loader.LoadAccountsFromFile("TestToken.txt").FirstOrDefault();
-            DiscordBot bot = new DiscordBot(token);
+            DiscordBot bot = new DiscordBot(null, token);
 
             await bot.StartAsync();
             await bot.StopAsync();
@@ -82,7 +82,7 @@ namespace DCore.Tests
         {
             BotAccountLoader loader = new BotAccountLoader();
             var token = loader.LoadAccountsFromFile("TestToken.txt").FirstOrDefault();
-            DiscordBot bot = new DiscordBot(token);
+            DiscordBot bot = new DiscordBot(null, token);
 
             Task func() => bot.StopAsync();
 
@@ -96,7 +96,7 @@ namespace DCore.Tests
         {
             BotAccountLoader loader = new BotAccountLoader();
             var token = loader.LoadAccountsFromFile("TestToken.txt").FirstOrDefault();
-            DiscordBot bot = new DiscordBot(token);
+            DiscordBot bot = new DiscordBot(null, token);
 
             if (start)
                 await bot.StartAsync();
