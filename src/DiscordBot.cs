@@ -169,7 +169,8 @@ namespace DCore
             {
                 if (disposing)
                 {
-                    Client.StopAsync().ConfigureAwait(false);
+                    if (Client != null)
+                        Client.StopAsync().ConfigureAwait(false);
                     _manager._activeBots.Remove(this);
                     _lastConfig = null;
 

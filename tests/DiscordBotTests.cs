@@ -104,5 +104,19 @@ namespace DCore.Tests
 
             Assert.AreEqual(start, result);
         }
+
+        [TestMethod()]
+        public void Dispose()
+        {
+            BotManager manager = new BotManager();
+            manager.LoadAccountsFromFile("TestToken.txt");
+            DiscordBot bot = manager.ActivateBots(1).FirstOrDefault();
+
+            if (manager.AvailableBotCount != 0)
+                throw new Exception("Incorrect available bot count.");
+            bot.Dispose();
+
+            Assert.IsTrue(manager.AvailableBotCount == 1);
+        }
     }
 }
