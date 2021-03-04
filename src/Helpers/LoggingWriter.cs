@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DCore.Helpers
 {
-    internal class LoggingHelper
+    internal class LoggingWriter
     {
         internal void WriteToConsole(LogType type, string toWrite)
         {
@@ -15,6 +15,11 @@ namespace DCore.Helpers
         internal void WriteToFile(LogType type, string toWrite)
         {
 
+        }
+
+        private string GetPrefix(LogType type, bool colored = false)
+        {
+            
         }
     }
 }
