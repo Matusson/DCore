@@ -15,7 +15,7 @@ namespace DCore.Helpers
         /// <param name="toWrite"> The message to write. </param>
         internal void WriteToConsole(LogType type, string toWrite)
         {
-            string finalText = $"{GetPrefix(type, true)} {GetTimeString()} | {toWrite}";
+            string finalText = $"{GetPrefix(type, true)} {toWrite}";
             Console.WriteLine(finalText);
         }
 
@@ -26,7 +26,7 @@ namespace DCore.Helpers
         /// <param name="toWrite"> The message to write. </param>
         internal void WriteToFile(LogType type, string toWrite)
         {
-            string finalText = $"{GetPrefix(type)} {GetTimeString()} | {toWrite}";
+            string finalText = $"{GetPrefix(type)} {toWrite}";
             
         }
 
@@ -39,41 +39,46 @@ namespace DCore.Helpers
         private string GetPrefix(LogType type, bool colored = false)
         {
             string prefix;
+            string color;
+
             switch (type)
             {
                 case LogType.Debug:
                     prefix = "[DEBUG]";
-                    if (colored)
-                        prefix = prefix.Pastel("#e3d76b");
+                    color = "#e3d76b";
                     break;
 
                 case LogType.Info:
-                    prefix = "[INFO]";
+                    prefix = "[INFO] ";
+                    color = "#ffffff";
                     break;
 
                 case LogType.Warn:
-                    prefix = "[WARN]";
-                    if (colored)
-                        prefix = prefix.Pastel("#eda334");
+                    prefix = "[WARN] ";
+                    color = "#eda334";
                     break;
 
                 case LogType.Error:
                     prefix = "[ERROR]";
-                    if (colored)
-                        prefix = prefix.Pastel("#eb4b36");
+                    color = "#db1818";
                     break;
 
                 case LogType.CriticalError:
-                    prefix = "[DEBUG]";
-                    if (colored)
-                        prefix = prefix.Pastel("#9e1006");
+                    prefix = "[CRITICAL]";
+                    color = "#ed0000";
                     break;
 
                 default:
                     return null;
             }
 
-            return prefix;
+            prefix += $" {GetTimeString()}";
+
+            //TODO:Add config variable for colored strings
+            if (colored)
+                prefix = prefix.Pastel(color);
+
+            return prefix + " |";
         }
 
         /// <summary>
