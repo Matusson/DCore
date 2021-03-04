@@ -8,14 +8,26 @@ namespace DCore.Helpers
 {
     internal class LoggingWriter
     {
+        /// <summary>
+        /// Writes the specified message to console.
+        /// </summary>
+        /// <param name="type"> The type of log to write. </param>
+        /// <param name="toWrite"> The message to write. </param>
         internal void WriteToConsole(LogType type, string toWrite)
         {
-
+            string finalText = $"{GetPrefix(type, true)} {GetTimeString()} | {toWrite}";
+            Console.WriteLine(finalText);
         }
 
+        /// <summary>
+        /// Writes the specified message to a file.
+        /// </summary>
+        /// <param name="type"> The type of log to write. </param>
+        /// <param name="toWrite"> The message to write. </param>
         internal void WriteToFile(LogType type, string toWrite)
         {
-
+            string finalText = $"{GetPrefix(type)} {GetTimeString()} | {toWrite}";
+            
         }
 
         /// <summary>
@@ -26,7 +38,7 @@ namespace DCore.Helpers
         /// <returns> The prefix to use for this log type. </returns>
         private string GetPrefix(LogType type, bool colored = false)
         {
-            string prefix = "";
+            string prefix;
             switch (type)
             {
                 case LogType.Debug:
@@ -62,6 +74,15 @@ namespace DCore.Helpers
             }
 
             return prefix;
+        }
+
+        /// <summary>
+        /// Returns the current time formatted as a string.
+        /// </summary>
+        /// <returns></returns>
+        private string GetTimeString()
+        {
+            return $"{DateTime.UtcNow.ToShortDateString()} {DateTime.UtcNow.ToLongTimeString()}";
         }
     }
 }
