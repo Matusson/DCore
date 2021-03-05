@@ -20,6 +20,7 @@ namespace DCore.Tests
             if (File.Exists(temponaryLogPath))
                 File.Delete(temponaryLogPath);
 
+            
             DCoreLogger logger = new DCoreLogger();
             logger.LogInformation(LogType.Info, "TEST");
 

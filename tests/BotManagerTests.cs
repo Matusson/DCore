@@ -111,6 +111,21 @@ namespace DCore.Tests
             Assert.AreEqual(4, result);
         }
 
+        [TestMethod()]
+        public void LoadAccounts_UseMultipleBotsFalse()
+        {
+            BotManager manager = new BotManager(new DCoreConfig { UseMultipleBots = false });
+            List<TokenInfo> accounts = new List<TokenInfo>
+            {
+                new TokenInfo(012345, "TOKEN"),
+                new TokenInfo(123456, "TOKEN"),
+                new TokenInfo(234567, "TOKEN")
+            };
+
+            void load() => manager.LoadAccounts(accounts);
+
+            Assert.ThrowsException<InvalidOperationException>(load);
+        }
 
 
         [DataTestMethod]

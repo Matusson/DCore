@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using DCore.Configs;
 using DCore.Helpers;
 using System.IO;
 
@@ -17,7 +18,7 @@ namespace DCore.Tests
         [DataRow(3)]
         public void LoadAccountsFromFile_InvalidFiles(int testId)
         {
-            var manager = new BotManager();
+            var manager = new BotManager(new DCoreConfig { UseMultipleBots = true });
 
             void load() => manager.LoadAccountsFromFile($"TokenFiles\\tokensParameterCount{testId}.txt");
 
@@ -31,7 +32,7 @@ namespace DCore.Tests
         [DataRow(4, 3)]
         public void LoadAccountsFromFile_CorrectResult(int testId, int expectedBotCount)
         {
-            var manager = new BotManager();
+            var manager = new BotManager(new DCoreConfig { UseMultipleBots = true });
 
             int actualBotCount = manager.LoadAccountsFromFile($"TokenFiles\\tokensCorrect{testId}.txt");
 

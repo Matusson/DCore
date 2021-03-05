@@ -50,10 +50,14 @@ namespace DCore
         /// </summary>
         /// <param name="accounts"> The accounts to load. </param>
         /// <returns> The amount of accounts that was loaded. </returns>
+        /// <exception cref="InvalidOperationException"> Thrown when attempting to load multiple bots with UseMultipleBots sets to false. </exception>
         public int LoadAccounts(List<TokenInfo> accounts)
         {
             //Ensure only unique information is loaded
             accounts = accounts.Except(_tokens).ToList();
+
+            if (accounts.Count + _tokens.Count > 1 && !Config.UseMultipleBots)
+                throw new InvalidOperationException("You must enable UseMultipleBots in config to allow loading multiple bots.");
 
             _tokens.AddRange(accounts);
             return accounts.Count;

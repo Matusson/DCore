@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Discord.WebSocket;
 using DCore.Helpers;
+using DCore.Configs;
 
 namespace DCore.Tests
 {
@@ -108,7 +109,7 @@ namespace DCore.Tests
         [TestMethod()]
         public void Dispose()
         {
-            BotManager manager = new BotManager();
+            var manager = new BotManager(new DCoreConfig { UseMultipleBots = true });
             manager.LoadAccountsFromFile("TestToken.txt");
             DiscordBot bot = manager.ActivateBots(1).FirstOrDefault();
 
