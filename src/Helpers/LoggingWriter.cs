@@ -13,7 +13,7 @@ namespace DCore.Helpers
     /// </summary>
     internal class LoggingWriter
     {
-        private DCoreLogger _logger;
+        private readonly DCoreLogger _logger;
 
         /// <summary>
         /// Writes the specified message to console.
@@ -37,11 +37,14 @@ namespace DCore.Helpers
 
             string pathToLogs = _logger.Bot.Manager.Config.LogsPath;
             string combinedLogPath = Path.Combine(pathToLogs, "combined.log");
+            string botLogPath = Path.Combine(pathToLogs, _logger.Bot.TokenInfo.id + ".log");
 
             //Write to the combined file
             await WriteToFile(combinedLogPath, finalText);
 
             //Write to the bot file
+            if (_logger.Bot.Manager.Config.UseMultipleBots)
+                await WriteToFile(botLogPath, finalText);
         }
 
         /// <summary>

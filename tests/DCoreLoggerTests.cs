@@ -22,7 +22,7 @@ namespace DCore.Tests
             var config = new DCoreConfig { UseMultipleBots = multipleBots };
 
             BotManager manager = new BotManager(config);
-            Mock<DiscordBot> bot = new Mock<DiscordBot>(manager, new TokenInfo(12345, "TOKEN"));
+            Mock<DiscordBot> bot = new Mock<DiscordBot>(manager, new TokenInfo(12345, "TOKEN"), null);
             DCoreLogger logger = new DCoreLogger(bot.Object);
 
             return logger;
@@ -41,6 +41,44 @@ namespace DCore.Tests
             await Task.Delay(10);
 
             Assert.IsTrue(File.Exists(defaultLoggingPath));
+        }
+
+        [TestMethod()]
+        public async Task LogInformation_FileCreated_MultipleAccounts()
+        {
+            string expectedLogFilePath = "\\Logs\\12345.log";
+            if (File.Exists(defaultLoggingPath))
+                File.Delete(defaultLoggingPath);
+
+            if (File.Exists(expectedLogFilePath))
+                File.Delete(expectedLogFilePath);
+
+            var logger = GetLogger(true);
+            logger.LogInformation(LogType.Info, "TEST");
+
+            //The logger doesn't wait for the writing to complete, so wait a bit
+            await Task.Delay(20);
+
+            Assert.IsTrue(File.Exists(expectedLogFilePath));
+        }
+
+        [TestMethod()]
+        public async Task LogInformation_FileCreated_SingleAccount()
+        {
+            string expectedLogFilePath = "\\Logs\\12345.log";
+            if (File.Exists(defaultLoggingPath))
+                File.Delete(defaultLoggingPath);
+
+            if (File.Exists(expectedLogFilePath))
+                File.Delete(expectedLogFilePath);
+
+            var logger = GetLogger();
+            logger.LogInformation(LogType.Info, "TEST");
+
+            //The logger doesn't wait for the writing to complete, so wait a bit
+            await Task.Delay(20);
+
+            Assert.IsTrue(!File.Exists(expectedLogFilePath));
         }
 
         [TestMethod()]
