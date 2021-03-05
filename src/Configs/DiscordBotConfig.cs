@@ -2,18 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DCore
+namespace DCore.Configs
 {
     /// <summary>
     /// Stores various settings related to <see cref="DiscordBot"/>
     /// </summary>
     public class DiscordBotConfig
     {
-        /// <summary>
-        /// Should creating multiple bots be allowed? Also adds separated log files for each bot and the bot ID to the log output.
-        /// </summary>
-        public bool UseMultipleBots { get; set; } = false;
-
         /// <summary>
         /// The path where log files will be saved.
         /// </summary>
