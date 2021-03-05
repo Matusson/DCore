@@ -16,6 +16,11 @@ namespace DCore
     public class DiscordBot : IBot, IDisposable
     {
         /// <summary>
+        /// The <see cref="BotManager"/> that activated this bot.
+        /// </summary>
+        public BotManager Manager { get; set; }
+
+        /// <summary>
         /// The underlying Discord.NET client.
         /// </summary>
         public DiscordSocketClient Client { get; set; }
@@ -45,7 +50,6 @@ namespace DCore
         }
 
 
-        private readonly BotManager _manager;
         private DiscordSocketConfig _lastConfig;
 
 
@@ -163,7 +167,7 @@ namespace DCore
         /// <param name="token"> The token information to use. </param>
         public DiscordBot (BotManager manager, TokenInfo token)
         {
-            _manager = manager;
+            Manager = manager;
             TokenInfo = token;
         }
 
@@ -181,7 +185,7 @@ namespace DCore
                 {
                     if (Client != null)
                         Client.StopAsync().ConfigureAwait(false);
-                    _manager._activeBots.Remove(this);
+                    Manager._activeBots.Remove(this);
                     _lastConfig = null;
 
                     Client = null;

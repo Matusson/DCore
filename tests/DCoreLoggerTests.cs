@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DCore;
+using DCore.Configs;
 using DCore.Enums;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Text;
 using System.IO;
 using System.Threading.Tasks;
 using Moq;
+using DCore.Structs;
 
 namespace DCore.Tests
 {
@@ -15,14 +17,22 @@ namespace DCore.Tests
     {
         static readonly string temponaryLogPath = "\\Logs\\combined.log";
 
+        private DCoreLogger GetLogger()
+        {
+            BotManager manager = new BotManager(new DCoreConfig());
+            Mock<DiscordBot> bot = new Mock<DiscordBot>(manager, new TokenInfo());
+            DCoreLogger logger = new DCoreLogger(bot.Object);
+
+            return logger;
+        }
+
         [TestMethod()]
         public async Task LogInformation_FileCreated()
         {
             if (File.Exists(temponaryLogPath))
                 File.Delete(temponaryLogPath);
 
-            Mock<DiscordBot> bot = new Mock<DiscordBot>();
-            DCoreLogger logger = new DCoreLogger(bot.Object);
+            var logger = GetLogger();
             logger.LogInformation(LogType.Info, "TEST");
 
             //The logger doesn't wait for the writing to complete, so wait a bit
@@ -38,8 +48,7 @@ namespace DCore.Tests
             if (File.Exists(temponaryLogPath))
                 File.Delete(temponaryLogPath);
 
-            Mock<DiscordBot> bot = new Mock<DiscordBot>();
-            DCoreLogger logger = new DCoreLogger(bot.Object);
+            var logger = GetLogger();
             logger.LogInformation(LogType.Info, "TEST");
 
             //The logger doesn't wait for the writing to complete, so wait a bit
@@ -60,8 +69,7 @@ namespace DCore.Tests
             for (int i = 0; i < 10000000; i++)
                 toWrite.Append("A");
 
-            Mock<DiscordBot> bot = new Mock<DiscordBot>();
-            DCoreLogger logger = new DCoreLogger(bot.Object);
+            var logger = GetLogger();
             logger.LogInformation(LogType.Info, toWrite.ToString());
             DateTime startedWriting = DateTime.UtcNow;
 
@@ -83,8 +91,7 @@ namespace DCore.Tests
             for (int i = 0; i < 1000; i++)
                 toWrite.Append("A");
 
-            Mock<DiscordBot> bot = new Mock<DiscordBot>();
-            DCoreLogger logger = new DCoreLogger(bot.Object);
+            var logger = GetLogger();
 
             int iterations = 10;
             for(int i = 0; i < iterations; i++)
