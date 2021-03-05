@@ -36,8 +36,8 @@ namespace DCore.Helpers
             string finalText = $"{GetPrefix(type)} {toWrite}";
 
             //TODO:Make some these configurable
-            int retryCount = 5;
-            int msDelayOnRetry = 500;
+            int retryCount = 10;
+            int msDelayOnRetry = 100;
             int maxLinesInFile = 2000;
 
             for (int i = 0; i < retryCount; i++)
