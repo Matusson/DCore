@@ -82,13 +82,13 @@ namespace DCore
 
             //Wait for the connection
             DateTime beganWaiting = DateTime.UtcNow;
-            while(Client.ConnectionState != Discord.ConnectionState.Connected)
+            while (Client.ConnectionState != Discord.ConnectionState.Connected)
             {
                 await Task.Delay(20);
 
-                //10 second timeout (TODO:Make this configurable)
-                if (beganWaiting + TimeSpan.FromSeconds(10) < DateTime.UtcNow)
-                    break;
+                //Timeout
+                if (beganWaiting + Config.ConnectionTimeout < DateTime.UtcNow)
+                    throw new TimeoutException($"Gateway connection for bot {TokenInfo.id} has timed out.");
             }
         }
 
@@ -165,10 +165,12 @@ namespace DCore
         /// Constructs a new <see cref="DiscordBot"/>.
         /// </summary>
         /// <param name="token"> The token information to use. </param>
-        public DiscordBot (BotManager manager, TokenInfo token)
+        public DiscordBot(BotManager manager, TokenInfo token, DiscordBotConfig config = null)
         {
             Manager = manager;
             TokenInfo = token;
+
+            Config = config ?? new DiscordBotConfig();
         }
 
 

@@ -9,6 +9,9 @@ namespace DCore.Configs
     /// </summary>
     public class DiscordBotConfig
     {
-        
+        /// <summary>
+        /// The timeout for connecting to Discord gateway.
+        /// </summary>
+        public TimeSpan ConnectionTimeout = TimeSpan.FromSeconds(10);
     }
 }
