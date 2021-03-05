@@ -1,4 +1,6 @@
-﻿using DCore.Structs;
+﻿using DCore.Configs;
+using DCore.Interfaces;
+using DCore.Structs;
 using Discord;
 using Discord.WebSocket;
 using System;
@@ -11,12 +13,22 @@ namespace DCore
     /// <summary>
     /// Represents a single Discord bot account.
     /// </summary>
-    public class DiscordBot : IDisposable
+    public class DiscordBot : IBot, IDisposable
     {
+        /// <summary>
+        /// The <see cref="BotManager"/> that activated this bot.
+        /// </summary>
+        public BotManager Manager { get; set; }
+
         /// <summary>
         /// The underlying Discord.NET client.
         /// </summary>
         public DiscordSocketClient Client { get; set; }
+
+        /// <summary>
+        /// The <see cref="DiscordBotConfig"/> used by the bot.
+        /// </summary>
+        public DiscordBotConfig Config { get; set; }
 
         /// <summary>
         /// The ID and token information for <see cref="DiscordBot"/>.
@@ -38,7 +50,6 @@ namespace DCore
         }
 
 
-        private readonly BotManager _manager;
         private DiscordSocketConfig _lastConfig;
 
 
@@ -71,13 +82,13 @@ namespace DCore
 
             //Wait for the connection
             DateTime beganWaiting = DateTime.UtcNow;
-            while(Client.ConnectionState != Discord.ConnectionState.Connected)
+            while (Client.ConnectionState != Discord.ConnectionState.Connected)
             {
                 await Task.Delay(20);
 
-                //10 second timeout (TODO:Make this configurable)
-                if (beganWaiting + TimeSpan.FromSeconds(10) < DateTime.UtcNow)
-                    break;
+                //Timeout
+                if (beganWaiting + Config.ConnectionTimeout < DateTime.UtcNow)
+                    throw new TimeoutException($"Gateway connection for bot {TokenInfo.id} has timed out.");
             }
         }
 
@@ -154,10 +165,12 @@ namespace DCore
         /// Constructs a new <see cref="DiscordBot"/>.
         /// </summary>
         /// <param name="token"> The token information to use. </param>
-        public DiscordBot (BotManager manager, TokenInfo token)
+        public DiscordBot(BotManager manager, TokenInfo token, DiscordBotConfig config = null)
         {
-            _manager = manager;
+            Manager = manager;
             TokenInfo = token;
+
+            Config = config ?? new DiscordBotConfig();
         }
 
 
@@ -174,7 +187,7 @@ namespace DCore
                 {
                     if (Client != null)
                         Client.StopAsync().ConfigureAwait(false);
-                    _manager._activeBots.Remove(this);
+                    Manager._activeBots.Remove(this);
                     _lastConfig = null;
 
                     Client = null;

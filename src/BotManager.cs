@@ -1,4 +1,5 @@
-﻿using DCore.Helpers;
+﻿using DCore.Configs;
+using DCore.Helpers;
 using DCore.Structs;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,11 @@ namespace DCore
     /// </summary>
     public class BotManager
     {
+        /// <summary>
+        /// The config for this <see cref="BotManager"/> service.
+        /// </summary>
+        public DCoreConfig Config { get; set; }
+
         /// <summary>
         /// The total amount of bot accounts loaded.
         /// </summary>
@@ -44,10 +50,14 @@ namespace DCore
         /// </summary>
         /// <param name="accounts"> The accounts to load. </param>
         /// <returns> The amount of accounts that was loaded. </returns>
+        /// <exception cref="InvalidOperationException"> Thrown when attempting to load multiple bots with UseMultipleBots sets to false. </exception>
         public int LoadAccounts(List<TokenInfo> accounts)
         {
             //Ensure only unique information is loaded
             accounts = accounts.Except(_tokens).ToList();
+
+            if (accounts.Count + _tokens.Count > 1 && !Config.UseMultipleBots)
+                throw new InvalidOperationException("You must enable UseMultipleBots in config to allow loading multiple bots.");
 
             _tokens.AddRange(accounts);
             return accounts.Count;
@@ -138,6 +148,15 @@ namespace DCore
             {
                 await bot.RestartAsync();
             }
+        }
+
+        /// <summary>
+        /// Constructs a BotManager with the specified config.
+        /// </summary>
+        /// <param name="config"> The config to use. </param>
+        public BotManager (DCoreConfig config)
+        {
+            Config = config;
         }
     }
 }

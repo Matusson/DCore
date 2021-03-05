@@ -3,6 +3,7 @@ using DCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using DCore.Configs;
 using DCore.Structs;
 using System.Linq;
 
@@ -14,7 +15,7 @@ namespace DCore.Tests
         [TestMethod()]
         public void LoadAccounts_UniqueOnly()
         {
-            BotManager manager = new BotManager();
+            BotManager manager = new BotManager(new DCoreConfig { UseMultipleBots = true });
             List<TokenInfo> accounts = new List<TokenInfo>
             {
                 new TokenInfo(012345, "TOKEN"),
@@ -30,7 +31,7 @@ namespace DCore.Tests
         [TestMethod()]
         public void LoadAccounts_DuplicatesOnly()
         {
-            BotManager manager = new BotManager();
+            BotManager manager = new BotManager(new DCoreConfig { UseMultipleBots = true });
             List<TokenInfo> accounts = new List<TokenInfo>
             {
                 new TokenInfo(012345, "TOKEN"),
@@ -46,7 +47,7 @@ namespace DCore.Tests
         [TestMethod()]
         public void LoadAccounts_UniqueDuplicateMix()
         {
-            BotManager manager = new BotManager();
+            BotManager manager = new BotManager(new DCoreConfig { UseMultipleBots = true });
             List<TokenInfo> accounts = new List<TokenInfo>
             {
                 new TokenInfo(012345, "TOKEN"),
@@ -63,7 +64,7 @@ namespace DCore.Tests
         [TestMethod()]
         public void LoadAccounts_TwoLoads_UniqueOnly()
         {
-            BotManager manager = new BotManager();
+            BotManager manager = new BotManager(new DCoreConfig { UseMultipleBots = true });
             List<TokenInfo> accounts = new List<TokenInfo>
             {
                 new TokenInfo(012345, "TOKEN"),
@@ -88,7 +89,7 @@ namespace DCore.Tests
         [TestMethod()]
         public void LoadAccounts_TwoLoads_UniqueDuplicateMix()
         {
-            BotManager manager = new BotManager();
+            BotManager manager = new BotManager(new DCoreConfig { UseMultipleBots = true });
             List<TokenInfo> accounts = new List<TokenInfo>
             {
                 new TokenInfo(012345, "TOKEN"),
@@ -110,6 +111,21 @@ namespace DCore.Tests
             Assert.AreEqual(4, result);
         }
 
+        [TestMethod()]
+        public void LoadAccounts_UseMultipleBotsFalse()
+        {
+            BotManager manager = new BotManager(new DCoreConfig { UseMultipleBots = false });
+            List<TokenInfo> accounts = new List<TokenInfo>
+            {
+                new TokenInfo(012345, "TOKEN"),
+                new TokenInfo(123456, "TOKEN"),
+                new TokenInfo(234567, "TOKEN")
+            };
+
+            void load() => manager.LoadAccounts(accounts);
+
+            Assert.ThrowsException<InvalidOperationException>(load);
+        }
 
 
         [DataTestMethod]
@@ -261,7 +277,7 @@ namespace DCore.Tests
         /// <returns></returns>
         public BotManager CreateBotManager(int accountCount)
         {
-            BotManager manager = new BotManager();
+            BotManager manager = new BotManager(new DCoreConfig { UseMultipleBots = true });
             List<TokenInfo> accounts = new List<TokenInfo>
             {
                 new TokenInfo(012345, "TOKEN"),
