@@ -1,4 +1,5 @@
-﻿using DCore.Structs;
+﻿using DCore.Configs;
+using DCore.Structs;
 using Discord;
 using Discord.WebSocket;
 using System;
@@ -17,6 +18,11 @@ namespace DCore
         /// The underlying Discord.NET client.
         /// </summary>
         public DiscordSocketClient Client { get; set; }
+
+        /// <summary>
+        /// The <see cref="DiscordBotConfig"/> used by the bot.
+        /// </summary>
+        public DiscordBotConfig Config { get; set; }
 
         /// <summary>
         /// The ID and token information for <see cref="DiscordBot"/>.

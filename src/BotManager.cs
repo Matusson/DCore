@@ -1,4 +1,5 @@
-﻿using DCore.Helpers;
+﻿using DCore.Configs;
+using DCore.Helpers;
 using DCore.Structs;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,11 @@ namespace DCore
     /// </summary>
     public class BotManager
     {
+        /// <summary>
+        /// The config for this <see cref="BotManager"/> service.
+        /// </summary>
+        public DCoreConfig Config { get; set; }
+
         /// <summary>
         /// The total amount of bot accounts loaded.
         /// </summary>
