@@ -35,8 +35,7 @@ namespace DCore.Helpers
         {
             string finalText = $"{GetPrefix(type)} {toWrite}";
 
-            //TODO:Make this configurable
-            string pathToLogs = "\\logs";
+            string pathToLogs = _logger.Bot.Manager.Config.LogsPath;
             string combinedLogPath = Path.Combine(pathToLogs, "combined.log");
 
             //Write to the combined file
@@ -57,10 +56,9 @@ namespace DCore.Helpers
             if (!Directory.Exists(logFolder))
                 Directory.CreateDirectory(logFolder);
 
-            //TODO:Make some these configurable
-            int retryCount = 10;
+            int retryCount = _logger.Bot.Manager.Config.MaxFileWriteAttempts;
+            int maxLinesInFile = _logger.Bot.Manager.Config.MaxLinesPerLogFile;
             int msDelayOnRetry = 100;
-            int maxLinesInFile = 2000;
 
             for (int i = 0; i < retryCount; i++)
             {
@@ -145,6 +143,8 @@ namespace DCore.Helpers
             }
 
             //if using multiple accounts, add the identifier
+            if (_logger.Bot.Manager.Config.UseMultipleBots)
+                prefix += $" [{_logger.Bot.TokenInfo.id}]";
 
             prefix += $" {GetTimeString()}";
 

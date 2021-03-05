@@ -15,12 +15,14 @@ namespace DCore.Tests
     [TestClass()]
     public class DCoreLoggerTests
     {
-        static readonly string temponaryLogPath = "\\Logs\\combined.log";
+        static readonly string defaultLoggingPath = "\\Logs\\combined.log";
 
-        private DCoreLogger GetLogger()
+        private DCoreLogger GetLogger(bool multipleBots = false)
         {
-            BotManager manager = new BotManager(new DCoreConfig());
-            Mock<DiscordBot> bot = new Mock<DiscordBot>(manager, new TokenInfo());
+            var config = new DCoreConfig { UseMultipleBots = multipleBots };
+
+            BotManager manager = new BotManager(config);
+            Mock<DiscordBot> bot = new Mock<DiscordBot>(manager, new TokenInfo(12345, "TOKEN"));
             DCoreLogger logger = new DCoreLogger(bot.Object);
 
             return logger;
@@ -29,8 +31,8 @@ namespace DCore.Tests
         [TestMethod()]
         public async Task LogInformation_FileCreated()
         {
-            if (File.Exists(temponaryLogPath))
-                File.Delete(temponaryLogPath);
+            if (File.Exists(defaultLoggingPath))
+                File.Delete(defaultLoggingPath);
 
             var logger = GetLogger();
             logger.LogInformation(LogType.Info, "TEST");
@@ -38,15 +40,14 @@ namespace DCore.Tests
             //The logger doesn't wait for the writing to complete, so wait a bit
             await Task.Delay(10);
 
-            //TODO: add the config
-            Assert.IsTrue(File.Exists(temponaryLogPath));
+            Assert.IsTrue(File.Exists(defaultLoggingPath));
         }
 
         [TestMethod()]
         public async Task LogInformation_CorrectContent()
         {
-            if (File.Exists(temponaryLogPath))
-                File.Delete(temponaryLogPath);
+            if (File.Exists(defaultLoggingPath))
+                File.Delete(defaultLoggingPath);
 
             var logger = GetLogger();
             logger.LogInformation(LogType.Info, "TEST");
@@ -54,16 +55,33 @@ namespace DCore.Tests
             //The logger doesn't wait for the writing to complete, so wait a bit
             await Task.Delay(10);
 
-            string content = File.ReadAllText(temponaryLogPath);
+            string content = File.ReadAllText(defaultLoggingPath);
             string expected = $"[INFO]  {DateTime.UtcNow.ToShortDateString()} {DateTime.UtcNow.ToLongTimeString()} | TEST";
+            Assert.AreEqual(expected, content);
+        }
+
+        [TestMethod()]
+        public async Task LogInformation_CorrectContent_MultipleBots()
+        {
+            if (File.Exists(defaultLoggingPath))
+                File.Delete(defaultLoggingPath);
+
+            var logger = GetLogger(true);
+            logger.LogInformation(LogType.Info, "TEST");
+
+            //The logger doesn't wait for the writing to complete, so wait a bit
+            await Task.Delay(10);
+
+            string content = File.ReadAllText(defaultLoggingPath);
+            string expected = $"[INFO]  [12345] {DateTime.UtcNow.ToShortDateString()} {DateTime.UtcNow.ToLongTimeString()} | TEST";
             Assert.AreEqual(expected, content);
         }
 
         [TestMethod()]
         public async Task LogInformation_LongInput()
         {
-            if (File.Exists(temponaryLogPath))
-                File.Delete(temponaryLogPath);
+            if (File.Exists(defaultLoggingPath))
+                File.Delete(defaultLoggingPath);
 
             StringBuilder toWrite = new StringBuilder(10000001);
             for (int i = 0; i < 10000000; i++)
@@ -76,7 +94,7 @@ namespace DCore.Tests
             //The logger doesn't wait for the writing to complete, so wait a bit
             await Task.Delay(100);
 
-            string content = File.ReadAllText(temponaryLogPath);
+            string content = File.ReadAllText(defaultLoggingPath);
             string expected = $"[INFO]  {startedWriting.ToShortDateString()} {startedWriting.ToLongTimeString()} | {toWrite}";
             Assert.AreEqual(expected, content);
         }
@@ -84,8 +102,8 @@ namespace DCore.Tests
         [TestMethod()]
         public async Task LogInformation_MultipleWrites()
         {
-            if (File.Exists(temponaryLogPath))
-                File.Delete(temponaryLogPath);
+            if (File.Exists(defaultLoggingPath))
+                File.Delete(defaultLoggingPath);
 
             StringBuilder toWrite = new StringBuilder(1001);
             for (int i = 0; i < 1000; i++)
@@ -100,7 +118,7 @@ namespace DCore.Tests
             //The logger doesn't wait for the writing to complete, so wait a bit
             await Task.Delay(5000);
 
-            string[] content = File.ReadAllLines(temponaryLogPath);
+            string[] content = File.ReadAllLines(defaultLoggingPath);
             Assert.AreEqual(iterations, content.Length);
         }
 
