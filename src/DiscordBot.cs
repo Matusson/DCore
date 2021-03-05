@@ -1,4 +1,5 @@
 ﻿using DCore.Configs;
+using DCore.Interfaces;
 using DCore.Structs;
 using Discord;
 using Discord.WebSocket;
@@ -12,7 +13,7 @@ namespace DCore
     /// <summary>
     /// Represents a single Discord bot account.
     /// </summary>
-    public class DiscordBot : IDisposable
+    public class DiscordBot : IBot, IDisposable
     {
         /// <summary>
         /// The underlying Discord.NET client.

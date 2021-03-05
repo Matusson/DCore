@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using System.Threading.Tasks;
+using Moq;
 
 namespace DCore.Tests
 {
@@ -20,8 +21,8 @@ namespace DCore.Tests
             if (File.Exists(temponaryLogPath))
                 File.Delete(temponaryLogPath);
 
-            
-            DCoreLogger logger = new DCoreLogger();
+            Mock<DiscordBot> bot = new Mock<DiscordBot>();
+            DCoreLogger logger = new DCoreLogger(bot.Object);
             logger.LogInformation(LogType.Info, "TEST");
 
             //The logger doesn't wait for the writing to complete, so wait a bit
@@ -37,7 +38,8 @@ namespace DCore.Tests
             if (File.Exists(temponaryLogPath))
                 File.Delete(temponaryLogPath);
 
-            DCoreLogger logger = new DCoreLogger();
+            Mock<DiscordBot> bot = new Mock<DiscordBot>();
+            DCoreLogger logger = new DCoreLogger(bot.Object);
             logger.LogInformation(LogType.Info, "TEST");
 
             //The logger doesn't wait for the writing to complete, so wait a bit
@@ -58,7 +60,8 @@ namespace DCore.Tests
             for (int i = 0; i < 10000000; i++)
                 toWrite.Append("A");
 
-            DCoreLogger logger = new DCoreLogger();
+            Mock<DiscordBot> bot = new Mock<DiscordBot>();
+            DCoreLogger logger = new DCoreLogger(bot.Object);
             logger.LogInformation(LogType.Info, toWrite.ToString());
             DateTime startedWriting = DateTime.UtcNow;
 
@@ -80,7 +83,8 @@ namespace DCore.Tests
             for (int i = 0; i < 1000; i++)
                 toWrite.Append("A");
 
-            DCoreLogger logger = new DCoreLogger();
+            Mock<DiscordBot> bot = new Mock<DiscordBot>();
+            DCoreLogger logger = new DCoreLogger(bot.Object);
 
             int iterations = 10;
             for(int i = 0; i < iterations; i++)
