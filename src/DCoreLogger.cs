@@ -14,6 +14,11 @@ namespace DCore
     public class DCoreLogger
     {
         /// <summary>
+        /// The bot tied to this Logger.
+        /// </summary>
+        public DiscordBot Bot { get; set; }
+
+        /// <summary>
         /// Logs information to console.
         /// </summary>
         /// <param name="message"> The message to log. </param>
@@ -112,18 +117,18 @@ namespace DCore
         /// <param name="message"> Message to log. </param>
         public void LogInformation(LogType type, string message)
         {
-            //TODO:Make this configurable
-            string pathToLogs = "\\logs";
-
             //Log the output to console and then to file
-            LoggingWriter writer = new LoggingWriter();
+            LoggingWriter writer = new LoggingWriter(this);
             writer.WriteToConsole(type, message);
 
-            //Write the combined log
-            string combinedLogPath = Path.Combine(pathToLogs, "combined.log");
-            _ = Task.Run(() => writer.WriteToFileAsync(type, combinedLogPath, message));
+            //Write to the files
+            _ = Task.Run(() => writer.WriteToFileAsync(type, message));
+        }
 
-            //TODO: If using multiple bots, write to the separated log as well
+
+        public DCoreLogger(DiscordBot bot)
+        {
+            Bot = bot;
         }
     }
 }

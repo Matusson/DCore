@@ -8,8 +8,13 @@ using System.Threading.Tasks;
 
 namespace DCore.Helpers
 {
+    /// <summary>
+    /// Handles writing the log sources.
+    /// </summary>
     internal class LoggingWriter
     {
+        private DCoreLogger _logger;
+
         /// <summary>
         /// Writes the specified message to console.
         /// </summary>
@@ -22,18 +27,35 @@ namespace DCore.Helpers
         }
 
         /// <summary>
-        /// Writes the specified message to a file.
+        /// Writes the specified message to a file logs.
         /// </summary>
         /// <param name="type"> The type of log to write. </param>
         /// <param name="toWrite"> The message to write. </param>
-        internal async Task WriteToFileAsync(LogType type, string path, string toWrite)
+        internal async Task WriteToFileAsync(LogType type, string toWrite)
+        {
+            string finalText = $"{GetPrefix(type)} {toWrite}";
+
+            //TODO:Make this configurable
+            string pathToLogs = "\\logs";
+            string combinedLogPath = Path.Combine(pathToLogs, "combined.log");
+
+            //Write to the combined file
+            await WriteToFile(combinedLogPath, finalText);
+
+            //Write to the bot file
+        }
+
+        /// <summary>
+        /// Writes the specified message to a specified file.
+        /// </summary>
+        /// <param name="type"> The type of log to write. </param>
+        /// <param name="toWrite"> The message to write. </param>
+        private async Task WriteToFile(string path, string toWrite)
         {
             //Ensure the path exists
             string logFolder = Path.GetDirectoryName(path);
             if (!Directory.Exists(logFolder))
                 Directory.CreateDirectory(logFolder);
-
-            string finalText = $"{GetPrefix(type)} {toWrite}";
 
             //TODO:Make some these configurable
             int retryCount = 10;
@@ -58,7 +80,7 @@ namespace DCore.Helpers
                     }
 
                     //Add the line
-                    lines.Add(finalText);
+                    lines.Add(toWrite);
 
                     //Combine the final string
                     string stringToWrite = string.Join("\n", lines);
@@ -122,6 +144,8 @@ namespace DCore.Helpers
                     return null;
             }
 
+            //if using multiple accounts, add the identifier
+
             prefix += $" {GetTimeString()}";
 
             //TODO:Add config variable for colored strings
@@ -138,6 +162,11 @@ namespace DCore.Helpers
         private string GetTimeString()
         {
             return $"{DateTime.UtcNow.ToShortDateString()} {DateTime.UtcNow.ToLongTimeString()}";
+        }
+
+        internal LoggingWriter(DCoreLogger logger)
+        {
+            _logger = logger;
         }
     }
 }
