@@ -148,8 +148,7 @@ namespace DCore.Helpers
 
             prefix += $" {GetTimeString()}";
 
-            //TODO:Add config variable for colored strings
-            if (colored)
+            if (colored && _logger.Bot.Manager.Config.UseColoredInputInLogs)
                 prefix = prefix.Pastel(color);
 
             return prefix + " |";

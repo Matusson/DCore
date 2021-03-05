@@ -15,6 +15,11 @@ namespace DCore.Configs
         public bool UseMultipleBots { get; set; } = false;
 
         /// <summary>
+        /// Allow the console to color the outputs?
+        /// </summary>
+        public bool UseColoredInputInLogs { get; set; } = true;
+
+        /// <summary>
         /// The path where log files will be saved.
         /// </summary>
         public string LogsPath { get; set; } = "\\Logs";
