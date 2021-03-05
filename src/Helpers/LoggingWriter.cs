@@ -2,7 +2,9 @@
 using Pastel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace DCore.Helpers
 {
@@ -24,10 +26,58 @@ namespace DCore.Helpers
         /// </summary>
         /// <param name="type"> The type of log to write. </param>
         /// <param name="toWrite"> The message to write. </param>
-        internal void WriteToFile(LogType type, string toWrite)
+        internal async Task WriteToFileAsync(LogType type, string path, string toWrite)
         {
+            //Ensure the path exists
+            string logFolder = Path.GetDirectoryName(path);
+            if (!Directory.Exists(logFolder))
+                Directory.CreateDirectory(logFolder);
+
             string finalText = $"{GetPrefix(type)} {toWrite}";
-            
+
+            //TODO:Make some these configurable
+            int retryCount = 5;
+            int msDelayOnRetry = 500;
+            int maxLinesInFile = 2000;
+
+            for (int i = 0; i < retryCount; i++)
+            {
+                try
+                {
+                    List<string> lines = new List<string>(250);
+
+                    //Make sure the file exists, and read it
+                    if (File.Exists(path))
+                        lines.AddRange(File.ReadAllLines(path));
+
+                    //Trim the line count to avoid taking long time to open the file
+                    if (lines.Count > maxLinesInFile)
+                    {
+                        int toRemove = lines.Count - maxLinesInFile;
+                        lines.RemoveRange(0, toRemove);
+                    }
+
+                    //Add the line
+                    lines.Add(finalText);
+
+                    //Combine the final string
+                    string stringToWrite = string.Join("\n", lines);
+
+                    //And write to the file
+                    File.WriteAllText(path, stringToWrite);
+                    break;
+                }
+                catch (IOException e)
+                {
+                    //If the final retry failed, log to console
+                    if (i == retryCount - 1)
+                        Console.WriteLine(e.ToString());
+
+                    //If the saving failed, retry soon
+                    await Task.Delay(msDelayOnRetry);
+                }
+            }
+
         }
 
         /// <summary>
