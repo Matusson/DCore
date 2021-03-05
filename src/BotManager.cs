@@ -145,5 +145,14 @@ namespace DCore
                 await bot.RestartAsync();
             }
         }
+
+        /// <summary>
+        /// Constructs a BotManager with the specified config.
+        /// </summary>
+        /// <param name="config"> The config to use. </param>
+        public BotManager (DCoreConfig config)
+        {
+            Config = config;
+        }
     }
 }
