@@ -22,7 +22,7 @@ namespace DCore.Configs
                 //Load the config if needed
                 if (_config == null)
                 {
-                    _config = _loader.LoadGlobalConfig();
+                    _config = LoadGlobalConfig();
                 }
 
                 return _config;
@@ -36,7 +36,26 @@ namespace DCore.Configs
         private GlobalBotConfig _config;
         private readonly ConfigLoader _loader;
 
-        
+        /// <summary>
+        /// Loads global config from JSON.
+        /// </summary>
+        /// <returns></returns>
+        private GlobalBotConfig LoadGlobalConfig()
+        {
+            string path = _loader.GetPathToGlobalConfig();
+            return _loader.LoadConfig(path, typeof(GlobalBotConfig)) as GlobalBotConfig;
+        }
+
+        /// <summary>
+        /// Writes the global config to HDD.
+        /// </summary>
+        /// <param name="config"> The config object. </param>
+        private void SaveGlobalConfig(GlobalBotConfig config)
+        {
+            string path = _loader.GetPathToGlobalConfig();
+            _loader.SaveConfig(config, path);
+        }
+
         /// <summary>
         /// Constructs a <see cref="ConfigManager"/> with the specified DCore config.
         /// </summary>

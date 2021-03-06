@@ -13,44 +13,46 @@ namespace DCore.Configs
     {
         private readonly DCoreConfig _dcoreConfig;
 
-        
         /// <summary>
-        /// Loads the global config file.
+        /// Loads the config at specified path of type <paramref name="type"/>.
         /// </summary>
-        /// <returns> The loaded config file. </returns>
-        internal GlobalBotConfig LoadGlobalConfig()
+        /// <param name="path"> The path of the config file. </param>
+        /// <param name="type"> The <see cref="Type"/> of the config. </param>
+        /// <returns> The config object. </returns>
+        internal object LoadConfig(string path, Type type)
         {
-            string pathToGlobalConfig = GetPathToGlobalConfig();
-            GlobalBotConfig newConfig;
+            object newConfig;
 
             //If the file doesn't exist, try to create one
-            if (!File.Exists(pathToGlobalConfig))
+            if (!File.Exists(path))
             {
-                newConfig = new GlobalBotConfig();
+                newConfig = Activator.CreateInstance(type);
+                SaveConfig(newConfig, path);
             }
 
             //Attempt to load the file
             else
             {
-                string content = File.ReadAllText(pathToGlobalConfig);
-                newConfig = JsonConvert.DeserializeObject<GlobalBotConfig>(content);
+                string content = File.ReadAllText(path);
+                newConfig = JsonConvert.DeserializeObject(content, type);
             }
 
             return newConfig;
         }
 
         /// <summary>
-        /// Writes the global config to HDD.
+        /// Saves the config object to the specified path.
         /// </summary>
-        /// <param name="config"></param>
-        internal void SaveGlobalConfig(GlobalBotConfig config)
+        /// <param name="path"> The path to write the config into. </param>
+        /// <param name="config"> The config object. </param>
+        internal void SaveConfig(object config, string path)
         {
             string content = JsonConvert.SerializeObject(config);
 
             //Write to the file
-            string path = GetPathToGlobalConfig();
             File.WriteAllText(path, content);
         }
+
 
         /// <summary>
         /// Gets the path to the global config file.
@@ -80,6 +82,7 @@ namespace DCore.Configs
         {
             return Path.Combine(_dcoreConfig.ConfigPath, $"{id}.json");
         }
+
 
         /// <summary>
         /// Constructs a ConfigLoader with the specified config.
