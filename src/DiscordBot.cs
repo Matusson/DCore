@@ -165,12 +165,20 @@ namespace DCore
         /// Constructs a new <see cref="DiscordBot"/>.
         /// </summary>
         /// <param name="token"> The token information to use. </param>
-        public DiscordBot(BotManager manager, TokenInfo token, BotConfig config = null)
+        public DiscordBot(BotManager manager, TokenInfo token, BotConfig overrideConfig = null)
         {
             Manager = manager;
             TokenInfo = token;
 
-            Config = config ?? new BotConfig();
+            if (overrideConfig != null)
+                Config = overrideConfig;
+            else
+            {
+                //Load the config
+                var _loader = new ConfigLoader(Manager.DCoreConfig);
+                string path = _loader.GetPathToBotConfig(this);
+                Config = _loader.LoadConfig(path, typeof(BotConfig)) as BotConfig;
+            }
         }
 
 
