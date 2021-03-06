@@ -13,5 +13,15 @@ namespace DCore.Configs
         /// Allow the console to color the outputs?
         /// </summary>
         public bool UseColoredInputInLogs { get; set; } = true;
+
+
+        /// <summary>
+        /// Saves the <see cref="GlobalBotConfig"/> to disc.
+        /// </summary>
+        /// <param name="manager"> The configuration service. </param>
+        public void Save(ConfigManager manager)
+        {
+            manager.SaveGlobalConfig(this);
+        }
     }
 }

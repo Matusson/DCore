@@ -41,7 +41,7 @@ namespace DCore.Configs
         /// Loads global config from JSON.
         /// </summary>
         /// <returns></returns>
-        private GlobalBotConfig LoadGlobalConfig()
+        internal GlobalBotConfig LoadGlobalConfig()
         {
             string path = _loader.GetPathToGlobalConfig();
             return _loader.LoadConfig(path, typeof(GlobalBotConfig)) as GlobalBotConfig;
@@ -51,7 +51,7 @@ namespace DCore.Configs
         /// Writes the global config to HDD.
         /// </summary>
         /// <param name="config"> The config object. </param>
-        private void SaveGlobalConfig(GlobalBotConfig config)
+        internal void SaveGlobalConfig(GlobalBotConfig config)
         {
             string path = _loader.GetPathToGlobalConfig();
             _loader.SaveConfig(config, path);
