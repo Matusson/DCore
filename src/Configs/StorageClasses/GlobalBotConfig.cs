@@ -9,6 +9,9 @@ namespace DCore.Configs
     /// </summary>
     public class GlobalBotConfig
     {
-
+        /// <summary>
+        /// Allow the console to color the outputs?
+        /// </summary>
+        public bool UseColoredInputInLogs { get; set; } = true;
     }
 }

@@ -18,7 +18,12 @@ namespace DCore
         /// <summary>
         /// The config for this <see cref="BotManager"/> service.
         /// </summary>
-        public DCoreConfig Config { get; set; }
+        public DCoreConfig DCoreConfig { get; set; }
+
+        /// <summary>
+        /// The config manager for this <see cref="BotManager"/> service.
+        /// </summary>
+        public ConfigManager ConfigManager { get; set; }
 
         /// <summary>
         /// The total amount of bot accounts loaded.
@@ -56,7 +61,7 @@ namespace DCore
             //Ensure only unique information is loaded
             accounts = accounts.Except(_tokens).ToList();
 
-            if (accounts.Count + _tokens.Count > 1 && !Config.UseMultipleBots)
+            if (accounts.Count + _tokens.Count > 1 && !DCoreConfig.UseMultipleBots)
                 throw new InvalidOperationException("You must enable UseMultipleBots in config to allow loading multiple bots.");
 
             _tokens.AddRange(accounts);
@@ -156,7 +161,7 @@ namespace DCore
         /// <param name="config"> The config to use. </param>
         public BotManager (DCoreConfig config)
         {
-            Config = config;
+            DCoreConfig = config;
         }
     }
 }
