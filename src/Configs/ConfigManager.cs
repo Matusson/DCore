@@ -33,7 +33,7 @@ namespace DCore.Configs
         }
         private GlobalBotConfig _config;
 
-        private DCoreConfig _dcoreConfig;
+        private readonly DCoreConfig _dcoreConfig;
 
         /// <summary>
         /// Loads a config of <see cref="Type"/> <paramref name="type"/> from specified path.
@@ -61,6 +61,16 @@ namespace DCore.Configs
         private string GetPathToGlobalConfig()
         {
             return Path.Combine(_dcoreConfig.ConfigPath, "global.json");
+        }
+
+
+        /// <summary>
+        /// Constructs a <see cref="ConfigManager"/> with the specified DCore config.
+        /// </summary>
+        /// <param name="dcoreConfig"></param>
+        public ConfigManager(DCoreConfig dcoreConfig)
+        {
+            _dcoreConfig = dcoreConfig;
         }
     }
 }
