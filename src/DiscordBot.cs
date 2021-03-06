@@ -171,7 +171,10 @@ namespace DCore
             TokenInfo = token;
 
             if (overrideConfig != null)
+            {
                 Config = overrideConfig;
+                Config.Save(this);
+            }
             else
             {
                 //Load the config
