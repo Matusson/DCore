@@ -5,9 +5,9 @@ using System.Text;
 namespace DCore.Configs
 {
     /// <summary>
-    /// Stores various settings related to <see cref="DiscordBot"/>
+    /// Stores various settings related to an instance of <see cref="DiscordBot"/>
     /// </summary>
-    public class DiscordBotConfig
+    public class BotConfig
     {
         /// <summary>
         /// The timeout for connecting to Discord gateway.

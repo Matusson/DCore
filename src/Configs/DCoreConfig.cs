@@ -5,7 +5,7 @@ using System.Text;
 namespace DCore.Configs
 {
     /// <summary>
-    /// Stores various settings related to DCore.
+    /// Stores various settings related to DCore. These are not saved to a JSON file.
     /// </summary>
     public class DCoreConfig
     {
@@ -23,6 +23,11 @@ namespace DCore.Configs
         /// The path where log files will be saved.
         /// </summary>
         public string LogsPath { get; set; } = "\\Logs";
+
+        /// <summary>
+        /// The path where config files will be saved.
+        /// </summary>
+        public string ConfigPath { get; set; } = "\\Config";
 
         /// <summary>
         /// Maximum allowed retry count for writing to log files.

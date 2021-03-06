@@ -26,9 +26,9 @@ namespace DCore
         public DiscordSocketClient Client { get; set; }
 
         /// <summary>
-        /// The <see cref="DiscordBotConfig"/> used by the bot.
+        /// The <see cref="BotConfig"/> used by the bot.
         /// </summary>
-        public DiscordBotConfig Config { get; set; }
+        public BotConfig Config { get; set; }
 
         /// <summary>
         /// The ID and token information for <see cref="DiscordBot"/>.
@@ -165,12 +165,12 @@ namespace DCore
         /// Constructs a new <see cref="DiscordBot"/>.
         /// </summary>
         /// <param name="token"> The token information to use. </param>
-        public DiscordBot(BotManager manager, TokenInfo token, DiscordBotConfig config = null)
+        public DiscordBot(BotManager manager, TokenInfo token, BotConfig config = null)
         {
             Manager = manager;
             TokenInfo = token;
 
-            Config = config ?? new DiscordBotConfig();
+            Config = config ?? new BotConfig();
         }
 
 
