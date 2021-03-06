@@ -23,6 +23,10 @@ namespace DCore.Configs
         {
             object newConfig;
 
+            string directory = Path.GetDirectoryName(path);
+            if (!Directory.Exists(directory))
+                Directory.CreateDirectory(directory);
+
             //If the file doesn't exist, try to create one
             if (!File.Exists(path))
             {

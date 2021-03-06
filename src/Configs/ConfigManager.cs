@@ -31,6 +31,7 @@ namespace DCore.Configs
             set
             {
                 _config = value;
+                SaveGlobalConfig(_config);
             }
         }
         private GlobalBotConfig _config;
