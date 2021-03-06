@@ -13,23 +13,43 @@ namespace DCore.Configs
     {
         private readonly DCoreConfig _dcoreConfig;
 
+        
         /// <summary>
-        /// Loads a config of <see cref="Type"/> <paramref name="type"/> from specified path.
+        /// Loads the global config file.
         /// </summary>
-        /// <param name="path"> The path to load the config file from. </param>
-        /// <param name="type"> The <see cref="Type"/> of the config class. </param>
-        /// <exception cref="FileNotFoundException"> Thrown when file is not found. </exception>
-        /// <returns></returns>
-        internal object LoadConfig(string path, Type type)
+        /// <returns> The loaded config file. </returns>
+        internal GlobalBotConfig LoadGlobalConfig()
         {
-            if (!File.Exists(path))
-                throw new FileNotFoundException("File does not exist.");
+            string pathToGlobalConfig = GetPathToGlobalConfig();
+            GlobalBotConfig newConfig;
+
+            //If the file doesn't exist, try to create one
+            if (!File.Exists(pathToGlobalConfig))
+            {
+                newConfig = new GlobalBotConfig();
+            }
 
             //Attempt to load the file
-            string content = File.ReadAllText(path);
-            object config = JsonConvert.DeserializeObject(content, type);
+            else
+            {
+                string content = File.ReadAllText(pathToGlobalConfig);
+                newConfig = JsonConvert.DeserializeObject<GlobalBotConfig>(content);
+            }
 
-            return config;
+            return newConfig;
+        }
+
+        /// <summary>
+        /// Writes the global config to HDD.
+        /// </summary>
+        /// <param name="config"></param>
+        internal void SaveGlobalConfig(GlobalBotConfig config)
+        {
+            string content = JsonConvert.SerializeObject(config);
+
+            //Write to the file
+            string path = GetPathToGlobalConfig();
+            File.WriteAllText(path, content);
         }
 
         /// <summary>
@@ -39,6 +59,26 @@ namespace DCore.Configs
         internal string GetPathToGlobalConfig()
         {
             return Path.Combine(_dcoreConfig.ConfigPath, "global.json");
+        }
+
+        /// <summary>
+        /// Gets the path to the config file for the specified <see cref="DiscordBot"/>.
+        /// </summary>
+        /// <param name="bot"> The bot account to get config for. </param>
+        /// <returns> The path to the specified config file. </returns>
+        internal string GetPathToBotConfig(DiscordBot bot)
+        {
+            return GetPathToBotConfig(bot.TokenInfo.id);
+        }
+
+        /// <summary>
+        /// Gets the path to the config file for the specified ID.
+        /// </summary>
+        /// <param name="id"> The bot account ID to get config for. </param>
+        /// <returns> The path to the specified config file. </returns>
+        internal string GetPathToBotConfig(ulong id)
+        {
+            return Path.Combine(_dcoreConfig.ConfigPath, $"{id}.json");
         }
 
         /// <summary>

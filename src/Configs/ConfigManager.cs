@@ -22,8 +22,7 @@ namespace DCore.Configs
                 //Load the config if needed
                 if (_config == null)
                 {
-                    _config = _loader.LoadConfig(
-                        _loader.GetPathToGlobalConfig(), typeof(GlobalBotConfig)) as GlobalBotConfig;
+                    _config = _loader.LoadGlobalConfig();
                 }
 
                 return _config;
