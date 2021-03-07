@@ -48,7 +48,7 @@ namespace DCore.Configs
         /// <summary>
         /// IDs of users that can perform high-risk commands for the bot.
         /// </summary>
-        public List<ulong> ManagerIDs { get; set; }
+        public List<ulong> ManagerIDs { get; set; } = new List<ulong>();
 
         /// <summary>
         /// The timeout for connecting to Discord gateway.
