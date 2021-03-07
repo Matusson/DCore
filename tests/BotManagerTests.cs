@@ -275,7 +275,7 @@ namespace DCore.Tests
         /// </summary>
         /// <param name="accountCount"> The amount of accounts to initalize with. Must be less or equal 5. </param>
         /// <returns></returns>
-        public BotManager CreateBotManager(int accountCount)
+        public static BotManager CreateBotManager(int accountCount)
         {
             BotManager manager = new BotManager(new DCoreConfig { UseMultipleBots = true });
             List<TokenInfo> accounts = new List<TokenInfo>

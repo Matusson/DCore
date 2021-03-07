@@ -73,7 +73,7 @@ namespace DCore.Configs.Tests
             //Reset the object
             ConfigManager config = new ConfigManager(_config, typeof(BotConfig));
             var globalConfig = config.GlobalBotConfig;
-
+            
             Assert.IsTrue(globalConfig.Extension is BotConfig);
         }
     }

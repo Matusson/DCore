@@ -74,7 +74,7 @@ namespace DCore
         /// <param name="count"> How many instances to create. </param>
         /// <exception cref="ArgumentOutOfRangeException"> Thrown when requesting more bots than available, or requesting less bots than 1. </exception>
         /// <returns> List of all bots created. </returns>
-        public List<DiscordBot> ActivateBots(int count)
+        public List<DiscordBot> ActivateBots(int count, Type configExtensionType = null)
         {
             //Ensure there are enough accounts
             if (count > AvailableBotCount)
@@ -92,7 +92,7 @@ namespace DCore
             List<DiscordBot> bots = new List<DiscordBot>();
             foreach(TokenInfo token in unusedTokens)
             {
-                DiscordBot bot = new DiscordBot(this, token);
+                DiscordBot bot = new DiscordBot(this, token, extensionType: configExtensionType);
                 bots.Add(bot);
             }
 
