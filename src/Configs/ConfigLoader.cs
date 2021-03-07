@@ -62,20 +62,23 @@ namespace DCore.Configs
 
             //Write to the file
             File.WriteAllText(path, content);
+
+            //Attempt to save the config if needed
+            SaveExtensionObject(config, path);
         }
 
         /// <summary>
         /// Attempts to load the extension object.
         /// </summary>
-        /// <param name="originalPath"></param>
-        /// <param name="extensionType"></param>
+        /// <param name="originalPath"> The path leading to the original config file. </param>
+        /// <param name="extensionType"> The <see cref="Type"/> of the extension object. </param>
         /// <returns></returns>
         private object LoadExtensionObject(string originalPath, Type extensionType)
         {
             object newConfigExtension;
 
             //Find the new path - it's the same as earlier, but with -e suffix
-            string path = Path.GetFileNameWithoutExtension(originalPath) + "-e" + Path.GetExtension(originalPath);
+            string path = GetPathToExtension(originalPath);
 
             string directory = Path.GetDirectoryName(path);
             if (!Directory.Exists(directory))
@@ -97,6 +100,30 @@ namespace DCore.Configs
 
             return newConfigExtension;
         }
+
+        /// <summary>
+        /// Saves the config object to the specified path.
+        /// </summary>
+        /// <param name="path"> The path leading to the original config file. </param>
+        /// <param name="config"> The config object. </param>
+        /// <exception cref="ArgumentException"> Thrown when config object does not implement <see cref="IConfig"/>. </exception>
+        private void SaveExtensionObject(object config, string originalPath)
+        {
+            string path = GetPathToExtension(originalPath);
+
+            if (!(config is IConfig))
+                throw new ArgumentException("config object does not implement the IConfig interface.");
+
+            object extensionObject = (config as IConfig).Extension;
+            if (extensionObject == null)
+                return;
+
+            string content = JsonConvert.SerializeObject(extensionObject);
+
+            //Write to the file
+            File.WriteAllText(path, content);
+        }
+
 
         /// <summary>
         /// Gets the path to the global config file.
@@ -127,6 +154,15 @@ namespace DCore.Configs
             return Path.Combine(_dcoreConfig.ConfigPath, $"{id}.json");
         }
 
+        /// <summary>
+        /// Gets the path to the extension object for the config at the specified path.
+        /// </summary>
+        /// <param name="originalPath"> The path of the original config file. </param>
+        /// <returns> The path of the extension file. </returns>
+        private string GetPathToExtension(string originalPath)
+        {
+            return Path.GetFileNameWithoutExtension(originalPath) + "-e" + Path.GetExtension(originalPath);
+        }
 
         /// <summary>
         /// Constructs a ConfigLoader with the specified config.
