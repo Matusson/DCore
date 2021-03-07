@@ -22,7 +22,7 @@ namespace DCore.Configs
                 //Load the config if needed
                 if (_config == null)
                 {
-                    _config = LoadGlobalConfig();
+                    _config = LoadGlobalConfig(_extensionType);
                 }
 
                 return _config;
@@ -36,15 +36,16 @@ namespace DCore.Configs
         }
         private GlobalBotConfig _config;
         private readonly ConfigLoader _loader;
+        private readonly Type _extensionType;
 
         /// <summary>
         /// Loads global config from JSON.
         /// </summary>
         /// <returns></returns>
-        internal GlobalBotConfig LoadGlobalConfig()
+        internal GlobalBotConfig LoadGlobalConfig(Type extensionType)
         {
             string path = _loader.GetPathToGlobalConfig();
-            return _loader.LoadConfig(path, typeof(GlobalBotConfig)) as GlobalBotConfig;
+            return _loader.LoadConfig(path, typeof(GlobalBotConfig), extensionType) as GlobalBotConfig;
         }
 
         /// <summary>
@@ -61,9 +62,11 @@ namespace DCore.Configs
         /// Constructs a <see cref="ConfigManager"/> with the specified DCore config.
         /// </summary>
         /// <param name="dcoreConfig"></param>
-        public ConfigManager(DCoreConfig dcoreConfig)
+        /// <param name="extensionType"> If using a config with Extensions, the <see cref="Type"/> of class to use. </param>
+        public ConfigManager(DCoreConfig dcoreConfig, Type extensionType = null)
         {
             _loader = new ConfigLoader(dcoreConfig);
+            _extensionType = extensionType;
         }
     }
 }
