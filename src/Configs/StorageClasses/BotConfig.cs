@@ -7,8 +7,11 @@ namespace DCore.Configs
     /// <summary>
     /// Stores various settings related to an instance of <see cref="DiscordBot"/>
     /// </summary>
-    public class BotConfig
+    public class BotConfig : IConfig
     {
+        [Newtonsoft.Json.JsonIgnore]
+        public object Extension { get; set; }
+
         /// <summary>
         /// The timeout for connecting to Discord gateway.
         /// </summary>

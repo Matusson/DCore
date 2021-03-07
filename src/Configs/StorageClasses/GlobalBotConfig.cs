@@ -7,8 +7,11 @@ namespace DCore.Configs
     /// <summary>
     /// Stores various settings that should apply globally to all instances of <see cref="DiscordBot"/>.
     /// </summary>
-    public class GlobalBotConfig
+    public class GlobalBotConfig : IConfig
     {
+        [Newtonsoft.Json.JsonIgnore]
+        public object Extension { get; set; }
+
         /// <summary>
         /// Allow the console to color the outputs?
         /// </summary>

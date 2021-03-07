@@ -14,12 +14,12 @@ namespace DCore.Configs
         private readonly DCoreConfig _dcoreConfig;
 
         /// <summary>
-        /// Loads the config at specified path of type <paramref name="type"/>.
+        /// Loads the config at specified path of type <paramref name="configType"/>.
         /// </summary>
         /// <param name="path"> The path of the config file. </param>
-        /// <param name="type"> The <see cref="Type"/> of the config. </param>
+        /// <param name="configType"> The <see cref="Type"/> of the config. </param>
         /// <returns> The config object. </returns>
-        internal object LoadConfig(string path, Type type)
+        internal object LoadConfig(string path, Type configType, Type extensionType = null)
         {
             object newConfig;
 
@@ -30,7 +30,7 @@ namespace DCore.Configs
             //If the file doesn't exist, try to create one
             if (!File.Exists(path))
             {
-                newConfig = Activator.CreateInstance(type);
+                newConfig = Activator.CreateInstance(configType);
                 SaveConfig(newConfig, path);
             }
 
@@ -38,7 +38,14 @@ namespace DCore.Configs
             else
             {
                 string content = File.ReadAllText(path);
-                newConfig = JsonConvert.DeserializeObject(content, type);
+                newConfig = JsonConvert.DeserializeObject(content, configType);
+            }
+
+            //Load the extension object if needed
+            if (extensionType != null)
+            {
+                object extension = LoadExtensionObject(path, extensionType);
+                (newConfig as IConfig).Extension = extension;
             }
 
             return newConfig;
@@ -57,6 +64,39 @@ namespace DCore.Configs
             File.WriteAllText(path, content);
         }
 
+        /// <summary>
+        /// Attempts to load the extension object.
+        /// </summary>
+        /// <param name="originalPath"></param>
+        /// <param name="extensionType"></param>
+        /// <returns></returns>
+        private object LoadExtensionObject(string originalPath, Type extensionType)
+        {
+            object newConfigExtension;
+
+            //Find the new path - it's the same as earlier, but with -e suffix
+            string path = Path.GetFileNameWithoutExtension(originalPath) + "-e" + Path.GetExtension(originalPath);
+
+            string directory = Path.GetDirectoryName(path);
+            if (!Directory.Exists(directory))
+                Directory.CreateDirectory(directory);
+
+            //If the file doesn't exist, try to create one
+            if (!File.Exists(path))
+            {
+                newConfigExtension = Activator.CreateInstance(extensionType);
+                SaveConfig(newConfigExtension, path);
+            }
+
+            //Attempt to load the file
+            else
+            {
+                string content = File.ReadAllText(path);
+                newConfigExtension = JsonConvert.DeserializeObject(content, extensionType);
+            }
+
+            return newConfigExtension;
+        }
 
         /// <summary>
         /// Gets the path to the global config file.
