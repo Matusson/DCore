@@ -212,6 +212,7 @@ namespace DCore
                     if (Client != null)
                         Client.StopAsync().ConfigureAwait(false);
                     Manager._activeBots.Remove(this);
+                    Config.Save(this);
                     _lastConfig = null;
 
                     Client = null;
