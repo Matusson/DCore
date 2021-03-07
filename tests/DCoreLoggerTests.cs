@@ -21,7 +21,7 @@ namespace DCore.Tests
         {
             DCoreConfig config = new DCoreConfig { UseMultipleBots = multipleBots };
             BotManager manager = new BotManager(new ConfigManager(config), config);
-            Mock<DiscordBot> bot = new Mock<DiscordBot>(manager, new TokenInfo(12345, "TOKEN"), null);
+            Mock<DiscordBot> bot = new Mock<DiscordBot>(manager, new TokenInfo(12345, "TOKEN"), null, null);
             DCoreLogger logger = new DCoreLogger(bot.Object);
 
             return logger;

@@ -23,7 +23,7 @@ namespace DCore.Configs
         {
             object newConfig;
 
-            string directory = Path.GetDirectoryName(path);
+            string directory = new FileInfo(path).Directory.FullName;
             if (!Directory.Exists(directory))
                 Directory.CreateDirectory(directory);
 
