@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DCore.Structs
+namespace DCore
 {
     /// <summary>
     /// Stores information related to a <see cref="DiscordBot"/> token.
