@@ -15,6 +15,11 @@ namespace DCore.Configs
         public bool UseMultipleBots { get; set; } = false;
 
         /// <summary>
+        /// Should the bot set its status and game when started?
+        /// </summary>
+        public bool SetStatusAndGameOnStart { get; set; } = true;
+
+        /// <summary>
         /// The path where log files will be saved.
         /// </summary>
         public string LogsPath { get; set; } = "Logs\\";

@@ -90,6 +90,13 @@ namespace DCore
                 if (beganWaiting + Config.ConnectionTimeout < DateTime.UtcNow)
                     throw new TimeoutException($"Gateway connection for bot {TokenInfo.id} has timed out.");
             }
+
+            //Set the game and status if needed
+            if (Manager.DCoreConfig.SetStatusAndGameOnStart)
+            {
+                _ = Task.Run(() => SetUserStatusAsync());
+                _ = Task.Run(() => SetGameAsync());
+            }
         }
 
         /// <summary>
