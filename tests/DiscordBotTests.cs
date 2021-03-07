@@ -109,7 +109,8 @@ namespace DCore.Tests
         [TestMethod()]
         public void Dispose()
         {
-            var manager = new BotManager(new DCoreConfig { UseMultipleBots = true });
+            DCoreConfig config = new DCoreConfig { UseMultipleBots = true };
+            BotManager manager = new BotManager(new ConfigManager(config), config);
             manager.LoadAccountsFromFile("TestToken.txt");
             DiscordBot bot = manager.ActivateBots(1).FirstOrDefault();
 

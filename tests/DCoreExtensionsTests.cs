@@ -18,7 +18,8 @@ namespace DCore.Tests
         [DataRow(3)]
         public void LoadAccountsFromFile_InvalidFiles(int testId)
         {
-            var manager = new BotManager(new DCoreConfig { UseMultipleBots = true });
+            DCoreConfig config = new DCoreConfig { UseMultipleBots = true };
+            BotManager manager = new BotManager(new ConfigManager(config), config);
 
             void load() => manager.LoadAccountsFromFile($"TokenFiles\\tokensParameterCount{testId}.txt");
 
@@ -32,7 +33,8 @@ namespace DCore.Tests
         [DataRow(4, 3)]
         public void LoadAccountsFromFile_CorrectResult(int testId, int expectedBotCount)
         {
-            var manager = new BotManager(new DCoreConfig { UseMultipleBots = true });
+            DCoreConfig config = new DCoreConfig { UseMultipleBots = true };
+            BotManager manager = new BotManager(new ConfigManager(config), config);
 
             int actualBotCount = manager.LoadAccountsFromFile($"TokenFiles\\tokensCorrect{testId}.txt");
 

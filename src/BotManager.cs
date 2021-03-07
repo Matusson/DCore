@@ -158,10 +158,11 @@ namespace DCore
         /// <summary>
         /// Constructs a BotManager with the specified config.
         /// </summary>
-        /// <param name="config"> The config to use. </param>
-        public BotManager (DCoreConfig config)
+        /// <param name="dcoreConfig"> The config to use. </param>
+        public BotManager (ConfigManager configService, DCoreConfig dcoreConfig)
         {
-            DCoreConfig = config;
+            DCoreConfig = dcoreConfig;
+            ConfigManager = configService;
         }
     }
 }

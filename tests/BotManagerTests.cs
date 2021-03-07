@@ -15,7 +15,8 @@ namespace DCore.Tests
         [TestMethod()]
         public void LoadAccounts_UniqueOnly()
         {
-            BotManager manager = new BotManager(new DCoreConfig { UseMultipleBots = true });
+            DCoreConfig config = new DCoreConfig { UseMultipleBots = true };
+            BotManager manager = new BotManager(new ConfigManager(config), config);
             List<TokenInfo> accounts = new List<TokenInfo>
             {
                 new TokenInfo(012345, "TOKEN"),
@@ -31,7 +32,8 @@ namespace DCore.Tests
         [TestMethod()]
         public void LoadAccounts_DuplicatesOnly()
         {
-            BotManager manager = new BotManager(new DCoreConfig { UseMultipleBots = true });
+            DCoreConfig config = new DCoreConfig { UseMultipleBots = true };
+            BotManager manager = new BotManager(new ConfigManager(config), config);
             List<TokenInfo> accounts = new List<TokenInfo>
             {
                 new TokenInfo(012345, "TOKEN"),
@@ -47,7 +49,8 @@ namespace DCore.Tests
         [TestMethod()]
         public void LoadAccounts_UniqueDuplicateMix()
         {
-            BotManager manager = new BotManager(new DCoreConfig { UseMultipleBots = true });
+            DCoreConfig config = new DCoreConfig { UseMultipleBots = true };
+            BotManager manager = new BotManager(new ConfigManager(config), config);
             List<TokenInfo> accounts = new List<TokenInfo>
             {
                 new TokenInfo(012345, "TOKEN"),
@@ -64,7 +67,8 @@ namespace DCore.Tests
         [TestMethod()]
         public void LoadAccounts_TwoLoads_UniqueOnly()
         {
-            BotManager manager = new BotManager(new DCoreConfig { UseMultipleBots = true });
+            DCoreConfig config = new DCoreConfig { UseMultipleBots = true };
+            BotManager manager = new BotManager(new ConfigManager(config), config);
             List<TokenInfo> accounts = new List<TokenInfo>
             {
                 new TokenInfo(012345, "TOKEN"),
@@ -89,7 +93,8 @@ namespace DCore.Tests
         [TestMethod()]
         public void LoadAccounts_TwoLoads_UniqueDuplicateMix()
         {
-            BotManager manager = new BotManager(new DCoreConfig { UseMultipleBots = true });
+            DCoreConfig config = new DCoreConfig { UseMultipleBots = true };
+            BotManager manager = new BotManager(new ConfigManager(config), config);
             List<TokenInfo> accounts = new List<TokenInfo>
             {
                 new TokenInfo(012345, "TOKEN"),
@@ -114,7 +119,8 @@ namespace DCore.Tests
         [TestMethod()]
         public void LoadAccounts_UseMultipleBotsFalse()
         {
-            BotManager manager = new BotManager(new DCoreConfig { UseMultipleBots = false });
+            DCoreConfig config = new DCoreConfig { UseMultipleBots = false };
+            BotManager manager = new BotManager(new ConfigManager(config), config);
             List<TokenInfo> accounts = new List<TokenInfo>
             {
                 new TokenInfo(012345, "TOKEN"),
@@ -277,7 +283,8 @@ namespace DCore.Tests
         /// <returns></returns>
         public static BotManager CreateBotManager(int accountCount)
         {
-            BotManager manager = new BotManager(new DCoreConfig { UseMultipleBots = true });
+            DCoreConfig config = new DCoreConfig { UseMultipleBots = true };
+            BotManager manager = new BotManager(new ConfigManager(config), config);
             List<TokenInfo> accounts = new List<TokenInfo>
             {
                 new TokenInfo(012345, "TOKEN"),

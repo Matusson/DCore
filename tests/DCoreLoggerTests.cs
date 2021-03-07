@@ -19,9 +19,8 @@ namespace DCore.Tests
 
         private DCoreLogger GetLogger(bool multipleBots = false)
         {
-            var config = new DCoreConfig { UseMultipleBots = multipleBots };
-
-            BotManager manager = new BotManager(config);
+            DCoreConfig config = new DCoreConfig { UseMultipleBots = multipleBots };
+            BotManager manager = new BotManager(new ConfigManager(config), config);
             Mock<DiscordBot> bot = new Mock<DiscordBot>(manager, new TokenInfo(12345, "TOKEN"), null);
             DCoreLogger logger = new DCoreLogger(bot.Object);
 
