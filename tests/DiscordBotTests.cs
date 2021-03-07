@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Discord.WebSocket;
 using DCore.Helpers;
 using DCore.Configs;
+using Discord;
 
 namespace DCore.Tests
 {
@@ -20,12 +21,21 @@ namespace DCore.Tests
     [DeploymentItem("TestToken.txt")]
     public class DiscordBotTests
     {
+        private DiscordBot CreateTestBot(BotManager manager = null)
+        {
+            DCoreConfig config = new DCoreConfig();
+            if (manager == null)
+                manager = new BotManager(new ConfigManager(config), config);
+
+            BotAccountLoader loader = new BotAccountLoader();
+            var token = loader.LoadAccountsFromFile("TestToken.txt").FirstOrDefault();
+            return new DiscordBot(manager, token);
+        }
+
         [TestMethod()]
         public async Task StartAsync_DefaultConfig()
         {
-            BotAccountLoader loader = new BotAccountLoader();
-            var token = loader.LoadAccountsFromFile("TestToken.txt").FirstOrDefault();
-            DiscordBot bot = new DiscordBot(null, token);
+            DiscordBot bot = CreateTestBot();
 
             await bot.StartAsync();
 
@@ -35,9 +45,7 @@ namespace DCore.Tests
         [TestMethod()]
         public async Task StartAsync_ThrowsException()
         {
-            BotAccountLoader loader = new BotAccountLoader();
-            var token = loader.LoadAccountsFromFile("TestToken.txt").FirstOrDefault();
-            DiscordBot bot = new DiscordBot(null, token);
+            DiscordBot bot = CreateTestBot();
             await bot.StartAsync();
 
             Task func() => bot.StartAsync();
@@ -48,9 +56,7 @@ namespace DCore.Tests
         [TestMethod()]
         public async Task StartAsync_ExampleConfig()
         {
-            BotAccountLoader loader = new BotAccountLoader();
-            var token = loader.LoadAccountsFromFile("TestToken.txt").FirstOrDefault();
-            DiscordBot bot = new DiscordBot(null, token);
+            DiscordBot bot = CreateTestBot();
             DiscordSocketConfig config = new DiscordSocketConfig()
             {
                 AlwaysDownloadUsers = false,
@@ -66,9 +72,7 @@ namespace DCore.Tests
         [TestMethod()]
         public async Task StopAsync()
         {
-            BotAccountLoader loader = new BotAccountLoader();
-            var token = loader.LoadAccountsFromFile("TestToken.txt").FirstOrDefault();
-            DiscordBot bot = new DiscordBot(null, token);
+            DiscordBot bot = CreateTestBot();
 
             await bot.StartAsync();
             await bot.StopAsync();
@@ -81,9 +85,7 @@ namespace DCore.Tests
         [TestMethod()]
         public async Task StopAsync_ThrowsException()
         {
-            BotAccountLoader loader = new BotAccountLoader();
-            var token = loader.LoadAccountsFromFile("TestToken.txt").FirstOrDefault();
-            DiscordBot bot = new DiscordBot(null, token);
+            DiscordBot bot = CreateTestBot();
 
             Task func() => bot.StopAsync();
 
@@ -95,9 +97,7 @@ namespace DCore.Tests
         [DataRow(true)]
         public async Task HasStarted(bool start)
         {
-            BotAccountLoader loader = new BotAccountLoader();
-            var token = loader.LoadAccountsFromFile("TestToken.txt").FirstOrDefault();
-            DiscordBot bot = new DiscordBot(null, token);
+            DiscordBot bot = CreateTestBot();
 
             if (start)
                 await bot.StartAsync();
@@ -107,9 +107,37 @@ namespace DCore.Tests
         }
 
         [TestMethod()]
+        public async Task SetGameAsyncTest()
+        {
+            string game = "testing...";
+            DiscordBot bot = CreateTestBot();
+            bot.Config.Game = game;
+
+            await bot.StartAsync();
+            await bot.SetGameAsync();
+
+            Assert.IsTrue(bot.Client.Activity.Type == Discord.ActivityType.Playing &&
+                bot.Client.Activity.Name == game);
+        }
+
+        [TestMethod()]
+        public async Task SetUserStatusTest()
+        {
+            UserStatus status = UserStatus.DoNotDisturb;
+            DiscordBot bot = CreateTestBot();
+            bot.Config.Status = status;
+
+            await bot.StartAsync();
+            await bot.SetUserStatusAsync();
+
+            Assert.IsTrue(bot.Client.Status == status);
+        }
+
+        [TestMethod()]
         public void Dispose()
         {
-            var manager = new BotManager(new DCoreConfig { UseMultipleBots = true });
+            DCoreConfig config = new DCoreConfig { UseMultipleBots = true };
+            BotManager manager = new BotManager(new ConfigManager(config), config);
             manager.LoadAccountsFromFile("TestToken.txt");
             DiscordBot bot = manager.ActivateBots(1).FirstOrDefault();
 
@@ -118,6 +146,12 @@ namespace DCore.Tests
             bot.Dispose();
 
             Assert.IsTrue(manager.AvailableBotCount == 1);
+        }
+
+        [TestCleanup()]
+        public async Task Cleanup()
+        {
+            await Task.Delay(1000);
         }
     }
 }

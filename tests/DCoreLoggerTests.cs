@@ -8,21 +8,19 @@ using System.Text;
 using System.IO;
 using System.Threading.Tasks;
 using Moq;
-using DCore.Structs;
 
 namespace DCore.Tests
 {
     [TestClass()]
     public class DCoreLoggerTests
     {
-        static readonly string defaultLoggingPath = "\\Logs\\combined.log";
+        static readonly string defaultLoggingPath = "Logs\\combined.log";
 
         private DCoreLogger GetLogger(bool multipleBots = false)
         {
-            var config = new DCoreConfig { UseMultipleBots = multipleBots };
-
-            BotManager manager = new BotManager(config);
-            Mock<DiscordBot> bot = new Mock<DiscordBot>(manager, new TokenInfo(12345, "TOKEN"), null);
+            DCoreConfig config = new DCoreConfig { UseMultipleBots = multipleBots };
+            BotManager manager = new BotManager(new ConfigManager(config), config);
+            Mock<DiscordBot> bot = new Mock<DiscordBot>(manager, new TokenInfo(12345, "TOKEN"), null, null);
             DCoreLogger logger = new DCoreLogger(bot.Object);
 
             return logger;
@@ -46,7 +44,7 @@ namespace DCore.Tests
         [TestMethod()]
         public async Task LogInformation_FileCreated_MultipleAccounts()
         {
-            string expectedLogFilePath = "\\Logs\\12345.log";
+            string expectedLogFilePath = "Logs\\12345.log";
             if (File.Exists(defaultLoggingPath))
                 File.Delete(defaultLoggingPath);
 
@@ -65,7 +63,7 @@ namespace DCore.Tests
         [TestMethod()]
         public async Task LogInformation_FileCreated_SingleAccount()
         {
-            string expectedLogFilePath = "\\Logs\\12345.log";
+            string expectedLogFilePath = "Logs\\12345.log";
             if (File.Exists(defaultLoggingPath))
                 File.Delete(defaultLoggingPath);
 

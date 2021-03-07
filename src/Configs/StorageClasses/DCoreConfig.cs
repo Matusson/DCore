@@ -5,7 +5,7 @@ using System.Text;
 namespace DCore.Configs
 {
     /// <summary>
-    /// Stores various settings related to DCore.
+    /// Stores various settings related to DCore. These are not saved to a JSON file.
     /// </summary>
     public class DCoreConfig
     {
@@ -15,14 +15,19 @@ namespace DCore.Configs
         public bool UseMultipleBots { get; set; } = false;
 
         /// <summary>
-        /// Allow the console to color the outputs?
+        /// Should the bot set its status and game when started?
         /// </summary>
-        public bool UseColoredInputInLogs { get; set; } = true;
+        public bool SetStatusAndGameOnStart { get; set; } = true;
 
         /// <summary>
         /// The path where log files will be saved.
         /// </summary>
-        public string LogsPath { get; set; } = "\\Logs";
+        public string LogsPath { get; set; } = "Logs\\";
+
+        /// <summary>
+        /// The path where config files will be saved.
+        /// </summary>
+        public string ConfigPath { get; set; } = "Config\\";
 
         /// <summary>
         /// Maximum allowed retry count for writing to log files.

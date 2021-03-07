@@ -1,6 +1,6 @@
 ﻿using DCore.Configs;
 using DCore.Interfaces;
-using DCore.Structs;
+using DCore;
 using Discord;
 using Discord.WebSocket;
 using System;
@@ -26,9 +26,14 @@ namespace DCore
         public DiscordSocketClient Client { get; set; }
 
         /// <summary>
-        /// The <see cref="DiscordBotConfig"/> used by the bot.
+        /// The <see cref="BotConfig"/> used by the bot.
         /// </summary>
-        public DiscordBotConfig Config { get; set; }
+        public BotConfig Config { get; set; }
+
+        /// <summary>
+        /// The logger associated with this <see cref="DiscordBot"/>.
+        /// </summary>
+        public DCoreLogger Logger { get; set; }
 
         /// <summary>
         /// The ID and token information for <see cref="DiscordBot"/>.
@@ -48,7 +53,6 @@ namespace DCore
                 return Client.ConnectionState == Discord.ConnectionState.Connected;
             }
         }
-
 
         private DiscordSocketConfig _lastConfig;
 
@@ -90,6 +94,13 @@ namespace DCore
                 if (beganWaiting + Config.ConnectionTimeout < DateTime.UtcNow)
                     throw new TimeoutException($"Gateway connection for bot {TokenInfo.id} has timed out.");
             }
+
+            //Set the game and status if needed
+            if (Manager.DCoreConfig.SetStatusAndGameOnStart)
+            {
+                _ = Task.Run(() => SetUserStatusAsync());
+                _ = Task.Run(() => SetGameAsync());
+            }
         }
 
         /// <summary>
@@ -129,6 +140,9 @@ namespace DCore
         /// <returns> The task that sets the game status. </returns>
         public async Task SetGameAsync(ActivityType activity, string game, string streamUrl = null)
         {
+            if (game == null)
+                game = "";
+
             await Client.SetGameAsync(game, streamUrl, activity);
         }
 
@@ -136,10 +150,41 @@ namespace DCore
         /// Sets the game status using values from config.
         /// </summary>
         /// <returns> The task that sets the game status. </returns>
-        public Task SetGameAsync()
+        public async Task SetGameAsync()
         {
-            //TODO:Implement this once Configuration system is complete
-            throw new NotImplementedException();
+            //Get the values from the config
+            ActivityType type = Config.Activity;
+            string game = Config.Game;
+            string streamUrl = Config.StreamURL;
+
+            //Don't apply the values if set to null
+            if (game == null)
+                return;
+
+            await Client.SetGameAsync(game, streamUrl, type);
+        }
+
+        /// <summary>
+        /// Sets the user status using the provided value.
+        /// </summary>
+        /// <param name="status"> The status to set. </param>
+        /// <returns> The task that sets the status. </returns>
+        public async Task SetUserStatusAsync(UserStatus status)
+        {
+            await Client.SetStatusAsync(status);
+        }
+
+        /// <summary>
+        /// Sets the user status using the value from the config.
+        /// </summary>
+        /// <returns> The task that sets the status. </returns>
+        public async Task SetUserStatusAsync()
+        {
+            UserStatus status = Config.Status;
+
+            //Don't waste time processing if not needed
+            if (status != UserStatus.Online)
+                await Client.SetStatusAsync(status);
         }
 
 
@@ -153,24 +198,48 @@ namespace DCore
             return Task.CompletedTask;
         }
 
-
-
         /// <summary>
         /// Fires when the bot is ready.
         /// </summary>
         public event BotReady BotReadyEvent;
         public delegate void BotReady();
 
+
         /// <summary>
-        /// Constructs a new <see cref="DiscordBot"/>.
+        /// Constructs a new DiscordBot
         /// </summary>
+        /// <param name="manager"> The BotManager that activated this <see cref="DiscordBot"/>. </param>
         /// <param name="token"> The token information to use. </param>
-        public DiscordBot(BotManager manager, TokenInfo token, DiscordBotConfig config = null)
+        /// <param name="overrideConfig"> The config object to override loaded config. </param>
+        /// <param name="extensionType"> The <see cref="Type"/> of the config extension. </param>
+        public DiscordBot(BotManager manager, TokenInfo token, BotConfig overrideConfig = null, Type extensionType = null)
         {
+            Logger = new DCoreLogger(this);
             Manager = manager;
             TokenInfo = token;
 
-            Config = config ?? new DiscordBotConfig();
+            if (overrideConfig != null)
+            {
+                Config = overrideConfig;
+                Config.Save(this);
+            }
+            else
+            {
+                //Load the config
+                var _loader = new ConfigLoader(Manager.DCoreConfig);
+                string path = _loader.GetPathToBotConfig(this);
+                Config = _loader.LoadConfig(path, typeof(BotConfig), extensionType) as BotConfig;
+
+                //If config could not be loaded, use the default one
+                if (Config == null)
+                {
+                    Config = manager.ConfigManager.GlobalBotConfig.DefaultBotConfig;
+                    Config.Save(this);
+
+                    //Load to ensure it's a deep copy
+                    Config = _loader.LoadConfig(path, typeof(BotConfig), extensionType) as BotConfig;
+                }
+            }
         }
 
 
@@ -188,6 +257,7 @@ namespace DCore
                     if (Client != null)
                         Client.StopAsync().ConfigureAwait(false);
                     Manager._activeBots.Remove(this);
+                    Config.Save(this);
                     _lastConfig = null;
 
                     Client = null;

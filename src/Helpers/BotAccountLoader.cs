@@ -1,4 +1,4 @@
-﻿using DCore.Structs;
+﻿using DCore;
 using System;
 using System.Collections.Generic;
 using System.IO;

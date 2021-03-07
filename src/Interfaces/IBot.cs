@@ -12,7 +12,7 @@ namespace DCore.Interfaces
     /// </summary>
     public interface IBot
     {
-        DiscordBotConfig Config { get; set; }
+        BotConfig Config { get; set; }
 
         Task StartAsync(DiscordSocketConfig config = null);
 

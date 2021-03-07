@@ -1,6 +1,6 @@
 ﻿using DCore.Configs;
 using DCore.Helpers;
-using DCore.Structs;
+using DCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,9 +16,9 @@ namespace DCore
     public class BotManager
     {
         /// <summary>
-        /// The config for this <see cref="BotManager"/> service.
+        /// The config manager for this <see cref="BotManager"/> service.
         /// </summary>
-        public DCoreConfig Config { get; set; }
+        public ConfigManager ConfigManager { get; set; }
 
         /// <summary>
         /// The total amount of bot accounts loaded.
@@ -42,6 +42,7 @@ namespace DCore
             }
         }
 
+        internal DCoreConfig DCoreConfig { get; set; }
         internal readonly List<DiscordBot> _activeBots = new List<DiscordBot>();
         private readonly List<TokenInfo> _tokens = new List<TokenInfo>();
 
@@ -56,7 +57,7 @@ namespace DCore
             //Ensure only unique information is loaded
             accounts = accounts.Except(_tokens).ToList();
 
-            if (accounts.Count + _tokens.Count > 1 && !Config.UseMultipleBots)
+            if (accounts.Count + _tokens.Count > 1 && !DCoreConfig.UseMultipleBots)
                 throw new InvalidOperationException("You must enable UseMultipleBots in config to allow loading multiple bots.");
 
             _tokens.AddRange(accounts);
@@ -69,7 +70,7 @@ namespace DCore
         /// <param name="count"> How many instances to create. </param>
         /// <exception cref="ArgumentOutOfRangeException"> Thrown when requesting more bots than available, or requesting less bots than 1. </exception>
         /// <returns> List of all bots created. </returns>
-        public List<DiscordBot> ActivateBots(int count)
+        public List<DiscordBot> ActivateBots(int count, Type configExtensionType = null)
         {
             //Ensure there are enough accounts
             if (count > AvailableBotCount)
@@ -87,7 +88,7 @@ namespace DCore
             List<DiscordBot> bots = new List<DiscordBot>();
             foreach(TokenInfo token in unusedTokens)
             {
-                DiscordBot bot = new DiscordBot(this, token);
+                DiscordBot bot = new DiscordBot(this, token, extensionType: configExtensionType);
                 bots.Add(bot);
             }
 
@@ -153,10 +154,11 @@ namespace DCore
         /// <summary>
         /// Constructs a BotManager with the specified config.
         /// </summary>
-        /// <param name="config"> The config to use. </param>
-        public BotManager (DCoreConfig config)
+        /// <param name="dcoreConfig"> The config to use. </param>
+        public BotManager (ConfigManager configService, DCoreConfig dcoreConfig)
         {
-            Config = config;
+            DCoreConfig = dcoreConfig;
+            ConfigManager = configService;
         }
     }
 }

@@ -35,7 +35,7 @@ namespace DCore.Helpers
         {
             string finalText = $"{GetPrefix(type)} {toWrite}";
 
-            string pathToLogs = _logger.Bot.Manager.Config.LogsPath;
+            string pathToLogs = _logger.Bot.Manager.DCoreConfig.LogsPath;
             string combinedLogPath = Path.Combine(pathToLogs, "combined.log");
             string botLogPath = Path.Combine(pathToLogs, _logger.Bot.TokenInfo.id + ".log");
 
@@ -43,7 +43,7 @@ namespace DCore.Helpers
             await WriteToFile(combinedLogPath, finalText);
 
             //Write to the bot file
-            if (_logger.Bot.Manager.Config.UseMultipleBots)
+            if (_logger.Bot.Manager.DCoreConfig.UseMultipleBots)
                 await WriteToFile(botLogPath, finalText);
         }
 
@@ -59,8 +59,8 @@ namespace DCore.Helpers
             if (!Directory.Exists(logFolder))
                 Directory.CreateDirectory(logFolder);
 
-            int retryCount = _logger.Bot.Manager.Config.MaxFileWriteAttempts;
-            int maxLinesInFile = _logger.Bot.Manager.Config.MaxLinesPerLogFile;
+            int retryCount = _logger.Bot.Manager.DCoreConfig.MaxFileWriteAttempts;
+            int maxLinesInFile = _logger.Bot.Manager.DCoreConfig.MaxLinesPerLogFile;
             int msDelayOnRetry = 100;
 
             for (int i = 0; i < retryCount; i++)
@@ -146,12 +146,12 @@ namespace DCore.Helpers
             }
 
             //if using multiple accounts, add the identifier
-            if (_logger.Bot.Manager.Config.UseMultipleBots)
+            if (_logger.Bot.Manager.DCoreConfig.UseMultipleBots)
                 prefix += $" [{_logger.Bot.TokenInfo.id}]";
 
             prefix += $" {GetTimeString()}";
 
-            if (colored && _logger.Bot.Manager.Config.UseColoredInputInLogs)
+            if (colored && _logger.Bot.Manager.ConfigManager.GlobalBotConfig.UseColoredInputInLogs)
                 prefix = prefix.Pastel(color);
 
             return prefix + " |";
