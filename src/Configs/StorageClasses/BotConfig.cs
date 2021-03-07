@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Discord;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,10 +13,47 @@ namespace DCore.Configs
         [Newtonsoft.Json.JsonIgnore]
         public object Extension { get; set; }
 
+
+        /// <summary>
+        /// The prefix for the bot commands.
+        /// </summary>
+        public string Prefix { get; set; } = "!";
+
+        /// <summary>
+        /// The emote to use when confirming successful commmands.
+        /// </summary>
+        public IEmote ConfirmationEmoji { get; set; } = new Emoji("✅");
+
+        /// <summary>
+        /// The language to use with this bot.
+        /// </summary>
+        public string Language { get; set; } = "en-us";
+
+        /// <summary>
+        /// Bot's status to use.
+        /// </summary>
+        public UserStatus Status { get; set; } = UserStatus.Online;
+
+        /// <summary>
+        /// Type of activity for the bot status.
+        /// </summary>
+        public ActivityType Activity { get; set; }
+
+        /// <summary>
+        /// The string displayed in bot's status.
+        /// </summary>
+        public string Game { get; set; }
+
+
+        /// <summary>
+        /// IDs of users that can perform high-risk commands for the bot.
+        /// </summary>
+        public List<ulong> ManagerIDs { get; set; }
+
         /// <summary>
         /// The timeout for connecting to Discord gateway.
         /// </summary>
-        public TimeSpan ConnectionTimeout = TimeSpan.FromSeconds(10);
+        public TimeSpan ConnectionTimeout { get; set; } = TimeSpan.FromSeconds(10);
 
 
         /// <summary>
