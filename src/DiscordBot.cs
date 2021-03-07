@@ -162,10 +162,13 @@ namespace DCore
         public delegate void BotReady();
 
         /// <summary>
-        /// Constructs a new <see cref="DiscordBot"/>.
+        /// 
         /// </summary>
+        /// <param name="manager"> The BotManager that activated this <see cref="DiscordBot"/>. </param>
         /// <param name="token"> The token information to use. </param>
-        public DiscordBot(BotManager manager, TokenInfo token, BotConfig overrideConfig = null)
+        /// <param name="overrideConfig"> The config object to override loaded config. </param>
+        /// <param name="extensionType"> The <see cref="Type"/> of the config extension. </param>
+        public DiscordBot(BotManager manager, TokenInfo token, BotConfig overrideConfig = null, Type extensionType = null)
         {
             Manager = manager;
             TokenInfo = token;
@@ -180,7 +183,7 @@ namespace DCore
                 //Load the config
                 var _loader = new ConfigLoader(Manager.DCoreConfig);
                 string path = _loader.GetPathToBotConfig(this);
-                Config = _loader.LoadConfig(path, typeof(BotConfig)) as BotConfig;
+                Config = _loader.LoadConfig(path, typeof(BotConfig), extensionType) as BotConfig;
             }
         }
 

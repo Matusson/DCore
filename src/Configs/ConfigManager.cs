@@ -41,7 +41,7 @@ namespace DCore.Configs
         /// <summary>
         /// Loads global config from JSON.
         /// </summary>
-        /// <returns></returns>
+        /// <returns> The config object. </returns>
         internal GlobalBotConfig LoadGlobalConfig(Type extensionType)
         {
             string path = _loader.GetPathToGlobalConfig();
