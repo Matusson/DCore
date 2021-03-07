@@ -42,14 +42,14 @@ namespace DCore.Configs
         public List<ulong> ManagerIDs { get; set; } = new List<ulong>();
 
         /// <summary>
-        /// The default config used by all newly activated bots.
-        /// </summary>
-        public BotConfig DefaultBotConfig { get; set; } = new BotConfig();
-
-        /// <summary>
         /// Allow the console to color the outputs?
         /// </summary>
         public bool UseColoredInputInLogs { get; set; } = true;
+
+        /// <summary>
+        /// The default config used by all newly activated bots.
+        /// </summary>
+        public BotConfig DefaultBotConfig { get; set; } = new BotConfig();
 
 
         /// <summary>
