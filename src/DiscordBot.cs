@@ -184,6 +184,16 @@ namespace DCore
                 var _loader = new ConfigLoader(Manager.DCoreConfig);
                 string path = _loader.GetPathToBotConfig(this);
                 Config = _loader.LoadConfig(path, typeof(BotConfig), extensionType) as BotConfig;
+
+                //If config could not be loaded, use the default one
+                if (Config == null)
+                {
+                    Config = manager.ConfigManager.GlobalBotConfig.DefaultBotConfig;
+                    Config.Save(this);
+
+                    //Load to ensure it's a deep copy
+                    Config = _loader.LoadConfig(path, typeof(BotConfig), extensionType) as BotConfig;
+                }
             }
         }
 

@@ -45,7 +45,14 @@ namespace DCore.Configs
         internal GlobalBotConfig LoadGlobalConfig(Type extensionType)
         {
             string path = _loader.GetPathToGlobalConfig();
-            return _loader.LoadConfig(path, typeof(GlobalBotConfig), extensionType) as GlobalBotConfig;
+
+            //If null, create a new one
+            if (_loader.LoadConfig(path, typeof(GlobalBotConfig), extensionType) is GlobalBotConfig loadedConfig)
+                return loadedConfig;
+
+            loadedConfig = new GlobalBotConfig();
+            _loader.SaveConfig(loadedConfig, path);
+            return loadedConfig;
         }
 
         /// <summary>

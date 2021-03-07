@@ -30,8 +30,7 @@ namespace DCore.Configs
             //If the file doesn't exist, try to create one
             if (!File.Exists(path))
             {
-                newConfig = Activator.CreateInstance(configType);
-                SaveConfig(newConfig, path);
+                return null;
             }
 
             //Attempt to load the file
