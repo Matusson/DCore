@@ -161,7 +161,8 @@ namespace DCore.Configs
         /// <returns> The path of the extension file. </returns>
         private string GetPathToExtension(string originalPath)
         {
-            return Path.GetFileNameWithoutExtension(originalPath) + "-e" + Path.GetExtension(originalPath);
+            return Path.Combine(Path.GetDirectoryName(originalPath), Path.GetFileNameWithoutExtension(originalPath)) 
+                + "-e" + Path.GetExtension(originalPath);
         }
 
         /// <summary>

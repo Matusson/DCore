@@ -26,6 +26,20 @@ namespace DCore.Configs.Tests
         }
 
         [TestMethod()]
+        public void ConfigManager_CreateNew_Extension()
+        {
+            string pathToFile = Path.Combine(_config.ConfigPath, "global-e.json");
+            if (File.Exists(pathToFile))
+                File.Delete(pathToFile);
+
+            //Use BotConfig as an example extension
+            ConfigManager config = new ConfigManager(_config, typeof(BotConfig));
+            var globalConfig = config.GlobalBotConfig;
+
+            Assert.IsTrue(globalConfig != null && File.Exists(pathToFile));
+        }
+
+        [TestMethod()]
         public void ConfigManager_LoadExisting()
         {
             string pathToFile = Path.Combine(_config.ConfigPath, "global.json");
@@ -42,6 +56,25 @@ namespace DCore.Configs.Tests
             var globalConfig = config.GlobalBotConfig;
 
             Assert.IsTrue(globalConfig.UseColoredInputInLogs == false);
+        }
+
+        [TestMethod()]
+        public void ConfigManager_LoadExisting_Extension()
+        {
+            string pathToFile = Path.Combine(_config.ConfigPath, "global-e.json");
+            if (File.Exists(pathToFile))
+                File.Delete(pathToFile);
+            _ = new ConfigManager(_config, typeof(BotConfig))
+            {
+                //Create the old config
+                GlobalBotConfig = new GlobalBotConfig()
+            };
+
+            //Reset the object
+            ConfigManager config = new ConfigManager(_config, typeof(BotConfig));
+            var globalConfig = config.GlobalBotConfig;
+
+            Assert.IsTrue(globalConfig.Extension is BotConfig);
         }
     }
 }
