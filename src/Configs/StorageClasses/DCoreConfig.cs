@@ -17,12 +17,12 @@ namespace DCore.Configs
         /// <summary>
         /// The path where log files will be saved.
         /// </summary>
-        public string LogsPath { get; set; } = "\\Logs";
+        public string LogsPath { get; set; } = "Logs\\";
 
         /// <summary>
         /// The path where config files will be saved.
         /// </summary>
-        public string ConfigPath { get; set; } = "\\Config";
+        public string ConfigPath { get; set; } = "Config\\";
 
         /// <summary>
         /// Maximum allowed retry count for writing to log files.
