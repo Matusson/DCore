@@ -31,6 +31,11 @@ namespace DCore
         public BotConfig Config { get; set; }
 
         /// <summary>
+        /// The logger associated with this <see cref="DiscordBot"/>.
+        /// </summary>
+        public DCoreLogger Logger { get; set; }
+
+        /// <summary>
         /// The ID and token information for <see cref="DiscordBot"/>.
         /// </summary>
         public TokenInfo TokenInfo { get; set; }
@@ -48,7 +53,6 @@ namespace DCore
                 return Client.ConnectionState == Discord.ConnectionState.Connected;
             }
         }
-
 
         private DiscordSocketConfig _lastConfig;
 
@@ -210,6 +214,7 @@ namespace DCore
         /// <param name="extensionType"> The <see cref="Type"/> of the config extension. </param>
         public DiscordBot(BotManager manager, TokenInfo token, BotConfig overrideConfig = null, Type extensionType = null)
         {
+            Logger = new DCoreLogger(this);
             Manager = manager;
             TokenInfo = token;
 
