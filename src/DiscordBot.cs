@@ -1,6 +1,6 @@
 ﻿using DCore.Configs;
 using DCore.Interfaces;
-using DCore.Structs;
+using DCore;
 using Discord;
 using Discord.WebSocket;
 using System;

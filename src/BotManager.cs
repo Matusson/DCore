@@ -1,6 +1,6 @@
 ﻿using DCore.Configs;
 using DCore.Helpers;
-using DCore.Structs;
+using DCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,11 +15,6 @@ namespace DCore
     /// </summary>
     public class BotManager
     {
-        /// <summary>
-        /// The config for this <see cref="BotManager"/> service.
-        /// </summary>
-        public DCoreConfig DCoreConfig { get; set; }
-
         /// <summary>
         /// The config manager for this <see cref="BotManager"/> service.
         /// </summary>
@@ -47,6 +42,7 @@ namespace DCore
             }
         }
 
+        internal DCoreConfig DCoreConfig { get; set; }
         internal readonly List<DiscordBot> _activeBots = new List<DiscordBot>();
         private readonly List<TokenInfo> _tokens = new List<TokenInfo>();
 

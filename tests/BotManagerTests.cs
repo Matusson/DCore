@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using DCore.Configs;
-using DCore.Structs;
 using System.Linq;
 
 namespace DCore.Tests
