@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Discord.WebSocket;
 using DCore.Helpers;
 using DCore.Configs;
+using Discord;
 
 namespace DCore.Tests
 {
@@ -20,10 +21,11 @@ namespace DCore.Tests
     [DeploymentItem("TestToken.txt")]
     public class DiscordBotTests
     {
-        private DiscordBot CreateTestBot()
+        private DiscordBot CreateTestBot(BotManager manager = null)
         {
             DCoreConfig config = new DCoreConfig();
-            BotManager manager = new BotManager(new ConfigManager(config), config);
+            if (manager == null)
+                manager = new BotManager(new ConfigManager(config), config);
 
             BotAccountLoader loader = new BotAccountLoader();
             var token = loader.LoadAccountsFromFile("TestToken.txt").FirstOrDefault();
@@ -105,6 +107,33 @@ namespace DCore.Tests
         }
 
         [TestMethod()]
+        public async Task SetGameAsyncTest()
+        {
+            string game = "testing...";
+            DiscordBot bot = CreateTestBot();
+            bot.Config.Game = game;
+
+            await bot.StartAsync();
+            await bot.SetGameAsync();
+
+            Assert.IsTrue(bot.Client.Activity.Type == Discord.ActivityType.Playing &&
+                bot.Client.Activity.Name == game);
+        }
+
+        [TestMethod()]
+        public async Task SetUserStatusTest()
+        {
+            UserStatus status = UserStatus.DoNotDisturb;
+            DiscordBot bot = CreateTestBot();
+            bot.Config.Status = status;
+
+            await bot.StartAsync();
+            await bot.SetUserStatusAsync();
+
+            Assert.IsTrue(bot.Client.Status == status);
+        }
+
+        [TestMethod()]
         public void Dispose()
         {
             DCoreConfig config = new DCoreConfig { UseMultipleBots = true };
@@ -117,6 +146,12 @@ namespace DCore.Tests
             bot.Dispose();
 
             Assert.IsTrue(manager.AvailableBotCount == 1);
+        }
+
+        [TestCleanup()]
+        public async Task Cleanup()
+        {
+            await Task.Delay(1000);
         }
     }
 }
