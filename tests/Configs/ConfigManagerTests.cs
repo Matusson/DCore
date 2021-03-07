@@ -76,5 +76,17 @@ namespace DCore.Configs.Tests
             
             Assert.IsTrue(globalConfig.Extension is BotConfig);
         }
+
+        [TestMethod()]
+        public void ConfigManager_NullExtension()
+        {
+            string pathToFile = Path.Combine(_config.ConfigPath, "global.json");
+            if (File.Exists(pathToFile))
+                File.Delete(pathToFile);
+
+            ConfigManager config = new ConfigManager(_config);
+
+            Assert.ThrowsException<InvalidOperationException>(delegate { object extObject = config.GlobalBotConfig.Extension; });
+        }
     }
 }

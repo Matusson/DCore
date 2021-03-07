@@ -11,8 +11,31 @@ namespace DCore.Configs
     public class BotConfig : IConfig
     {
         [Newtonsoft.Json.JsonIgnore]
-        public object Extension { get; set; }
+        public object Extension
+        {
+            get
+            {
+                if (_extension == null)
+                {
+                    throw new InvalidOperationException("You attempted to fetch the Extension object, but it was not set. " +
+                        "To use the Extension object, initialize the bot with the its type.");
+                }
+                return _extension;
+            }
+            set
+            {
+                _extension = value;
+            }
+        }
+        private object _extension;
 
+        public bool IsExtensionNull 
+        {
+            get
+            {
+                return _extension == null;
+            }
+        }
 
         /// <summary>
         /// The prefix for the bot commands.

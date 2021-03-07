@@ -82,5 +82,20 @@ namespace DCore.Configs.Tests
 
             Assert.IsTrue(config != null && bot.Config.Prefix == "??");
         }
+
+        [TestMethod()]
+        public void NullExtension()
+        {
+            string pathToFile = Path.Combine(_config.ConfigPath, "12345.json");
+            if (File.Exists(pathToFile))
+                File.Delete(pathToFile);
+
+            var manager = BotManagerTests.CreateBotManager(1);
+            var bot = manager.ActivateBots(1).FirstOrDefault();
+
+            BotConfig config = bot.Config;
+
+            Assert.ThrowsException<InvalidOperationException>(delegate { object extObject = config.Extension; });
+        }
     }
 }

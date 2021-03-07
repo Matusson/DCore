@@ -111,13 +111,13 @@ namespace DCore.Configs
         {
             string path = GetPathToExtension(originalPath);
 
-            if (!(config is IConfig))
+            if (!(config is IConfig configObject))
                 throw new ArgumentException("config object does not implement the IConfig interface.");
 
-            object extensionObject = (config as IConfig).Extension;
-            if (extensionObject == null)
+            if (configObject.IsExtensionNull)
                 return;
 
+            object extensionObject = configObject.Extension;
             string content = JsonConvert.SerializeObject(extensionObject, Formatting.Indented);
 
             //Write to the file
