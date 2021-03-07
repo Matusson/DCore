@@ -143,19 +143,37 @@ namespace DCore
         {
             //Get the values from the config
             ActivityType type = Config.Activity;
-            UserStatus status = Config.Status;
             string game = Config.Game;
             string streamUrl = Config.StreamURL;
-
-            //Don't waste time processing if not needed
-            if (status != UserStatus.Online)
-                await Client.SetStatusAsync(status);
 
             //Don't apply the values if set to null
             if (game == null)
                 return;
 
             await Client.SetGameAsync(game, streamUrl, type);
+        }
+
+        /// <summary>
+        /// Sets the user status using the provided value.
+        /// </summary>
+        /// <param name="status"> The status to set. </param>
+        /// <returns> The task that sets the status. </returns>
+        public async Task SetUserStatusAsync(UserStatus status)
+        {
+            await Client.SetStatusAsync(status);
+        }
+
+        /// <summary>
+        /// Sets the user status using the value from the config.
+        /// </summary>
+        /// <returns> The task that sets the status. </returns>
+        public async Task SetUserStatusAsync()
+        {
+            UserStatus status = Config.Status;
+
+            //Don't waste time processing if not needed
+            if (status != UserStatus.Online)
+                await Client.SetStatusAsync(status);
         }
 
 
@@ -169,16 +187,15 @@ namespace DCore
             return Task.CompletedTask;
         }
 
-
-
         /// <summary>
         /// Fires when the bot is ready.
         /// </summary>
         public event BotReady BotReadyEvent;
         public delegate void BotReady();
 
+
         /// <summary>
-        /// 
+        /// Constructs a new DiscordBot
         /// </summary>
         /// <param name="manager"> The BotManager that activated this <see cref="DiscordBot"/>. </param>
         /// <param name="token"> The token information to use. </param>
