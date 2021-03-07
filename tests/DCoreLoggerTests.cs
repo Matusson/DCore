@@ -14,7 +14,7 @@ namespace DCore.Tests
     [TestClass()]
     public class DCoreLoggerTests
     {
-        static readonly string defaultLoggingPath = "\\Logs\\combined.log";
+        static readonly string defaultLoggingPath = "Logs\\combined.log";
 
         private DCoreLogger GetLogger(bool multipleBots = false)
         {
@@ -44,7 +44,7 @@ namespace DCore.Tests
         [TestMethod()]
         public async Task LogInformation_FileCreated_MultipleAccounts()
         {
-            string expectedLogFilePath = "\\Logs\\12345.log";
+            string expectedLogFilePath = "Logs\\12345.log";
             if (File.Exists(defaultLoggingPath))
                 File.Delete(defaultLoggingPath);
 
@@ -63,7 +63,7 @@ namespace DCore.Tests
         [TestMethod()]
         public async Task LogInformation_FileCreated_SingleAccount()
         {
-            string expectedLogFilePath = "\\Logs\\12345.log";
+            string expectedLogFilePath = "Logs\\12345.log";
             if (File.Exists(defaultLoggingPath))
                 File.Delete(defaultLoggingPath);
 
