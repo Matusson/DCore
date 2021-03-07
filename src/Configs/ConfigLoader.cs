@@ -57,7 +57,7 @@ namespace DCore.Configs
         /// <param name="config"> The config object. </param>
         internal void SaveConfig(object config, string path)
         {
-            string content = JsonConvert.SerializeObject(config);
+            string content = JsonConvert.SerializeObject(config, Formatting.Indented);
 
             //Write to the file
             File.WriteAllText(path, content);
@@ -65,6 +65,7 @@ namespace DCore.Configs
             //Attempt to save the config if needed
             SaveExtensionObject(config, path);
         }
+
 
         /// <summary>
         /// Attempts to load the extension object.
@@ -117,7 +118,7 @@ namespace DCore.Configs
             if (extensionObject == null)
                 return;
 
-            string content = JsonConvert.SerializeObject(extensionObject);
+            string content = JsonConvert.SerializeObject(extensionObject, Formatting.Indented);
 
             //Write to the file
             File.WriteAllText(path, content);
