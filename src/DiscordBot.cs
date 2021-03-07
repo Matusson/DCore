@@ -129,6 +129,9 @@ namespace DCore
         /// <returns> The task that sets the game status. </returns>
         public async Task SetGameAsync(ActivityType activity, string game, string streamUrl = null)
         {
+            if (game == null)
+                game = "";
+
             await Client.SetGameAsync(game, streamUrl, activity);
         }
 
@@ -136,10 +139,23 @@ namespace DCore
         /// Sets the game status using values from config.
         /// </summary>
         /// <returns> The task that sets the game status. </returns>
-        public Task SetGameAsync()
+        public async Task SetGameAsync()
         {
-            //TODO:Implement this once Configuration system is complete
-            throw new NotImplementedException();
+            //Get the values from the config
+            ActivityType type = Config.Activity;
+            UserStatus status = Config.Status;
+            string game = Config.Game;
+            string streamUrl = Config.StreamURL;
+
+            //Don't waste time processing if not needed
+            if (status != UserStatus.Online)
+                await Client.SetStatusAsync(status);
+
+            //Don't apply the values if set to null
+            if (game == null)
+                return;
+
+            await Client.SetGameAsync(game, streamUrl, type);
         }
 
 

@@ -44,6 +44,10 @@ namespace DCore.Configs
         /// </summary>
         public string Game { get; set; }
 
+        /// <summary>
+        /// The link to the stream, if <see cref="ActivityType"/> is <see cref="ActivityType.Streaming"/>.
+        /// </summary>
+        public string StreamURL { get; set; }
 
         /// <summary>
         /// IDs of users that can perform high-risk commands for the bot.
