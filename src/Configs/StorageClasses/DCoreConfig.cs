@@ -30,6 +30,11 @@ namespace DCore.Configs
         public string ConfigPath { get; set; } = "Config\\";
 
         /// <summary>
+        /// The path where language files will be read from.
+        /// </summary>
+        public string LanguagesPath { get; set; } = "Languages\\";
+
+        /// <summary>
         /// Maximum allowed retry count for writing to log files.
         /// </summary>
         public int MaxFileWriteAttempts { get; set; } = 10;
