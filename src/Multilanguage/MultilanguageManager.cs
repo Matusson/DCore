@@ -9,6 +9,11 @@ namespace DCore
     /// </summary>
     public class MultilanguageManager
     {
+        /// <summary>
+        /// Stores language data for every loaded language.
+        /// </summary>
+        private Dictionary<string, LanguageData> _languages = new Dictionary<string, LanguageData>();
+
         public void LoadLanguageData()
         {
 
