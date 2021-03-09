@@ -1,6 +1,9 @@
 ﻿using DCore.Configs;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace DCore
@@ -17,9 +20,28 @@ namespace DCore
 
         private DCoreConfig _config;
 
+        /// <summary>
+        /// Loads the language data into memory.
+        /// </summary>
         public void LoadLanguageData()
         {
+            //Get all files in the directory
+            string path = _config.LanguagesPath;
+            var languageFiles = Directory.EnumerateFiles(path).ToList();
 
+            //Enumerate through all of the languages
+            foreach (string languageFile in languageFiles)
+            {
+                //Get the language identifier of the file
+                string languageIdentifier = Path.GetFileNameWithoutExtension(languageFile);
+
+                //Read the file and deserialize the data
+                string json = File.ReadAllText(languageFile);
+                LanguageData languageData = JsonConvert.DeserializeObject<LanguageData>(json);
+
+                //Add to the language data dictionary
+                _languages[languageIdentifier] = languageData;
+            }
         }
 
         public void GetString()
