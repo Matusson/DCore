@@ -16,9 +16,9 @@ namespace DCore
         /// <summary>
         /// Stores language data for every loaded language.
         /// </summary>
-        private Dictionary<string, LanguageData> _languages = new Dictionary<string, LanguageData>();
+        private readonly Dictionary<string, LanguageData> _languages = new Dictionary<string, LanguageData>();
 
-        private DCoreConfig _config;
+        private readonly DCoreConfig _config;
 
         /// <summary>
         /// Loads the language data into memory.
@@ -28,6 +28,13 @@ namespace DCore
             //Get all files in the directory
             string path = _config.LanguagesPath;
             var languageFiles = Directory.EnumerateFiles(path).ToList();
+
+            //If there are no files, create an example one
+            if (languageFiles.Count == 0)
+            {
+                CreateExampleLanguageFile();
+                return;
+            }
 
             //Enumerate through all of the languages
             foreach (string languageFile in languageFiles)
@@ -48,6 +55,33 @@ namespace DCore
         {
 
         }
+
+        /// <summary>
+        /// Creates a example language file and saves it to the language files directory.
+        /// </summary>
+        private void CreateExampleLanguageFile()
+        {
+            string filename = "example.json";
+            string path = Path.Combine(_config.LanguagesPath, filename);
+
+            //Create an object that would hold some example data to make creating initial files simpler
+            LanguageData data = new LanguageData()
+            {
+                Strings = new Dictionary<string, string>()
+                {
+                    { "example", "This is an example value."},
+                    { "example2", "If you haven't already, you should copy this file to the project directory, " +
+                    "and use it as a base for language files."},
+                    { "example3", "For these files to work correctly in build, make sure to " +
+                    "set \"Copy to build directory\" to a value different than \"Do not copy\"."}
+                }
+            };
+            string json = JsonConvert.SerializeObject(data, Formatting.Indented);
+
+            //Save the data
+            File.WriteAllText(path, json);
+        }
+
 
         /// <summary>
         /// Constructs a <see cref="MultilanguageManager"/> with the specified config.
