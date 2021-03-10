@@ -57,6 +57,9 @@ namespace DCore
         /// </summary>
         /// <param name="identifier"> The string identifier. </param>
         /// <returns> The translated string. </returns>
+        /// <exception cref="ArgumentNullException"> Thrown when <paramref name="identifier"/> is null or empty. </exception>
+        /// <exception cref="ArgumentException"> Thrown when <paramref name="identifier"/> is not found in the language file. </exception>
+        /// <exception cref="InvalidOperationException"> Thrown when <see cref="DiscordBot"/>'s language is not available. </exception>
         public string GetString(string identifier)
         {
             if (string.IsNullOrEmpty(identifier))
