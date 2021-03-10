@@ -16,7 +16,7 @@ namespace DCore
         /// <summary>
         /// Stores language data for every loaded language.
         /// </summary>
-        private readonly Dictionary<string, LanguageData> _languages = new Dictionary<string, LanguageData>();
+        public Dictionary<string, LanguageData> Languages = new Dictionary<string, LanguageData>();
 
         private readonly DCoreConfig _config;
 
@@ -47,7 +47,7 @@ namespace DCore
                 LanguageData languageData = JsonConvert.DeserializeObject<LanguageData>(json);
 
                 //Add to the language data dictionary
-                _languages[languageIdentifier] = languageData;
+                Languages[languageIdentifier] = languageData;
             }
         }
 
