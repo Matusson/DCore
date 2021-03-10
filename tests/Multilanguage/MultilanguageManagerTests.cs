@@ -13,6 +13,15 @@ namespace DCore.Tests
     [TestClass()]
     public class MultilanguageManagerTests
     {
+        private MultilanguageManager CreateLanguageManager(DCoreConfig config)
+        {
+            BotManager manager = new BotManager(new ConfigManager(config), config);
+            DiscordBot bot = new DiscordBot(manager, new TokenInfo());
+            MultilanguageManager languageManager = new MultilanguageManager(bot, config);
+
+            return languageManager;
+        }
+
         [TestMethod()]
         public void LoadLanguageData_EmptyPath()
         {
@@ -24,10 +33,7 @@ namespace DCore.Tests
                 var oldFiles = Directory.EnumerateFiles(config.LanguagesPath).ToList();
                 oldFiles.ForEach(x => File.Delete(x));
             }
-
-            BotManager manager = new BotManager(new ConfigManager(config), config);
-            DiscordBot bot = new DiscordBot(manager, new TokenInfo());
-            MultilanguageManager languageManager = new MultilanguageManager(bot, config);
+            var languageManager = CreateLanguageManager(config);
 
             languageManager.LoadLanguageData();
 
