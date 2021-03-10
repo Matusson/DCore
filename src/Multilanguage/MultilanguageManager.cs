@@ -18,6 +18,7 @@ namespace DCore
         /// </summary>
         public Dictionary<string, LanguageData> Languages = new Dictionary<string, LanguageData>();
 
+        private readonly DiscordBot _bot;
         private readonly DCoreConfig _config;
 
         /// <summary>
@@ -51,9 +52,27 @@ namespace DCore
             }
         }
 
-        public void GetString()
+        /// <summary>
+        /// Fetches a string for the bot's language.
+        /// </summary>
+        /// <param name="identifier"> The string identifier. </param>
+        /// <returns> The translated string. </returns>
+        public string GetString(string identifier)
         {
+            if (string.IsNullOrEmpty(identifier))
+                throw new ArgumentNullException("Identifier can't be null or empty.");
 
+            //Check if the currently set language exists in the data
+            if (!Languages.ContainsKey(_bot.Config.Language))
+                throw new InvalidOperationException($"Language \"{_bot.Config.Language}\" does not exist in the loaded language files.");
+
+            LanguageData data = Languages[_bot.Config.Language];
+
+            //Check for value
+            if (!data.Strings.ContainsKey(identifier))
+                throw new ArgumentException($"String with identifier \"{identifier}\" was not found in the language file.");
+
+            return data.Strings[identifier];
         }
 
         /// <summary>
