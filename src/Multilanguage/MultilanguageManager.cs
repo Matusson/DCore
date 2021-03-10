@@ -50,7 +50,8 @@ namespace DCore
 
                 //Read the file and deserialize the data
                 string json = File.ReadAllText(languageFile);
-                LanguageData languageData = JsonConvert.DeserializeObject<LanguageData>(json);
+                Dictionary<string, string> strings = JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+                LanguageData languageData = new LanguageData{ Strings = strings };
 
                 //Add to the language data dictionary
                 Languages[languageIdentifier] = languageData;
@@ -103,7 +104,7 @@ namespace DCore
                     "set \"Copy to build directory\" to a value different than \"Do not copy\"."}
                 }
             };
-            string json = JsonConvert.SerializeObject(data, Formatting.Indented);
+            string json = JsonConvert.SerializeObject(data.Strings, Formatting.Indented);
 
             //Save the data
             File.WriteAllText(path, json);
