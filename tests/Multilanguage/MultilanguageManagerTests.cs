@@ -19,14 +19,17 @@ namespace DCore.Tests
             DCoreConfig config = new DCoreConfig();
 
             //Clear the files if any exist
-            var oldFiles = Directory.EnumerateFiles(config.LanguagesPath).ToList();
-            oldFiles.ForEach(x => File.Delete(x));
+            if (Directory.Exists(config.LanguagesPath))
+            {
+                var oldFiles = Directory.EnumerateFiles(config.LanguagesPath).ToList();
+                oldFiles.ForEach(x => File.Delete(x));
+            }
 
-            Mock<DiscordBot> bot = new Mock<DiscordBot>();
-            bot.SetupGet(x => x.Config.Language).Returns("en");
-            MultilanguageManager manager = new MultilanguageManager(bot.Object, config);
+            BotManager manager = new BotManager(new ConfigManager(config), config);
+            DiscordBot bot = new DiscordBot(manager, new TokenInfo());
+            MultilanguageManager languageManager = new MultilanguageManager(bot, config);
 
-            manager.LoadLanguageData();
+            languageManager.LoadLanguageData();
 
             int fileCount = Directory.EnumerateFiles(config.LanguagesPath).ToList().Count;
             string expectedFile = Path.Combine(config.LanguagesPath, "example.json");

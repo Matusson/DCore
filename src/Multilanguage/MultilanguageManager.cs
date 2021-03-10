@@ -28,6 +28,11 @@ namespace DCore
         {
             //Get all files in the directory
             string path = _config.LanguagesPath;
+
+            //Ensure the path exists
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+
             var languageFiles = Directory.EnumerateFiles(path).ToList();
 
             //If there are no files, create an example one
