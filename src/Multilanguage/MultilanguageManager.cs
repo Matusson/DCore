@@ -105,9 +105,11 @@ namespace DCore
         /// <summary>
         /// Constructs a <see cref="MultilanguageManager"/> with the specified config.
         /// </summary>
-        /// <param name="config"></param>
-        public MultilanguageManager(DCoreConfig config)
+        /// <param name="bot"> <see cref="DiscordBot"/> linked to this <see cref="MultilanguageManager"/> instance. </param>
+        /// <param name="config"> The config to use. </param>
+        public MultilanguageManager(DiscordBot bot, DCoreConfig config)
         {
+            _bot = bot;
             _config = config;
         }
     }
