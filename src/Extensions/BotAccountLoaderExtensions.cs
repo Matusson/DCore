@@ -5,7 +5,10 @@ using DCore.Helpers;
 
 namespace DCore
 {
-    public static class DCoreExtensions
+    /// <summary>
+    /// Handles extension methods to BotAccountLoader.
+    /// </summary>
+    public static class BotAccountLoaderExtensions
     {
         /// <summary>
         /// <inheritdoc cref="BotAccountLoader.LoadAccountsFromFile(string)"/>
