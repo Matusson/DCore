@@ -24,7 +24,7 @@ namespace DCore
         /// <summary>
         /// Loads the language data into memory.
         /// </summary>
-        public void LoadLanguageData()
+        public void ReloadLanguageData()
         {
             //Get all files in the directory
             string path = _config.LanguagesPath;
@@ -120,6 +120,9 @@ namespace DCore
         {
             _bot = bot;
             _config = config;
+
+            //Discover language data
+            ReloadLanguageData();
         }
     }
 }

@@ -37,7 +37,7 @@ namespace DCore.Tests
             }
             var languageManager = CreateLanguageManager(config);
 
-            languageManager.LoadLanguageData();
+            languageManager.ReloadLanguageData();
 
             int fileCount = Directory.EnumerateFiles(config.LanguagesPath).ToList().Count;
             string expectedFile = Path.Combine(config.LanguagesPath, "example.json");
@@ -56,7 +56,7 @@ namespace DCore.Tests
                 File.Delete(exampleFile);
             var languageManager = CreateLanguageManager(config);
 
-            languageManager.LoadLanguageData();
+            languageManager.ReloadLanguageData();
 
             int fileCount = Directory.EnumerateFiles(config.LanguagesPath).ToList().Count;
             Assert.IsTrue(fileCount == 2
@@ -70,7 +70,7 @@ namespace DCore.Tests
         {
             DCoreConfig config = new DCoreConfig();
             var languageManager = CreateLanguageManager(config);
-            languageManager.LoadLanguageData();
+            languageManager.ReloadLanguageData();
 
             void get() => languageManager.GetString(input);
             Assert.ThrowsException<ArgumentNullException>(get);
@@ -81,7 +81,7 @@ namespace DCore.Tests
         {
             DCoreConfig config = new DCoreConfig();
             var languageManager = CreateLanguageManager(config, "non-existing-language");
-            languageManager.LoadLanguageData();
+            languageManager.ReloadLanguageData();
 
             void get() => languageManager.GetString("example1");
             Assert.ThrowsException<InvalidOperationException>(get);
@@ -92,7 +92,7 @@ namespace DCore.Tests
         {
             DCoreConfig config = new DCoreConfig();
             var languageManager = CreateLanguageManager(config, "en-1");
-            languageManager.LoadLanguageData();
+            languageManager.ReloadLanguageData();
 
             void get() => languageManager.GetString("non-existing-identifier");
             Assert.ThrowsException<ArgumentException>(get);
@@ -106,7 +106,7 @@ namespace DCore.Tests
         {
             DCoreConfig config = new DCoreConfig();
             var languageManager = CreateLanguageManager(config, "en-1");
-            languageManager.LoadLanguageData();
+            languageManager.ReloadLanguageData();
 
             string expected = "This is a test value.";
             string output = languageManager.GetString(identifier);
