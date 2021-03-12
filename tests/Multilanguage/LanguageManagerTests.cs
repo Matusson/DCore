@@ -12,14 +12,14 @@ namespace DCore.Tests
 {
     [TestClass()]
     [DeploymentItem("Languages\\")]
-    public class MultilanguageManagerTests
+    public class LanguageManagerTests
     {
-        private MultilanguageManager CreateLanguageManager(DCoreConfig config, string language = "en")
+        private LanguageManager CreateLanguageManager(DCoreConfig config, string language = "en")
         {
             BotManager manager = new BotManager(new ConfigManager(config), config);
             DiscordBot bot = new DiscordBot(manager, new TokenInfo());
             bot.Config.Language = language;
-            MultilanguageManager languageManager = new MultilanguageManager(bot, config);
+            LanguageManager languageManager = new LanguageManager(bot, config);
 
             return languageManager;
         }

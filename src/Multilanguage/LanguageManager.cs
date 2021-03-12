@@ -11,7 +11,7 @@ namespace DCore
     /// <summary>
     /// Manages multi-language data.
     /// </summary>
-    public class MultilanguageManager
+    public class LanguageManager
     {
         /// <summary>
         /// Stores language data for every loaded language.
@@ -112,11 +112,11 @@ namespace DCore
 
 
         /// <summary>
-        /// Constructs a <see cref="MultilanguageManager"/> with the specified config.
+        /// Constructs a <see cref="LanguageManager"/> with the specified config.
         /// </summary>
-        /// <param name="bot"> <see cref="DiscordBot"/> linked to this <see cref="MultilanguageManager"/> instance. </param>
+        /// <param name="bot"> <see cref="DiscordBot"/> linked to this <see cref="LanguageManager"/> instance. </param>
         /// <param name="config"> The config to use. </param>
-        public MultilanguageManager(DiscordBot bot, DCoreConfig config)
+        public LanguageManager(DiscordBot bot, DCoreConfig config)
         {
             _bot = bot;
             _config = config;
