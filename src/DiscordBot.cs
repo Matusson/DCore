@@ -36,6 +36,11 @@ namespace DCore
         public DCoreLogger Logger { get; set; }
 
         /// <summary>
+        /// Manages language data for this bot account (using its language).
+        /// </summary>
+        public LanguageManager Languages { get; set;}
+
+        /// <summary>
         /// The ID and token information for <see cref="DiscordBot"/>.
         /// </summary>
         public TokenInfo TokenInfo { get; set; }
@@ -215,6 +220,7 @@ namespace DCore
         public DiscordBot(BotManager manager, TokenInfo token, BotConfig overrideConfig = null, Type extensionType = null)
         {
             Logger = new DCoreLogger(this);
+            Languages = new LanguageManager(this, manager.DCoreConfig);
             Manager = manager;
             TokenInfo = token;
 

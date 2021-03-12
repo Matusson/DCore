@@ -50,7 +50,7 @@ namespace DCore.Configs
         /// <summary>
         /// The language to use with this bot.
         /// </summary>
-        public string Language { get; set; } = "en-us";
+        public string Language { get; set; } = "en";
 
         /// <summary>
         /// Bot's status to use.
