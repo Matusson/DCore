@@ -246,6 +246,10 @@ namespace DCore
                     Config = _loader.LoadConfig(path, typeof(BotConfig), extensionType) as BotConfig;
                 }
             }
+
+            //Start automatically if required
+            if (manager.DCoreConfig.StartBotsOnCreation)
+                _ = Task.Run(() => StartAsync());
         }
 
 
