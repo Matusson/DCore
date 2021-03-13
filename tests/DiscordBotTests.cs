@@ -139,7 +139,7 @@ namespace DCore.Tests
             DCoreConfig config = new DCoreConfig { UseMultipleBots = true };
             BotManager manager = new BotManager(new ConfigManager(config), config);
             manager.LoadAccountsFromFile("TestToken.txt");
-            DiscordBot bot = manager.ActivateBots(1).FirstOrDefault();
+            DiscordBot bot = manager.CreateBots(1).FirstOrDefault();
 
             if (manager.AvailableBotCount != 0)
                 throw new Exception("Incorrect available bot count.");

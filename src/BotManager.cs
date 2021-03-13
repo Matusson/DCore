@@ -70,7 +70,7 @@ namespace DCore
         /// <param name="count"> How many instances to create. </param>
         /// <exception cref="ArgumentOutOfRangeException"> Thrown when requesting more bots than available, or requesting less bots than 1. </exception>
         /// <returns> List of all bots created. </returns>
-        public List<DiscordBot> ActivateBots(int count, Type configExtensionType = null)
+        public List<DiscordBot> CreateBots(int count, Type configExtensionType = null)
         {
             //Ensure there are enough accounts
             if (count > AvailableBotCount)
