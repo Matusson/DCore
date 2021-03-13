@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace DCore
 {
     /// <summary>
-    /// Handles extension methods for IUserMessage from Discord.NET.
+    /// Handles extension methods for Discord.NET modules.
     /// </summary>
-    public static class IUserMessageExtensions
+    public static class DNetExtensions
     {
         /// <summary>
         /// Adds a confirmation emoji to the <paramref name="message"/>.

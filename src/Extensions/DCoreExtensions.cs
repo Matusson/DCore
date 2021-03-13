@@ -1,14 +1,14 @@
-﻿using System;
+﻿using DCore.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using DCore.Helpers;
 
-namespace DCore
+namespace DCore.Extensions
 {
     /// <summary>
-    /// Handles extension methods to BotAccountLoader.
+    /// Handles extension methods of DCore modules.
     /// </summary>
-    public static class BotAccountLoaderExtensions
+    public static class DCoreExtensions
     {
         /// <summary>
         /// <inheritdoc cref="BotAccountLoader.LoadAccountsFromFile(string)"/>
@@ -25,6 +25,17 @@ namespace DCore
             var tokens = loader.LoadAccountsFromFile(pathToFile);
 
             return manager.LoadAccounts(tokens);
+        }
+
+        /// <summary>
+        /// Fetches the translated string for this bot. Short for <see cref="DiscordBot.Languages.GetString()"/>.
+        /// </summary>
+        /// <param name="bot"> The bot to get <see cref="LanguageManager"/> from. </param>
+        /// <param name="identifier"> The identifier of the translated string. </param>
+        /// <returns> The translated string. </returns>
+        public static string GetString(this DiscordBot bot, string identifier)
+        {
+            return bot.Languages.GetString(identifier);
         }
     }
 }
