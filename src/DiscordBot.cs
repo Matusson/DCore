@@ -71,12 +71,12 @@ namespace DCore
         public async Task StartAsync(DiscordSocketConfig config = null)
         {
             //If already running, can't start again
-            if (Client?.ConnectionState == Discord.ConnectionState.Connected)
+            if (Client?.ConnectionState == ConnectionState.Connected)
                 throw new InvalidOperationException("The bot has already started.");
 
             //If config is null, use the default one
             if (config == null)
-                config = new DiscordSocketConfig();
+                config = Manager.DCoreConfig.DefaultSocketConfig;
             _lastConfig = config;
 
             //Initialize the client
@@ -249,7 +249,7 @@ namespace DCore
 
             //Start automatically if required
             if (manager.DCoreConfig.StartBotsOnCreation)
-                _ = Task.Run(() => StartAsync());
+                _ = Task.Run(() => StartAsync(manager.DCoreConfig.DefaultSocketConfig));
         }
 
 

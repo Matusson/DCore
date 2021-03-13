@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Discord.WebSocket;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -39,6 +40,12 @@ namespace DCore.Configs
         /// The path where language files will be read from.
         /// </summary>
         public string LanguagesPath { get; set; } = "Languages\\";
+
+
+        /// <summary>
+        /// The <see cref="DiscordSocketConfig"/> to use by default.
+        /// </summary>
+        public DiscordSocketConfig DefaultSocketConfig { get; set; }
 
 
         /// <summary>
