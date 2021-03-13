@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DCore.Extensions
+namespace DCore
 {
     /// <summary>
     /// Handles extension methods of DCore modules.
