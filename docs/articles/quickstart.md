@@ -18,7 +18,15 @@ BotManager manager = new(configManager, config);
 In this case, make sure that you only have one instance of each in your code.
 
 # Loading bot information
-To manage any bots with BotManager, you first need to load token information into it. The simplest way is to store that information in a file, in which every line consists of the bot ID and a token, separated by a space. You can load that information like this:
+To manage any bots with BotManager, you first need to load token information into it. There are multiple ways to do it.
+For most use cases, you should only use one bot account. In that case, you can simply use:
+```
+ulong botId = 12345678;
+string botToken = "VALIDTOKEN";
+botManager.LoadAccount(botId, botToken);
+```
+
+In case you need multiple accounts, the simplest way is to store that information in a file, in which every line consists of the bot ID and a token, separated by a space. You can load that information like this:
 ```
 string path = "accounts.txt";
 botManager.LoadAccountsFromFile(path);
