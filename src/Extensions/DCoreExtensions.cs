@@ -30,6 +30,20 @@ namespace DCore
         }
 
         /// <summary>
+        /// Loads a single account to the <see cref="BotManager"/>
+        /// </summary>
+        /// <param name="manager"> The <see cref="BotManager"/> to load to. </param>
+        /// <param name="botId"> The ID of the bot. </param>
+        /// <returns> The amount of accounts that were loaded. </returns>
+        public static int LoadAccount(this BotManager manager, ulong botId, string botToken)
+        {
+            //Create the token object
+            TokenInfo info = new TokenInfo(botId, botToken);
+
+            return manager.LoadAccounts(new List<TokenInfo> { info });
+        }
+
+        /// <summary>
         /// Fetches the translated string for this bot. Short for <see cref="DiscordBot.Languages.GetString()"/>.
         /// </summary>
         /// <param name="bot"> The bot to get <see cref="LanguageManager"/> from. </param>
