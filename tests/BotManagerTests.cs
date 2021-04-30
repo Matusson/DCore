@@ -142,7 +142,7 @@ namespace DCore.Tests
             BotManager manager = CreateBotManager(total);
 
             if (activated > 0)
-                manager.CreateBots(activated);
+                manager.ActivateBots(activated);
             int result = manager.AvailableBotCount;
 
             Assert.AreEqual(expected, result);
@@ -156,7 +156,7 @@ namespace DCore.Tests
         {
             BotManager manager = CreateBotManager(5);
 
-            void activate() => manager.CreateBots(parameter);
+            void activate() => manager.ActivateBots(parameter);
 
             Assert.ThrowsException<ArgumentOutOfRangeException>(activate);
         }
@@ -168,7 +168,7 @@ namespace DCore.Tests
         {
             BotManager manager = CreateBotManager(5);
 
-            int result = manager.CreateBots(toActivate).Count;
+            int result = manager.ActivateBots(toActivate).Count;
 
             Assert.AreEqual(toActivate, result);
         }
@@ -180,8 +180,8 @@ namespace DCore.Tests
         {
             BotManager manager = CreateBotManager(5);
 
-            int result = manager.CreateBots(toActivateFirst).Count;
-            result += manager.CreateBots(toActivateSecond).Count;
+            int result = manager.ActivateBots(toActivateFirst).Count;
+            result += manager.ActivateBots(toActivateSecond).Count;
 
             Assert.AreEqual(toActivateFirst + toActivateSecond, result);
         }
@@ -194,8 +194,8 @@ namespace DCore.Tests
         {
             BotManager manager = CreateBotManager(5);
 
-            var bots1 = manager.CreateBots(toActivateFirst);
-            var bots2 = manager.CreateBots(toActivateSecond);
+            var bots1 = manager.ActivateBots(toActivateFirst);
+            var bots2 = manager.ActivateBots(toActivateSecond);
 
             //Ensure that the tokens aren't duplicated
             bool areUnique = bots1.All(x => bots2.Where(y => y.TokenInfo == x.TokenInfo).Count() == 0);
@@ -209,8 +209,8 @@ namespace DCore.Tests
         {
             BotManager manager = CreateBotManager(5);
 
-            manager.CreateBots(toActivateFirst);
-            void activate() => manager.CreateBots(toActivateSecond);
+            manager.ActivateBots(toActivateFirst);
+            void activate() => manager.ActivateBots(toActivateSecond);
 
             Assert.ThrowsException<ArgumentOutOfRangeException>(activate);
         }
@@ -222,7 +222,7 @@ namespace DCore.Tests
         public void GetAllBotsTest(int botCount)
         {
             BotManager manager = CreateBotManager(5);
-            manager.CreateBots(botCount);
+            manager.ActivateBots(botCount);
 
             var result = manager.GetAllBots().Count();
 
@@ -233,7 +233,7 @@ namespace DCore.Tests
         public void GetBot_ID()
         {
             BotManager manager = CreateBotManager(5);
-            manager.CreateBots(5);
+            manager.ActivateBots(5);
 
             var result = manager.GetBot(012345);
 
@@ -244,7 +244,7 @@ namespace DCore.Tests
         public void GetBot_ID_Error()
         {
             BotManager manager = CreateBotManager(5);
-            manager.CreateBots(5);
+            manager.ActivateBots(5);
 
             void get() => manager.GetBot(98765);
 
@@ -255,7 +255,7 @@ namespace DCore.Tests
         public void GetBot_Token()
         {
             BotManager manager = CreateBotManager(5);
-            manager.CreateBots(5);
+            manager.ActivateBots(5);
             TokenInfo info = new TokenInfo(012345, "TOKEN");
 
             var result = manager.GetBot(info);
@@ -267,7 +267,7 @@ namespace DCore.Tests
         public void GetBot_Token_Error()
         {
             BotManager manager = CreateBotManager(5);
-            manager.CreateBots(5);
+            manager.ActivateBots(5);
             TokenInfo info = new TokenInfo(98765, "TOKEN");
 
             void get() => manager.GetBot(info);

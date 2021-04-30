@@ -152,7 +152,7 @@ namespace DCore.Tests
                 logger.LogInformation(LogType.Info, toWrite.ToString());
 
             //The logger doesn't wait for the writing to complete, so wait a bit
-            await Task.Delay(5000);
+            await Task.Delay(6000);
 
             string[] content = File.ReadAllLines(defaultLoggingPath);
             Assert.AreEqual(iterations, content.Length);

@@ -45,7 +45,7 @@ namespace DCore.Configs
         /// <summary>
         /// The <see cref="DiscordSocketConfig"/> to use by default.
         /// </summary>
-        public DiscordSocketConfig DefaultSocketConfig { get; set; }
+        public DiscordSocketConfig DefaultSocketConfig { get; set; } = new DiscordSocketConfig();
 
 
         /// <summary>
