@@ -147,7 +147,7 @@ namespace DCore.Tests
 
             var logger = GetLogger();
 
-            int iterations = 10;
+            int iterations = 5;
             for(int i = 0; i < iterations; i++)
                 logger.LogInformation(LogType.Info, toWrite.ToString());
 

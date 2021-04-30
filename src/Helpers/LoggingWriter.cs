@@ -61,7 +61,7 @@ namespace DCore.Helpers
 
             int retryCount = _logger.Bot.Manager.DCoreConfig.MaxFileWriteAttempts;
             int maxLinesInFile = _logger.Bot.Manager.DCoreConfig.MaxLinesPerLogFile;
-            int msDelayOnRetry = 100;
+            int msDelayOnRetry = 25;
 
             for (int i = 0; i < retryCount; i++)
             {
