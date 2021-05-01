@@ -16,9 +16,9 @@ namespace DCore.Configs
         public bool UseMultipleBots { get; set; } = false;
 
         /// <summary>
-        /// Should bots be automatically started when they're created?
+        /// Should bots be automatically started when they're activated?
         /// </summary>
-        public bool StartBotsOnCreation { get; set; } = true;
+        public bool StartBotsOnActivation { get; set; } = true;
 
         /// <summary>
         /// Should the bot set its status and game when started?
