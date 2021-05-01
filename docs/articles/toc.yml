@@ -2,3 +2,5 @@
   href: intro.md
 - name: Quick Start
   href: quickstart.md
+- name: DiscordBot class
+  href: discordbot.md
