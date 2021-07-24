@@ -22,7 +22,7 @@ namespace DCore.Configs.Tests
                 File.Delete(pathToFile);
 
             var manager = BotManagerTests.CreateBotManager(1);
-            var bot = manager.ActivateBots(1, typeof(GlobalBotConfig)).FirstOrDefault();
+            var bot = manager.RequestBots(1, typeof(GlobalBotConfig)).FirstOrDefault();
 
             BotConfig config = bot.Config;
 
@@ -37,7 +37,7 @@ namespace DCore.Configs.Tests
                 File.Delete(pathToFile);
 
             var manager = BotManagerTests.CreateBotManager(1);
-            var bot = manager.ActivateBots(1, typeof(GlobalBotConfig)).FirstOrDefault();
+            var bot = manager.RequestBots(1, typeof(GlobalBotConfig)).FirstOrDefault();
 
             BotConfig config = bot.Config;
 
@@ -53,11 +53,11 @@ namespace DCore.Configs.Tests
 
             var manager = BotManagerTests.CreateBotManager(1);
             manager.ConfigManager.GlobalBotConfig.DefaultBotConfig.Prefix = "??";   //Change a prefix to make sure the bot has loaded the old config
-            var bot = manager.ActivateBots(1).FirstOrDefault();
+            var bot = manager.RequestBots(1).FirstOrDefault();
             bot.Dispose();
 
             manager.ConfigManager.GlobalBotConfig.DefaultBotConfig.Prefix = "!";
-            bot = manager.ActivateBots(1).FirstOrDefault(); //restart the bot to re-fetch the config
+            bot = manager.RequestBots(1).FirstOrDefault(); //restart the bot to re-fetch the config
 
             BotConfig config = bot.Config;
 
@@ -72,11 +72,11 @@ namespace DCore.Configs.Tests
                 File.Delete(pathToFile);
 
             var manager = BotManagerTests.CreateBotManager(1);
-            var bot = manager.ActivateBots(1, typeof(GlobalBotConfig)).FirstOrDefault();
+            var bot = manager.RequestBots(1, typeof(GlobalBotConfig)).FirstOrDefault();
             (bot.Config.Extension as GlobalBotConfig).DefaultBotConfig.Prefix = "??";
             bot.Dispose();
 
-            bot = manager.ActivateBots(1, typeof(GlobalBotConfig)).FirstOrDefault(); //restart the bot to re-fetch the config
+            bot = manager.RequestBots(1, typeof(GlobalBotConfig)).FirstOrDefault(); //restart the bot to re-fetch the config
 
             GlobalBotConfig config = bot.Config.Extension as GlobalBotConfig;
 
@@ -91,7 +91,7 @@ namespace DCore.Configs.Tests
                 File.Delete(pathToFile);
 
             var manager = BotManagerTests.CreateBotManager(1);
-            var bot = manager.ActivateBots(1).FirstOrDefault();
+            var bot = manager.RequestBots(1).FirstOrDefault();
 
             BotConfig config = bot.Config;
 

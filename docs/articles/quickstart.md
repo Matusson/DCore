@@ -1,5 +1,6 @@
 # Creating Bot Manager
-The first step in using DCore is creating a BotManager. If you're using Dependency Injection, this is trivial:
+The first step in using DCore is creating a BotManager. The BotManager, as name implies, is a class that manages loading account information, distributing it, and also contains various utility functions if you need to use multiple accounts in your program.
+If you're using Dependency Injection, creating one is trivial:
 ```cs
 collection = new ServiceCollection();
 collection.AddDCore(x => {
@@ -7,9 +8,8 @@ collection.AddDCore(x => {
     });
 ```
 This will add all required services into your DI container. You can use the lambda expression to assign config values. This also allows you to specify the config extension Type, which will be described in a separate guide.
-TODO: Types can use T maybe?
 
- That is the recommended way, but in case you can't use DI, you have to manually create the services:
+That is the recommended way, but in case you can't use DI, you have to manually create the services:
  ```cs
 DCoreConfig config = new();
 ConfigManager configManager = new(config);
@@ -40,12 +40,12 @@ botManager.LoadAccounts(accounts);
 ```
 
 # Activating accounts
-The last thing you will need to do is activate the bot accounts:
+The last thing you will need to do is request the bot accounts from the bot manager:
 ```cs
-int toActivate = 1;
-var activatedBots = botManager.ActivateBots(toActivate);
+int requestedBotCount = 1;
+var activatedBots = botManager.RequestBots(requestedBotCount);
 ```
-This will create objects that correspond to the newly created activated bot accounts. 
+This will take the selected number of unused accounts and return them as objects. 
 
 > [!NOTE]
 > Please note that by default, this will not mean that the bots will log into Discord. This process just creates the DiscordBot objects for you to use. 
