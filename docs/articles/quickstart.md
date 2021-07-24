@@ -39,7 +39,7 @@ List<TokenInfo> accounts = new();
 botManager.LoadAccounts(accounts);
 ```
 
-# Activating accounts
+# Requesting accounts
 The last thing you will need to do is request the bot accounts from the bot manager:
 ```cs
 int requestedBotCount = 1;
@@ -49,3 +49,16 @@ This will take the selected number of unused accounts and return them as objects
 
 > [!NOTE]
 > Please note that by default, this will not mean that the bots will log into Discord. This process just creates the DiscordBot objects for you to use. 
+
+# Fetching bots from BotManager
+BotManager.RequestBots() will return a list of bots activated  by that action. However there are other ways to fetch the bots from BotManager. 
+You can use BotManager.GetAllBots() to fetch all currently activated bots:
+```cs
+//This list will contain the list of all bot accounts.
+List<DiscordBot> bots = botManager.GetAllBots();
+```
+or you can use GetBot() to fetch only the bot with the specified ID or TokenInfo:
+```cs
+//This will be the bot with this ID
+ulong botId = 12345678;
+DiscordBot bot = botManager.GetBot(botId);

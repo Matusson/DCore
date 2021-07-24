@@ -18,7 +18,7 @@ namespace DCore.Configs.Tests
             string pathToFile = Path.Combine(_config.ConfigPath, "global.json");
             if (File.Exists(pathToFile))
                 File.Delete(pathToFile);
-            
+
             ConfigManager config = new ConfigManager(_config);
             var globalConfig = config.GlobalBotConfig;
 
@@ -43,19 +43,24 @@ namespace DCore.Configs.Tests
         public void ConfigManager_LoadExisting()
         {
             string pathToFile = Path.Combine(_config.ConfigPath, "global.json");
+            List<ulong> ids = new List<ulong>() { 123456, 234567 };
+
             if (File.Exists(pathToFile))
                 File.Delete(pathToFile);
             _ = new ConfigManager(_config)
             {
                 //Create the old config
-                GlobalBotConfig = new GlobalBotConfig { UseColoredInputInLogs = false }
+                GlobalBotConfig = new GlobalBotConfig
+                {
+                    ManagerIDs = ids
+                }
             };
 
             //Reset the object
             ConfigManager config = new ConfigManager(_config);
             var globalConfig = config.GlobalBotConfig;
 
-            Assert.IsTrue(globalConfig.UseColoredInputInLogs == false);
+            Assert.IsTrue(globalConfig.ManagerIDs == ids);
         }
 
         [TestMethod()]
@@ -73,7 +78,7 @@ namespace DCore.Configs.Tests
             //Reset the object
             ConfigManager config = new ConfigManager(_config, typeof(BotConfig));
             var globalConfig = config.GlobalBotConfig;
-            
+
             Assert.IsTrue(globalConfig.Extension is BotConfig);
         }
 

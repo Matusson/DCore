@@ -248,7 +248,7 @@ namespace DCore
             }
 
             //Start automatically if required
-            if (manager.DCoreConfig.StartBotsOnActivation)
+            if (manager.DCoreConfig.StartBotsWhenRequested)
                 _ = Task.Run(() => StartAsync(manager.DCoreConfig.DefaultSocketConfig));
         }
 

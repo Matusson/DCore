@@ -151,7 +151,7 @@ namespace DCore.Helpers
 
             prefix += $" {GetTimeString()}";
 
-            if (colored && _logger.Bot.Manager.ConfigManager.GlobalBotConfig.UseColoredInputInLogs)
+            if (colored && _logger.Bot.Manager.DCoreConfig.UseColoredConsoleOutput)
                 prefix = prefix.Pastel(color);
 
             return prefix + " |";

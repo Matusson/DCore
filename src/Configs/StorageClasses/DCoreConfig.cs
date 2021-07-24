@@ -16,9 +16,9 @@ namespace DCore.Configs
         public bool UseMultipleBots { get; set; } = false;
 
         /// <summary>
-        /// Should bots be automatically started when they're activated?
+        /// Should bots be automatically started when they're requested from <see cref="BotManager"/>?
         /// </summary>
-        public bool StartBotsOnActivation { get; set; } = true;
+        public bool StartBotsWhenRequested { get; set; } = true;
 
         /// <summary>
         /// Should the bot set its status and game when started?
@@ -47,6 +47,11 @@ namespace DCore.Configs
         /// </summary>
         public DiscordSocketConfig DefaultSocketConfig { get; set; } = new DiscordSocketConfig();
 
+
+        /// <summary>
+        /// Allow the console to color the outputs?
+        /// </summary>
+        public bool UseColoredConsoleOutput { get; set; } = true;
 
         /// <summary>
         /// Maximum allowed retry count for writing to log files.
