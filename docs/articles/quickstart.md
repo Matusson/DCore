@@ -51,7 +51,7 @@ This will take the selected number of unused accounts and return them as objects
 > Please note that by default, this will not mean that the bots will log into Discord. This process just creates the DiscordBot objects for you to use. 
 
 # Fetching bots from BotManager
-BotManager.RequestBots() will return a list of bots activated  by that action. However there are other ways to fetch the bots from BotManager. 
+BotManager.RequestBots() will return a list of bots activated  by that action. However, once bots have been activated via RequestBots(), there are ways to fetch these bots from BotManager. 
 You can use BotManager.GetAllBots() to fetch all currently activated bots:
 ```cs
 //This list will contain the list of all bot accounts.

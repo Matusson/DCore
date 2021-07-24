@@ -26,14 +26,8 @@ It can be configured with DCore Config used while creating the BotManager (or wh
 The bot config contains basic variables that might be useful to all bots, and a save function. However each bot is different, so a config extension can be added. 
 The extension is a custom class that is serialized alongside the config, and can be accessed by using BotConfig.Extension. The Type of extension should be specified in BotManager.RequestBots().
 
-```cs
-var bots = botManager.ActivateBots(1, typeof(ExampleConfigExtension));
-var botConfig = bots.First().Config;
-string example = (botConfig.Extension as ExampleConfigExtension).ExampleCustomVariable;
-```
-
 > [!NOTE]
-> Please note the distinction between GlobalBotConfig, BotConfig, and DCoreConfig. They are explained more thoroughly in the Configuration article.
+> Please note the distinction between GlobalBotConfig, BotConfig, and DCoreConfig. They are explained more thoroughly in the Configuration guide.
 
 # Language Manager
 The Language Manager allows you to use multiple languages in your bot. It uses JSON files in the format of key-value pairs for each language, which should be placed in the LanguagesPath directory specified in the config.
