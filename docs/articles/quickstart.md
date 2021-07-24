@@ -1,5 +1,5 @@
 # Creating Bot Manager
-The first step in using DCore is creating a BotManager. The BotManager, as name implies, is a class that manages loading account information, distributing it, and also contains various utility functions if you need to use multiple accounts in your program.
+The first step in using DCore is creating a BotManager. The BotManager, as name implies, is a class that manages loading account information, distributing it, and also contains various utility functions if you need to use multiple accounts in your software.
 If you're using Dependency Injection, creating one is trivial:
 ```cs
 collection = new ServiceCollection();
@@ -48,10 +48,10 @@ var activatedBots = botManager.RequestBots(requestedBotCount);
 This will take the selected number of unused accounts and return them as objects. 
 
 > [!NOTE]
-> Please note that by default, this will not mean that the bots will log into Discord. This process just creates the DiscordBot objects for you to use. 
+> By default, bots will automatically start up after being requested. You can change this behaviour via DCore config. 
 
 # Fetching bots from BotManager
-BotManager.RequestBots() will return a list of bots activated  by that action. However, once bots have been activated via RequestBots(), there are ways to fetch these bots from BotManager. 
+BotManager.RequestBots() will return a list of bots activated  by that action. Once bots have been activated via RequestBots(), there are ways to fetch these bots from BotManager. 
 You can use BotManager.GetAllBots() to fetch all currently activated bots:
 ```cs
 //This list will contain the list of all bot accounts.
