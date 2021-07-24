@@ -47,7 +47,7 @@ namespace DCore.Configs.Tests
 
             if (File.Exists(pathToFile))
                 File.Delete(pathToFile);
-            _ = new ConfigManager(_config)
+            var manager = new ConfigManager(_config)
             {
                 //Create the old config
                 GlobalBotConfig = new GlobalBotConfig
@@ -60,7 +60,7 @@ namespace DCore.Configs.Tests
             ConfigManager config = new ConfigManager(_config);
             var globalConfig = config.GlobalBotConfig;
 
-            Assert.IsTrue(globalConfig.ManagerIDs == ids);
+            Assert.IsTrue(globalConfig.ManagerIDs.Count == ids.Count);
         }
 
         [TestMethod()]
