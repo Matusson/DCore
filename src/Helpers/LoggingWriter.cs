@@ -67,7 +67,7 @@ namespace DCore.Helpers
             {
                 try
                 {
-                    List<string> lines = new List<string>(250);
+                    List<string> lines = new List<string>(_logger.Bot.Manager.DCoreConfig.MaxLinesPerLogFile + 1);
 
                     //Make sure the file exists, and read it
                     if (File.Exists(path))

@@ -56,11 +56,11 @@ namespace DCore.Configs
         /// <summary>
         /// Maximum allowed retry count for writing to log files.
         /// </summary>
-        public int MaxFileWriteAttempts { get; set; } = 10;
+        public int MaxFileWriteAttempts { get; set; } = 15;
 
         /// <summary>
         /// Maximum allowed line count per log file.
         /// </summary>
-        public int MaxLinesPerLogFile { get; set; } = 2000;
+        public int MaxLinesPerLogFile { get; set; } = 2500;
     }
 }
