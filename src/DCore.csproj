@@ -2,6 +2,22 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Version>0.1.0</Version>
+    <Authors>Matusson</Authors>
+    <Company />
+    <Description>A library providing common functionality for Discord.NET bots.</Description>
+    <Copyright>2021 Matusson</Copyright>
+    <PackageProjectUrl>https://github.com/Matusson/DCore</PackageProjectUrl>
+    <PackageIcon>square.png</PackageIcon>
+    <PackageIconUrl />
+    <RepositoryUrl>https://github.com/Matusson/DCore</RepositoryUrl>
+    <PackageTags>Discord, Discord.NET, discordapp, utility, bots</PackageTags>
+    <PackageReleaseNotes>Test release</PackageReleaseNotes>
+    <AssemblyVersion>0.0.1.0</AssemblyVersion>
+    <FileVersion>0.0.1.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,6 +25,13 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Pastel" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\docs\images\square.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
