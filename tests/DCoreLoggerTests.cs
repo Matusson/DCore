@@ -141,8 +141,8 @@ namespace DCore.Tests
             if (File.Exists(defaultLoggingPath))
                 File.Delete(defaultLoggingPath);
 
-            StringBuilder toWrite = new StringBuilder(1001);
-            for (int i = 0; i < 1000; i++)
+            StringBuilder toWrite = new StringBuilder(101);
+            for (int i = 0; i < 100; i++)
                 toWrite.Append("A");
 
             var logger = GetLogger();
@@ -152,7 +152,7 @@ namespace DCore.Tests
                 logger.LogInformation(LogType.Info, toWrite.ToString());
 
             //The logger doesn't wait for the writing to complete, so wait a bit
-            await Task.Delay(10000);
+            await Task.Delay(500);
 
             string[] content = File.ReadAllLines(defaultLoggingPath);
             Assert.AreEqual(iterations, content.Length);
