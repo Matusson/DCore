@@ -199,7 +199,7 @@ namespace DCore
         /// <returns></returns>
         private Task Ready()
         {
-            BotReadyEvent();
+            BotReadyEvent?.Invoke();
             return Task.CompletedTask;
         }
 
