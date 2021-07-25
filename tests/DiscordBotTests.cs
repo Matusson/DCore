@@ -9,6 +9,7 @@ using Discord.WebSocket;
 using DCore.Helpers;
 using DCore.Configs;
 using Discord;
+using System.IO;
 
 namespace DCore.Tests
 {
@@ -26,6 +27,11 @@ namespace DCore.Tests
             DCoreConfig config = new DCoreConfig();
             if (manager == null)
                 manager = new BotManager(new ConfigManager(config), config);
+
+            if (!File.Exists("TestToken.txt"))
+            {
+                throw new ArgumentNullException("You need to provide a TestToken.txt file with correct token information to run this test!");
+            }
 
             BotAccountLoader loader = new BotAccountLoader();
             var token = loader.LoadAccountsFromFile("TestToken.txt").FirstOrDefault();
@@ -138,6 +144,11 @@ namespace DCore.Tests
         {
             DCoreConfig config = new DCoreConfig { UseMultipleBots = true };
             BotManager manager = new BotManager(new ConfigManager(config), config);
+
+            if (!File.Exists("TestToken.txt"))
+            {
+                throw new ArgumentNullException("You need to provide a TestToken.txt file with correct token information to run this test!");
+            }
             manager.LoadAccountsFromFile("TestToken.txt");
             DiscordBot bot = manager.RequestBots(1).FirstOrDefault();
 
