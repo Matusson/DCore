@@ -148,8 +148,11 @@ namespace DCore.Tests
             var logger = GetLogger();
 
             int iterations = 5;
-            for(int i = 0; i < iterations; i++)
+            for (int i = 0; i < iterations; i++)
+            {
                 logger.LogInformation(LogType.Info, toWrite.ToString());
+                await Task.Delay(5);
+            }
 
             //The logger doesn't wait for the writing to complete, so wait a bit
             await Task.Delay(500);
