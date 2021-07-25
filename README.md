@@ -1,4 +1,4 @@
-![alt text](.\docs\images\wide.png "DCore Logo")
+![DCore Logo](/docs/images/wide.png?raw=true "DCore Logo")
 
 DCore is simple library providing common functionality for [Discord.NET](https://github.com/discord-net/Discord.Net) bots, making developing them quicker and simpler.
 <br><br>
