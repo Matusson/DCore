@@ -17,7 +17,7 @@ This class will be the most useful one for most applications.
 
 # Config Extensions
 The included settings in GlobalBotConfig and BotConfig classes only include general settings, likely to be used in a standard bot. However most bots have special requirements, not covered by the included settings. 
-You can still store those settings using DCore's config system by using Extensions. The Extension is a custom class that is serialized alongside the base config. Its type has to be specified when creating the ConfigManager (Global Config) and using BotManager.RequestBots (Bot Config).
+You can still store those settings using DCore's config system by using Extensions. The Extension is a custom class that is serialized alongside the base config. Its type has to be specified when creating the BotManager (Global Config) and using BotManager.RequestBots (Bot Config).
 
 ```cs
 var bots = botManager.RequestBots(1, typeof(ExampleBotConfigExtension));

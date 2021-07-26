@@ -24,7 +24,7 @@ namespace DCore
         /// <param name="message"> The message to log. </param>
         public void Info(string message)
         {
-            LogInformation(LogType.Info, message);
+            Log(LogType.Info, message);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace DCore
         /// <param name="message"> The message to log. </param>
         public void Info(object message)
         {
-            LogInformation(LogType.Info, message.ToString());
+            Log(LogType.Info, message.ToString());
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace DCore
         /// <param name="message"> The message to log. </param>
         public void Debug(string message)
         {
-            LogInformation(LogType.Debug, message);
+            Log(LogType.Debug, message);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace DCore
         /// <param name="message"> The message to log. </param>
         public void Debug(object message)
         {
-            LogInformation(LogType.Debug, message.ToString());
+            Log(LogType.Debug, message.ToString());
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace DCore
         /// <param name="message"> The message to log. </param>
         public void Warn(string message)
         {
-            LogInformation(LogType.Warn, message);
+            Log(LogType.Warn, message);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace DCore
         /// <param name="message"> The message to log. </param>
         public void Warn(object message)
         {
-            LogInformation(LogType.Warn, message.ToString());
+            Log(LogType.Warn, message.ToString());
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace DCore
         /// <param name="message"> The message to log. </param>
         public void Error(string message)
         {
-            LogInformation(LogType.Error, message);
+            Log(LogType.Error, message);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace DCore
         /// <param name="message"> The message to log. </param>
         public void Error(object message)
         {
-            LogInformation(LogType.Error, message.ToString());
+            Log(LogType.Error, message.ToString());
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace DCore
         /// <param name="message"> The message to log. </param>
         public void CriticalError(string message)
         {
-            LogInformation(LogType.CriticalError, message);
+            Log(LogType.CriticalError, message);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace DCore
         /// <param name="message"> The message to log. </param>
         public void CriticalError(object message)
         {
-            LogInformation(LogType.CriticalError, message.ToString());
+            Log(LogType.CriticalError, message.ToString());
         }
 
 
@@ -115,7 +115,7 @@ namespace DCore
         /// </summary>
         /// <param name="type"> Type of log. </param>
         /// <param name="message"> Message to log. </param>
-        public void LogInformation(LogType type, string message)
+        public void Log(LogType type, string message)
         {
             //Log the output to console and then to file
             LoggingWriter writer = new LoggingWriter(this);

@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DCore
 {
@@ -152,7 +153,52 @@ namespace DCore
         }
 
         /// <summary>
-        /// Constructs a BotManager with the specified config.
+        /// Adds DCore-related services to the DI container.
+        /// </summary>
+        /// <param name="services"> The DI Container. </param>
+        /// <exception cref="InvalidOperationException"> Thrown when UseMultipleBots is false and no bots have been loaded. </exception>
+        /// <returns> DI Container with DCore services added. </returns>
+        public IServiceCollection AddDCoreServices(IServiceCollection services)
+        {
+            //Add base services
+            services
+                .AddSingleton(DCoreConfig)
+                .AddSingleton(ConfigManager)
+                .AddSingleton(this);
+
+            //If using multiple bots, don't add the DiscordSocketClient
+            if (DCoreConfig.UseMultipleBots)
+                return services;
+
+            if (_activeBots.Count == 0)
+                throw new InvalidOperationException("Cannot add DiscordSocketClient to DI Container if no bots are active.");
+
+            DiscordBot bot = _activeBots.First();
+            services
+                .AddSingleton(bot)
+                .AddSingleton(bot.Client)
+                .AddSingleton(bot.Logger)
+                .AddSingleton(bot.Config)
+                .AddSingleton(bot.Languages);
+
+            return services;
+        }
+
+        /// <summary>
+        /// Constructs a BotManager with specified DCoreConfig and ExtensionType.
+        /// </summary>
+        /// <param name="configAction"></param>
+        /// <param name="extensionType"></param>
+        public BotManager(Action<DCoreConfig> configAction = default, Type extensionType = null)
+        {
+            DCoreConfig = new DCoreConfig();
+            configAction?.Invoke(DCoreConfig);
+
+            ConfigManager = new ConfigManager(DCoreConfig, extensionType);
+        }
+
+        /// <summary>
+        /// Constructs a BotManager with manually specified ConfigManager. Not recommended.
         /// </summary>
         /// <param name="dcoreConfig"> The config to use. </param>
         public BotManager (ConfigManager configService, DCoreConfig dcoreConfig)
