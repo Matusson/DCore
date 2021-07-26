@@ -1,21 +1,13 @@
 # Creating Bot Manager
 The first step in using DCore is creating a BotManager. The BotManager, as name implies, is a class that manages loading account information, distributing it, and also contains various utility functions if you need to use multiple accounts in your software.
-If you're using Dependency Injection, creating one is trivial:
+The recommended way to do it is:
 ```cs
-collection = new ServiceCollection();
-collection.AddDCore(x => {
-	x.UseMultipleBots = true;
+BotManager manager = new BotManager(x => {
+	x.UseMultipleBots = false;
     });
 ```
-This will add all required services into your DI container. You can use the lambda expression to assign config values. This also allows you to specify the config extension Type, which will be described in a separate guide.
-
-That is the recommended way, but in case you can't use DI, you have to manually create the services:
- ```cs
-DCoreConfig config = new();
-ConfigManager configManager = new(config);
-BotManager manager = new(configManager, config);
-```
-In this case, make sure that you only have one instance of each in your code.
+You can use the lambda expression to assign config values. This also allows you to specify the config extension Type, which will be described in a separate guide.
+Note that this approach does not use Dependency Injection. This is because if you wish to use DI, you will probably also want DiscordSocketClient in your DI Container, which will be created later.
 
 # Loading bot information
 To manage any bots with BotManager, you first need to load token information into it. There are multiple ways to do it.
