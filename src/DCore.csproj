@@ -5,7 +5,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>0.2.0</Version>
+    <Version>0.3.0</Version>
     <Authors>Matusson</Authors>
     <Company />
     <Description>A library providing common functionality for Discord.NET bots.</Description>
@@ -15,9 +15,9 @@
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/Matusson/DCore</RepositoryUrl>
     <PackageTags>Discord, Discord.NET, discordapp, utility, bots</PackageTags>
-    <PackageReleaseNotes>- Removed the requirement to use DI for the setup</PackageReleaseNotes>
-    <AssemblyVersion>0.0.2.0</AssemblyVersion>
-    <FileVersion>0.0.2.0</FileVersion>
+    <PackageReleaseNotes>- Added other DI services to the DI container when registering</PackageReleaseNotes>
+    <AssemblyVersion>0.0.3.0</AssemblyVersion>
+    <FileVersion>0.0.3.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

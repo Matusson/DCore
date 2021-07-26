@@ -176,7 +176,10 @@ namespace DCore
             DiscordBot bot = _activeBots.First();
             services
                 .AddSingleton(bot)
-                .AddSingleton(bot.Client);
+                .AddSingleton(bot.Client)
+                .AddSingleton(bot.Logger)
+                .AddSingleton(bot.Config)
+                .AddSingleton(bot.Languages);
 
             return services;
         }
