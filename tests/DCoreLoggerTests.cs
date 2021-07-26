@@ -33,7 +33,7 @@ namespace DCore.Tests
                 File.Delete(defaultLoggingPath);
 
             var logger = GetLogger();
-            logger.LogInformation(LogType.Info, "TEST");
+            logger.Log(LogType.Info, "TEST");
 
             //The logger doesn't wait for the writing to complete, so wait a bit
             await Task.Delay(10);
@@ -52,7 +52,7 @@ namespace DCore.Tests
                 File.Delete(expectedLogFilePath);
 
             var logger = GetLogger(true);
-            logger.LogInformation(LogType.Info, "TEST");
+            logger.Log(LogType.Info, "TEST");
 
             //The logger doesn't wait for the writing to complete, so wait a bit
             await Task.Delay(20);
@@ -71,7 +71,7 @@ namespace DCore.Tests
                 File.Delete(expectedLogFilePath);
 
             var logger = GetLogger();
-            logger.LogInformation(LogType.Info, "TEST");
+            logger.Log(LogType.Info, "TEST");
 
             //The logger doesn't wait for the writing to complete, so wait a bit
             await Task.Delay(20);
@@ -86,7 +86,7 @@ namespace DCore.Tests
                 File.Delete(defaultLoggingPath);
 
             var logger = GetLogger();
-            logger.LogInformation(LogType.Info, "TEST");
+            logger.Log(LogType.Info, "TEST");
 
             //The logger doesn't wait for the writing to complete, so wait a bit
             await Task.Delay(10);
@@ -103,7 +103,7 @@ namespace DCore.Tests
                 File.Delete(defaultLoggingPath);
 
             var logger = GetLogger(true);
-            logger.LogInformation(LogType.Info, "TEST");
+            logger.Log(LogType.Info, "TEST");
 
             //The logger doesn't wait for the writing to complete, so wait a bit
             await Task.Delay(10);
@@ -124,7 +124,7 @@ namespace DCore.Tests
                 toWrite.Append("A");
 
             var logger = GetLogger();
-            logger.LogInformation(LogType.Info, toWrite.ToString());
+            logger.Log(LogType.Info, toWrite.ToString());
             DateTime startedWriting = DateTime.UtcNow;
 
             //The logger doesn't wait for the writing to complete, so wait a bit
@@ -150,7 +150,7 @@ namespace DCore.Tests
             int iterations = 5;
             for (int i = 0; i < iterations; i++)
             {
-                logger.LogInformation(LogType.Info, toWrite.ToString());
+                logger.Log(LogType.Info, toWrite.ToString());
                 await Task.Delay(5);
             }
 
