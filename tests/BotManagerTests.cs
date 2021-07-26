@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Text;
 using DCore.Configs;
 using System.Linq;
+using Microsoft.Extensions.DependencyInjection;
+using Discord.WebSocket;
+using System.Threading.Tasks;
 
 namespace DCore.Tests
 {
@@ -312,6 +315,43 @@ namespace DCore.Tests
             void get() => manager.GetBot(info);
 
             Assert.ThrowsException<ArgumentException>(get);
+        }
+
+        [TestMethod]
+        public void AddDCoreServices_NoBots()
+        {
+            BotManager manager = new BotManager();
+
+            ServiceCollection services = new ServiceCollection();
+            Assert.ThrowsException<InvalidOperationException>(() => manager.AddDCoreServices(services));
+        }
+
+        [TestMethod]
+        [DeploymentItem("TestToken.txt")]
+        public async Task AddDCoreServices_SingleBot()
+        {
+            BotManager manager = new BotManager();
+            manager.LoadAccountsFromFile("TestToken.txt");
+            var bot = manager.RequestBots(1).First();
+            await bot.StartAsync();
+
+            ServiceCollection services = new ServiceCollection();
+            manager.AddDCoreServices(services);
+
+            var provider = services.BuildServiceProvider();
+            Assert.IsTrue(provider.GetService<DiscordBot>() != null);
+        }
+
+        [TestMethod]
+        public void AddDCoreServices_MultipleBots()
+        {
+            BotManager manager = CreateBotManager(5);
+
+            ServiceCollection services = new ServiceCollection();
+            manager.AddDCoreServices(services);
+
+            var provider = services.BuildServiceProvider();
+            Assert.IsTrue(provider.GetService<DiscordBot>() == null && provider.GetService<DiscordSocketClient>() == null);
         }
 
         /// <summary>
