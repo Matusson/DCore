@@ -163,7 +163,7 @@ namespace DCore
             services
                 .AddSingleton(DCoreConfig)
                 .AddSingleton(ConfigManager)
-                .AddSingleton<BotManager>();
+                .AddSingleton(this);
 
             //If using multiple bots, don't add the DiscordSocketClient
             if (DCoreConfig.UseMultipleBots)
