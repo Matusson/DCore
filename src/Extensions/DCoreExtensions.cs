@@ -55,6 +55,7 @@ namespace DCore
             return bot.Languages.GetString(identifier);
         }
 
+        /*
         /// <summary>
         /// Adds DCore services to the <see cref="IServiceCollection"/>.
         /// </summary>
@@ -76,6 +77,6 @@ namespace DCore
                 .AddSingleton<BotManager>();
 
             return services;
-        }
+        }*/
     }
 }

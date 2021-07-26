@@ -160,5 +160,18 @@ namespace DCore
             DCoreConfig = dcoreConfig;
             ConfigManager = configService;
         }
+
+        /// <summary>
+        /// Constructs a BotManager with specified DCoreConfig and ExtensionType.
+        /// </summary>
+        /// <param name="configAction"></param>
+        /// <param name="extensionType"></param>
+        public BotManager (Action<DCoreConfig> configAction = default, Type extensionType = null)
+        {
+            DCoreConfig = new DCoreConfig();
+            configAction?.Invoke(DCoreConfig);
+
+            ConfigManager = new ConfigManager(DCoreConfig, extensionType);
+        }
     }
 }
