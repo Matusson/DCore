@@ -12,6 +12,46 @@ namespace DCore.Tests
     public class BotManagerTests
     {
         [TestMethod()]
+        public void SimplifiedInitialization_Config_MultipleBots()
+        {
+            BotManager manager = new BotManager(x => x.UseMultipleBots = true);
+            List<TokenInfo> accounts = new List<TokenInfo>
+            {
+                new TokenInfo(012345, "TOKEN"),
+                new TokenInfo(123456, "TOKEN"),
+                new TokenInfo(234567, "TOKEN")
+            };
+
+            int result = manager.LoadAccounts(accounts);
+
+            Assert.AreEqual(3, result);
+        }
+
+        [TestMethod()]
+        public void SimplifiedInitialization_Config_SingleBotOnly()
+        {
+            BotManager manager = new BotManager();
+            List<TokenInfo> accounts = new List<TokenInfo>
+            {
+                new TokenInfo(012345, "TOKEN"),
+                new TokenInfo(123456, "TOKEN"),
+                new TokenInfo(234567, "TOKEN")
+            };
+
+            Assert.ThrowsException<InvalidOperationException>(() => manager.LoadAccounts(accounts));
+        }
+
+        [TestMethod()]
+        public void SimplifiedInitialization_ExtensionType()
+        {
+            //Kinda weird extension type, but it's unnecessary to create a custom type for test
+            BotManager manager = new BotManager(extensionType: typeof(TokenInfo));
+
+            Assert.IsTrue(!manager.ConfigManager.GlobalBotConfig.IsExtensionNull 
+                && manager.ConfigManager.GlobalBotConfig.Extension is TokenInfo);
+        }
+
+        [TestMethod()]
         public void LoadAccounts_UniqueOnly()
         {
             DCoreConfig config = new DCoreConfig { UseMultipleBots = true };
@@ -131,7 +171,6 @@ namespace DCore.Tests
 
             Assert.ThrowsException<InvalidOperationException>(load);
         }
-
 
         [DataTestMethod]
         [DataRow(1, 0, 1)]
