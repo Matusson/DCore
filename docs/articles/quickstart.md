@@ -47,11 +47,11 @@ If you wish to use Dependency Injection, you can register DCore services with Bo
 ```cs
 botManager.AddDCoreServices(serviceContainer);
 ```
-It's recommended that you do this after requesting bots. This will always add DCoreConfig and the BotManager, but if a bot has been requested, this will also add DiscordBot and its services (DiscordSocketClient, DCoreLogger, BotConfig, LanguageManager) to the DI container.
+It's recommended that you do this after requesting the bot. This will always add DCoreConfig and the BotManager, but if a bot has been requested, this will also add DiscordBot and its services (DiscordSocketClient, DCoreLogger, BotConfig, LanguageManager) to the DI container.
 Also note that if you set UseMultipleBots to true in DCoreConfig, this will not add the bots or their services to the DI container.
 
 # Fetching bots from BotManager
-BotManager.RequestBots() will return a list of bots activated  by that action. Once bots have been activated via RequestBots(), there are ways to fetch these bots from BotManager. 
+BotManager.RequestBots() will return a list of bots activated  by that action. Once bots have been activated via RequestBots(), there are other ways to fetch these bots from BotManager. 
 You can use BotManager.GetAllBots() to fetch all currently activated bots:
 ```cs
 //This list will contain the list of all bot accounts.
