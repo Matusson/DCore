@@ -156,6 +156,7 @@ namespace DCore
         /// Adds DCore-related services to the DI container.
         /// </summary>
         /// <param name="services"> The DI Container. </param>
+        /// <exception cref="InvalidOperationException"> Thrown when UseMultipleBots is false and no bots have been loaded. </exception>
         /// <returns> DI Container with DCore services added. </returns>
         public IServiceCollection AddDCoreServices(IServiceCollection services)
         {
