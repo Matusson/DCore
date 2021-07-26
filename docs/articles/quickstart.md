@@ -43,7 +43,7 @@ This will take the selected number of unused accounts and return them as objects
 > By default, bots will automatically start up after being requested. You can change this behaviour via DCore config. 
 
 # Dependency Injection
-If you wish to use Dependency Injection, you can register your services with BotManager.AddDCoreServices(IServiceCollection):
+If you wish to use Dependency Injection, you can register DCore services with BotManager.AddDCoreServices(IServiceCollection):
 ```cs
 botManager.AddDCoreServices(serviceContainer);
 ```
