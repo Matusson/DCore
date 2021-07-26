@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DCore
 {
@@ -149,6 +150,34 @@ namespace DCore
             {
                 await bot.RestartAsync();
             }
+        }
+
+        /// <summary>
+        /// Adds DCore-related services to the DI container.
+        /// </summary>
+        /// <param name="services"> The DI Container. </param>
+        /// <returns> DI Container with DCore services added. </returns>
+        public IServiceCollection AddDCoreServices(IServiceCollection services)
+        {
+            //Add base services
+            services
+                .AddSingleton(DCoreConfig)
+                .AddSingleton(ConfigManager)
+                .AddSingleton<BotManager>();
+
+            //If using multiple bots, don't add the DiscordSocketClient
+            if (DCoreConfig.UseMultipleBots)
+                return services;
+
+            if (_activeBots.Count == 0)
+                throw new InvalidOperationException("Cannot add DiscordSocketClient to DI Container if no bots are active.");
+
+            DiscordBot bot = _activeBots.First();
+            services
+                .AddSingleton(bot)
+                .AddSingleton(bot.Client);
+
+            return services;
         }
 
         /// <summary>
