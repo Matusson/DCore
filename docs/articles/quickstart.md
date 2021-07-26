@@ -42,6 +42,14 @@ This will take the selected number of unused accounts and return them as objects
 > [!NOTE]
 > By default, bots will automatically start up after being requested. You can change this behaviour via DCore config. 
 
+# Dependency Injection
+If you wish to use Dependency Injection, you can register your services with BotManager.AddDCoreServices(IServiceCollection):
+```cs
+botManager.AddDCoreServices(serviceContainer);
+```
+It's recommended that you do this after requesting bots. This will always add DCoreConfig and the BotManager, but if a bot has been requested, this will also add DiscordBot and DiscordSocketClient to the DI container.
+Also note that if you set UseMultipleBots to true in DCoreConfig, this will not add the bots to the DI container.
+
 # Fetching bots from BotManager
 BotManager.RequestBots() will return a list of bots activated  by that action. Once bots have been activated via RequestBots(), there are ways to fetch these bots from BotManager. 
 You can use BotManager.GetAllBots() to fetch all currently activated bots:
