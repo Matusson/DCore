@@ -15,7 +15,7 @@
     <PackageIconUrl />
     <RepositoryUrl>https://github.com/Matusson/DCore</RepositoryUrl>
     <PackageTags>Discord, Discord.NET, discordapp, utility, bots</PackageTags>
-    <PackageReleaseNotes>- Added other DI services to the DI container when registering</PackageReleaseNotes>
+    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.0.0</FileVersion>
   </PropertyGroup>
