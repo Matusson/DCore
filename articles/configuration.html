@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Config Types </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Config Types ">
+    <meta name="generator" content="docfx 2.58.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+
+<p>This guide goes more in-depth on how to use the configuration functions in DCore.
+It only explains the general concepts, specific settings are documented in the API portion of this documentation (and available via Intellisense).</p>
+<h1 id="config-types">Config Types</h1>
+<h2 id="dcore-config">DCore Config</h2>
+<p>This config class stores information <strong>specific to the functioning of the library itself.</strong> The settings are not saved to any files.</p>
+<h2 id="global-bot-config">Global Bot Config</h2>
+<p>This config class stores information <strong>not related to the functioning of the library, but that apply to all bots.</strong> It can be manually modified as it's saved as a JSON file.
+It's shared by all accounts, so it's useful for creating universal configuration settings. It can be accessed via ConfigManager in BotManager.</p>
+<h2 id="bot-config">Bot Config</h2>
+<p>This config class stores information <strong>relating to a specific bot account.</strong> It's saved as a JSON file for each bot account.
+This class will be the most useful one for most applications.</p>
+<h1 id="config-extensions">Config Extensions</h1>
+<p>The included settings in GlobalBotConfig and BotConfig classes only include general settings, likely to be used in a standard bot. However most bots have special requirements, not covered by the included settings.
+You can still store those settings using DCore's config system by using Extensions. The Extension is a custom class that is serialized alongside the base config. Its type has to be specified when creating the BotManager (Global Config) and using BotManager.RequestBots (Bot Config).</p>
+<pre><code class="lang-cs">var bots = botManager.RequestBots(1, typeof(ExampleBotConfigExtension));
+var botConfig = bots.First().Config;
+string example = (botConfig.Extension as ExampleBotConfigExtension).ExampleCustomVariable;
+</code></pre>
+<p>Extensions can be any type, and saving/loading those will be handled automatically. You can access them via the Extension property in the respective configuration classes, but you need to cast them.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Matusson/DCore/blob/master/docs/articles/configuration.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

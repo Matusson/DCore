@@ -1,0 +1,749 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class BotManager
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class BotManager
+   ">
+    <meta name="generator" content="docfx 2.58.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="DCore.BotManager">
+  
+  
+  <h1 id="DCore_BotManager" data-uid="DCore.BotManager" class="text-break">Class BotManager
+  </h1>
+  <div class="markdown level0 summary"><p>Manages <a class="xref" href="DCore.DiscordBot.html">DiscordBot</a> accounts.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">BotManager</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="DCore.html">DCore</a></h6>
+  <h6><strong>Assembly</strong>: DCore.dll</h6>
+  <h5 id="DCore_BotManager_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class BotManager</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_BotManager__ctor_DCore_Configs_ConfigManager_DCore_Configs_DCoreConfig_.md&amp;value=---%0Auid%3A%20DCore.BotManager.%23ctor(DCore.Configs.ConfigManager%2CDCore.Configs.DCoreConfig)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/BotManager.cs/#L204">View Source</a>
+  </span>
+  <a id="DCore_BotManager__ctor_" data-uid="DCore.BotManager.#ctor*"></a>
+  <h4 id="DCore_BotManager__ctor_DCore_Configs_ConfigManager_DCore_Configs_DCoreConfig_" data-uid="DCore.BotManager.#ctor(DCore.Configs.ConfigManager,DCore.Configs.DCoreConfig)">BotManager(ConfigManager, DCoreConfig)</h4>
+  <div class="markdown level1 summary"><p>Constructs a BotManager with manually specified ConfigManager. Not recommended.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BotManager(ConfigManager configService, DCoreConfig dcoreConfig)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DCore.Configs.ConfigManager.html">ConfigManager</a></td>
+        <td><span class="parametername">configService</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="DCore.Configs.DCoreConfig.html">DCoreConfig</a></td>
+        <td><span class="parametername">dcoreConfig</span></td>
+        <td><p>The config to use.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_BotManager__ctor_System_Action_DCore_Configs_DCoreConfig__System_Type_.md&amp;value=---%0Auid%3A%20DCore.BotManager.%23ctor(System.Action%7BDCore.Configs.DCoreConfig%7D%2CSystem.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/BotManager.cs/#L192">View Source</a>
+  </span>
+  <a id="DCore_BotManager__ctor_" data-uid="DCore.BotManager.#ctor*"></a>
+  <h4 id="DCore_BotManager__ctor_System_Action_DCore_Configs_DCoreConfig__System_Type_" data-uid="DCore.BotManager.#ctor(System.Action{DCore.Configs.DCoreConfig},System.Type)">BotManager(Action&lt;DCoreConfig&gt;, Type)</h4>
+  <div class="markdown level1 summary"><p>Constructs a BotManager with specified DCoreConfig and ExtensionType.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BotManager(Action&lt;DCoreConfig&gt; configAction = null, Type extensionType = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<a class="xref" href="DCore.Configs.DCoreConfig.html">DCoreConfig</a>&gt;</td>
+        <td><span class="parametername">configAction</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><span class="parametername">extensionType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_BotManager_AvailableBotCount.md&amp;value=---%0Auid%3A%20DCore.BotManager.AvailableBotCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/BotManager.cs/#L38">View Source</a>
+  </span>
+  <a id="DCore_BotManager_AvailableBotCount_" data-uid="DCore.BotManager.AvailableBotCount*"></a>
+  <h4 id="DCore_BotManager_AvailableBotCount" data-uid="DCore.BotManager.AvailableBotCount">AvailableBotCount</h4>
+  <div class="markdown level1 summary"><p>The amount of bot accounts that aren't in use.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int AvailableBotCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_BotManager_ConfigManager.md&amp;value=---%0Auid%3A%20DCore.BotManager.ConfigManager%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/BotManager.cs/#L22">View Source</a>
+  </span>
+  <a id="DCore_BotManager_ConfigManager_" data-uid="DCore.BotManager.ConfigManager*"></a>
+  <h4 id="DCore_BotManager_ConfigManager" data-uid="DCore.BotManager.ConfigManager">ConfigManager</h4>
+  <div class="markdown level1 summary"><p>The config manager for this <a class="xref" href="DCore.BotManager.html">BotManager</a> service.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ConfigManager ConfigManager { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DCore.Configs.ConfigManager.html">ConfigManager</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_BotManager_TotalBotCount.md&amp;value=---%0Auid%3A%20DCore.BotManager.TotalBotCount%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/BotManager.cs/#L27">View Source</a>
+  </span>
+  <a id="DCore_BotManager_TotalBotCount_" data-uid="DCore.BotManager.TotalBotCount*"></a>
+  <h4 id="DCore_BotManager_TotalBotCount" data-uid="DCore.BotManager.TotalBotCount">TotalBotCount</h4>
+  <div class="markdown level1 summary"><p>The total amount of bot accounts loaded.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int TotalBotCount { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_BotManager_AddDCoreServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_.md&amp;value=---%0Auid%3A%20DCore.BotManager.AddDCoreServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/BotManager.cs/#L161">View Source</a>
+  </span>
+  <a id="DCore_BotManager_AddDCoreServices_" data-uid="DCore.BotManager.AddDCoreServices*"></a>
+  <h4 id="DCore_BotManager_AddDCoreServices_Microsoft_Extensions_DependencyInjection_IServiceCollection_" data-uid="DCore.BotManager.AddDCoreServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">AddDCoreServices(IServiceCollection)</h4>
+  <div class="markdown level1 summary"><p>Adds DCore-related services to the DI container.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IServiceCollection AddDCoreServices(IServiceCollection services)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.DependencyInjection.IServiceCollection</span></td>
+        <td><span class="parametername">services</span></td>
+        <td><p>The DI Container.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.DependencyInjection.IServiceCollection</span></td>
+        <td><p>DI Container with DCore services added.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>Thrown when UseMultipleBots is false and no bots have been loaded.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_BotManager_GetAllBots.md&amp;value=---%0Auid%3A%20DCore.BotManager.GetAllBots%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/BotManager.cs/#L106">View Source</a>
+  </span>
+  <a id="DCore_BotManager_GetAllBots_" data-uid="DCore.BotManager.GetAllBots*"></a>
+  <h4 id="DCore_BotManager_GetAllBots" data-uid="DCore.BotManager.GetAllBots">GetAllBots()</h4>
+  <div class="markdown level1 summary"><p>Fetches all active bots.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;DiscordBot&gt; GetAllBots()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="DCore.DiscordBot.html">DiscordBot</a>&gt;</td>
+        <td><p>List of all currently active bots.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_BotManager_GetBot_DCore_TokenInfo_.md&amp;value=---%0Auid%3A%20DCore.BotManager.GetBot(DCore.TokenInfo)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/BotManager.cs/#L133">View Source</a>
+  </span>
+  <a id="DCore_BotManager_GetBot_" data-uid="DCore.BotManager.GetBot*"></a>
+  <h4 id="DCore_BotManager_GetBot_DCore_TokenInfo_" data-uid="DCore.BotManager.GetBot(DCore.TokenInfo)">GetBot(TokenInfo)</h4>
+  <div class="markdown level1 summary"><p>Fetches a <a class="xref" href="DCore.DiscordBot.html">DiscordBot</a> with the specified <a class="xref" href="DCore.TokenInfo.html">TokenInfo</a> assigned.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DiscordBot GetBot(TokenInfo token)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DCore.TokenInfo.html">TokenInfo</a></td>
+        <td><span class="parametername">token</span></td>
+        <td><p>The <a class="xref" href="DCore.TokenInfo.html">TokenInfo</a> of the matching bot.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DCore.DiscordBot.html">DiscordBot</a></td>
+        <td><p>The <a class="xref" href="DCore.DiscordBot.html">DiscordBot</a> with this <a class="xref" href="DCore.TokenInfo.html">TokenInfo</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>Thrown when a bot with this <a class="xref" href="DCore.TokenInfo.html">TokenInfo</a> doesn't exist or isn't active.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_BotManager_GetBot_System_UInt64_.md&amp;value=---%0Auid%3A%20DCore.BotManager.GetBot(System.UInt64)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/BotManager.cs/#L117">View Source</a>
+  </span>
+  <a id="DCore_BotManager_GetBot_" data-uid="DCore.BotManager.GetBot*"></a>
+  <h4 id="DCore_BotManager_GetBot_System_UInt64_" data-uid="DCore.BotManager.GetBot(System.UInt64)">GetBot(UInt64)</h4>
+  <div class="markdown level1 summary"><p>Fetches a <a class="xref" href="DCore.DiscordBot.html">DiscordBot</a> with the specified <code data-dev-comment-type="paramref" class="paramref">id</code> assigned.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DiscordBot GetBot(ulong id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The ID of the matching bot.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DCore.DiscordBot.html">DiscordBot</a></td>
+        <td><p>The <a class="xref" href="DCore.DiscordBot.html">DiscordBot</a> with this <code data-dev-comment-type="paramref" class="paramref">id</code> assigned.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p>Thrown when a bot with this <code data-dev-comment-type="paramref" class="paramref">id</code> doesn't exist or isn't active.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_BotManager_LoadAccounts_System_Collections_Generic_List_DCore_TokenInfo__.md&amp;value=---%0Auid%3A%20DCore.BotManager.LoadAccounts(System.Collections.Generic.List%7BDCore.TokenInfo%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/BotManager.cs/#L56">View Source</a>
+  </span>
+  <a id="DCore_BotManager_LoadAccounts_" data-uid="DCore.BotManager.LoadAccounts*"></a>
+  <h4 id="DCore_BotManager_LoadAccounts_System_Collections_Generic_List_DCore_TokenInfo__" data-uid="DCore.BotManager.LoadAccounts(System.Collections.Generic.List{DCore.TokenInfo})">LoadAccounts(List&lt;TokenInfo&gt;)</h4>
+  <div class="markdown level1 summary"><p>Loads the accounts into <a class="xref" href="DCore.BotManager.html">BotManager</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int LoadAccounts(List&lt;TokenInfo&gt; accounts)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="DCore.TokenInfo.html">TokenInfo</a>&gt;</td>
+        <td><span class="parametername">accounts</span></td>
+        <td><p>The accounts to load.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The amount of accounts that was loaded.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>Thrown when attempting to load multiple bots with UseMultipleBots sets to false.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_BotManager_RequestBots_System_Int32_System_Type_.md&amp;value=---%0Auid%3A%20DCore.BotManager.RequestBots(System.Int32%2CSystem.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/BotManager.cs/#L74">View Source</a>
+  </span>
+  <a id="DCore_BotManager_RequestBots_" data-uid="DCore.BotManager.RequestBots*"></a>
+  <h4 id="DCore_BotManager_RequestBots_System_Int32_System_Type_" data-uid="DCore.BotManager.RequestBots(System.Int32,System.Type)">RequestBots(Int32, Type)</h4>
+  <div class="markdown level1 summary"><p>Creates <code data-dev-comment-type="paramref" class="paramref">count</code> new <a class="xref" href="DCore.DiscordBot.html">DiscordBot</a> instances.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;DiscordBot&gt; RequestBots(int count, Type configExtensionType = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">count</span></td>
+        <td><p>How many instances to create.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><span class="parametername">configExtensionType</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="DCore.DiscordBot.html">DiscordBot</a>&gt;</td>
+        <td><p>List of all bots created.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
+        <td><p>Thrown when requesting more bots than available, or requesting less bots than 1.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_BotManager_RestartAllAsync.md&amp;value=---%0Auid%3A%20DCore.BotManager.RestartAllAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/BotManager.cs/#L147">View Source</a>
+  </span>
+  <a id="DCore_BotManager_RestartAllAsync_" data-uid="DCore.BotManager.RestartAllAsync*"></a>
+  <h4 id="DCore_BotManager_RestartAllAsync" data-uid="DCore.BotManager.RestartAllAsync">RestartAllAsync()</h4>
+  <div class="markdown level1 summary"><p>Restarts all bots.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task RestartAllAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="DCore.DCoreExtensions.html#DCore_DCoreExtensions_LoadAccountsFromFile_DCore_BotManager_System_String_">DCoreExtensions.LoadAccountsFromFile(BotManager, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="DCore.DCoreExtensions.html#DCore_DCoreExtensions_LoadAccount_DCore_BotManager_System_UInt64_System_String_">DCoreExtensions.LoadAccount(BotManager, UInt64, String)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_BotManager.md&amp;value=---%0Auid%3A%20DCore.BotManager%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Matusson/DCore/blob/master/src/BotManager.cs/#L17" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

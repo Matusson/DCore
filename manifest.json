@@ -1,0 +1,433 @@
+{
+  "homepages": [],
+  "source_base_path": "D:/a/DCore/DCore/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DCore.BotManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DCore.BotManager.html",
+          "hash": "bLABsVKcWqTC/lelIRgFj8fvc8DFmwGNzuvwk/dc+LI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DCore.Configs.BotConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DCore.Configs.BotConfig.html",
+          "hash": "VWoAekkaiSVsD8cQh/fh67Za++Lcd8qrXDzMmXKhpEI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DCore.Configs.ConfigManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DCore.Configs.ConfigManager.html",
+          "hash": "a4hQGs61iZZQl727g+M+DP7KPk+2sqQUQEfVH0P7gME="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DCore.Configs.DCoreConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DCore.Configs.DCoreConfig.html",
+          "hash": "obN2E9tJrkHeQz16OveKTMiZra3vem4IT7Mxr7uXMHM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DCore.Configs.GlobalBotConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DCore.Configs.GlobalBotConfig.html",
+          "hash": "cPUnYL3HhRlE0R2ok1rlKo9YOAkuSqi/YbkaGqeCjdc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DCore.Configs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DCore.Configs.html",
+          "hash": "9KMf9ceoJYvNgXOLZkzpsGz7SN5Db6teA+KavjL/I+8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DCore.DCoreExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DCore.DCoreExtensions.html",
+          "hash": "Lp1pBwKKVRfHcFB4lHLNe/K8RE8bVEH71n+AYOuc3eU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DCore.DCoreLogger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DCore.DCoreLogger.html",
+          "hash": "ze31lhIQ4Or+mOiY023Wg+c9BUfwDH9+2Kh7gLcjDqg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DCore.DNetExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DCore.DNetExtensions.html",
+          "hash": "ywJH4JANEsvilStPA2NaB7JgtsUN3NaovB25gbiLlkc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DCore.DiscordBot.BotReady.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DCore.DiscordBot.BotReady.html",
+          "hash": "A/j2HbqWsYkwCqUh/RXrDCo3ShFl/3Lk7IVdcrrybMM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DCore.DiscordBot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DCore.DiscordBot.html",
+          "hash": "0GCzXy7GPlCV/6lnDzC10VzCXrtQZGxJZTWCL/GvSlg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DCore.Enums.LogType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DCore.Enums.LogType.html",
+          "hash": "60j4NSsvIyGCygd8vsaSdVUNTgy9yfGqimjN30Y7XUg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DCore.Enums.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DCore.Enums.html",
+          "hash": "3L2G6dY2O+KV0nqqjKXbYaLt6gTUmEL/Qjq+YQqi+v4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DCore.Helpers.BotAccountLoader.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DCore.Helpers.BotAccountLoader.html",
+          "hash": "LPjS8Kp/prmJ6ZDXdMt4Gcpsw1cqLKRtfpufRm+mqKQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DCore.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DCore.Helpers.html",
+          "hash": "9FwoXBmBTnXEHisATH2RXXulh+PYPYpjlwh2WBjgF9Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DCore.Interfaces.IBot.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DCore.Interfaces.IBot.html",
+          "hash": "ybK/g1zWonmobmW+hfkR5CYpZTMY4KRsJIBuu4GuEt8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DCore.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DCore.Interfaces.html",
+          "hash": "XVYJp683++1nQB2UCuzBkakc3MOjX+RcY0KJRt+8N4Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DCore.LanguageData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DCore.LanguageData.html",
+          "hash": "gd3jAHoNBSY4W8y4vC0Zuo1YNWiiZazP0GujabOlxmI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DCore.LanguageManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DCore.LanguageManager.html",
+          "hash": "RgvDG9ddbg4i70cSSuXrqMIG7yfJqNZfRxJKRumtezY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DCore.TokenInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DCore.TokenInfo.html",
+          "hash": "hHtol7PCq7FsQi2u9SfAx6AZ1PlPOyuqgNa+mxoJ/i8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/DCore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/DCore.html",
+          "hash": "LM4PbLTnIKquC5O7irMTY/5dqr5WB5+BaKsiVYdU41U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "UxwGpT4C6HcUZ+HjdiRrsErl7Dke0ifKAirooRRxRTI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "eh1hTzhSfSRa2G1pIvrXLZjnLHsRoxAQccKw6OGFFv0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/configuration.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/configuration.html",
+          "hash": "GGBIEChXYHckhmA8G/Gu9HWcriwd74UPGeQlbxiv6Jk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/discordbot.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/discordbot.html",
+          "hash": "yOFeCuus4hQNVfN6mRlL4H/gjN+GBr9aTQzX0QBFI8A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/quickstart.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/quickstart.html",
+          "hash": "HL0GTw7foGLsJThkxSu63W9x00ETlmXutlxJrjVUl9w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html",
+          "hash": "XLPk7JyJEWDTMbD8EGDmGsD/Kyr/hsJ8v2GwTozMtcw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/square.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/square.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/wide.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/wide.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "vJ40cXy8dA13Te/TQApdr+mlDQtD2MZndK8tFjDfzwo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "7lpn5HXsMnPLsX/sGvdeG/ABljtyjawcwI5O7K/6rWI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 5,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 21,
+          "skipped_file_count": 0
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

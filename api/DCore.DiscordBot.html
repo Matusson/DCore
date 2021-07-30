@@ -1,0 +1,860 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class DiscordBot
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class DiscordBot
+   ">
+    <meta name="generator" content="docfx 2.58.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="DCore.DiscordBot">
+  
+  
+  <h1 id="DCore_DiscordBot" data-uid="DCore.DiscordBot" class="text-break">Class DiscordBot
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a single Discord bot account.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">DiscordBot</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="DCore.Interfaces.IBot.html">IBot</a></div>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="DCore.html">DCore</a></h6>
+  <h6><strong>Assembly</strong>: DCore.dll</h6>
+  <h5 id="DCore_DiscordBot_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class DiscordBot : IBot, IDisposable</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_DiscordBot__ctor_DCore_BotManager_DCore_TokenInfo_DCore_Configs_BotConfig_System_Type_.md&amp;value=---%0Auid%3A%20DCore.DiscordBot.%23ctor(DCore.BotManager%2CDCore.TokenInfo%2CDCore.Configs.BotConfig%2CSystem.Type)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/DiscordBot.cs/#L220">View Source</a>
+  </span>
+  <a id="DCore_DiscordBot__ctor_" data-uid="DCore.DiscordBot.#ctor*"></a>
+  <h4 id="DCore_DiscordBot__ctor_DCore_BotManager_DCore_TokenInfo_DCore_Configs_BotConfig_System_Type_" data-uid="DCore.DiscordBot.#ctor(DCore.BotManager,DCore.TokenInfo,DCore.Configs.BotConfig,System.Type)">DiscordBot(BotManager, TokenInfo, BotConfig, Type)</h4>
+  <div class="markdown level1 summary"><p>Constructs a new DiscordBot</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DiscordBot(BotManager manager, TokenInfo token, BotConfig overrideConfig = null, Type extensionType = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DCore.BotManager.html">BotManager</a></td>
+        <td><span class="parametername">manager</span></td>
+        <td><p>The BotManager that activated this <a class="xref" href="DCore.DiscordBot.html">DiscordBot</a>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="DCore.TokenInfo.html">TokenInfo</a></td>
+        <td><span class="parametername">token</span></td>
+        <td><p>The token information to use.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="DCore.Configs.BotConfig.html">BotConfig</a></td>
+        <td><span class="parametername">overrideConfig</span></td>
+        <td><p>The config object to override loaded config.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><span class="parametername">extensionType</span></td>
+        <td><p>The <span class="xref">System.Type</span> of the config extension.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_DiscordBot_Client.md&amp;value=---%0Auid%3A%20DCore.DiscordBot.Client%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/DiscordBot.cs/#L26">View Source</a>
+  </span>
+  <a id="DCore_DiscordBot_Client_" data-uid="DCore.DiscordBot.Client*"></a>
+  <h4 id="DCore_DiscordBot_Client" data-uid="DCore.DiscordBot.Client">Client</h4>
+  <div class="markdown level1 summary"><p>The underlying Discord.NET client.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DiscordSocketClient Client { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Discord.WebSocket.DiscordSocketClient</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_DiscordBot_Config.md&amp;value=---%0Auid%3A%20DCore.DiscordBot.Config%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/DiscordBot.cs/#L31">View Source</a>
+  </span>
+  <a id="DCore_DiscordBot_Config_" data-uid="DCore.DiscordBot.Config*"></a>
+  <h4 id="DCore_DiscordBot_Config" data-uid="DCore.DiscordBot.Config">Config</h4>
+  <div class="markdown level1 summary"><p>The <a class="xref" href="DCore.Configs.BotConfig.html">BotConfig</a> used by the bot.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BotConfig Config { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DCore.Configs.BotConfig.html">BotConfig</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_DiscordBot_HasStarted.md&amp;value=---%0Auid%3A%20DCore.DiscordBot.HasStarted%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/DiscordBot.cs/#L51">View Source</a>
+  </span>
+  <a id="DCore_DiscordBot_HasStarted_" data-uid="DCore.DiscordBot.HasStarted*"></a>
+  <h4 id="DCore_DiscordBot_HasStarted" data-uid="DCore.DiscordBot.HasStarted">HasStarted</h4>
+  <div class="markdown level1 summary"><p>Has the client started and is maintaining the connection?</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasStarted { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_DiscordBot_Languages.md&amp;value=---%0Auid%3A%20DCore.DiscordBot.Languages%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/DiscordBot.cs/#L41">View Source</a>
+  </span>
+  <a id="DCore_DiscordBot_Languages_" data-uid="DCore.DiscordBot.Languages*"></a>
+  <h4 id="DCore_DiscordBot_Languages" data-uid="DCore.DiscordBot.Languages">Languages</h4>
+  <div class="markdown level1 summary"><p>Manages language data for this bot account (using its language).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LanguageManager Languages { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DCore.LanguageManager.html">LanguageManager</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_DiscordBot_Logger.md&amp;value=---%0Auid%3A%20DCore.DiscordBot.Logger%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/DiscordBot.cs/#L36">View Source</a>
+  </span>
+  <a id="DCore_DiscordBot_Logger_" data-uid="DCore.DiscordBot.Logger*"></a>
+  <h4 id="DCore_DiscordBot_Logger" data-uid="DCore.DiscordBot.Logger">Logger</h4>
+  <div class="markdown level1 summary"><p>The logger associated with this <a class="xref" href="DCore.DiscordBot.html">DiscordBot</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DCoreLogger Logger { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DCore.DCoreLogger.html">DCoreLogger</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_DiscordBot_Manager.md&amp;value=---%0Auid%3A%20DCore.DiscordBot.Manager%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/DiscordBot.cs/#L21">View Source</a>
+  </span>
+  <a id="DCore_DiscordBot_Manager_" data-uid="DCore.DiscordBot.Manager*"></a>
+  <h4 id="DCore_DiscordBot_Manager" data-uid="DCore.DiscordBot.Manager">Manager</h4>
+  <div class="markdown level1 summary"><p>The <a class="xref" href="DCore.BotManager.html">BotManager</a> that activated this bot.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BotManager Manager { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DCore.BotManager.html">BotManager</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_DiscordBot_TokenInfo.md&amp;value=---%0Auid%3A%20DCore.DiscordBot.TokenInfo%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/DiscordBot.cs/#L46">View Source</a>
+  </span>
+  <a id="DCore_DiscordBot_TokenInfo_" data-uid="DCore.DiscordBot.TokenInfo*"></a>
+  <h4 id="DCore_DiscordBot_TokenInfo" data-uid="DCore.DiscordBot.TokenInfo">TokenInfo</h4>
+  <div class="markdown level1 summary"><p>The ID and token information for <a class="xref" href="DCore.DiscordBot.html">DiscordBot</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TokenInfo TokenInfo { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DCore.TokenInfo.html">TokenInfo</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_DiscordBot_Dispose.md&amp;value=---%0Auid%3A%20DCore.DiscordBot.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/DiscordBot.cs/#L280">View Source</a>
+  </span>
+  <a id="DCore_DiscordBot_Dispose_" data-uid="DCore.DiscordBot.Dispose*"></a>
+  <h4 id="DCore_DiscordBot_Dispose" data-uid="DCore.DiscordBot.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_DiscordBot_Dispose_System_Boolean_.md&amp;value=---%0Auid%3A%20DCore.DiscordBot.Dispose(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/DiscordBot.cs/#L261">View Source</a>
+  </span>
+  <a id="DCore_DiscordBot_Dispose_" data-uid="DCore.DiscordBot.Dispose*"></a>
+  <h4 id="DCore_DiscordBot_Dispose_System_Boolean_" data-uid="DCore.DiscordBot.Dispose(System.Boolean)">Dispose(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Disconnects the bot, removes from list in <a class="xref" href="DCore.BotManager.html">BotManager</a>, and disposes of the resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void Dispose(bool disposing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">disposing</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_DiscordBot_RestartAsync.md&amp;value=---%0Auid%3A%20DCore.DiscordBot.RestartAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/DiscordBot.cs/#L129">View Source</a>
+  </span>
+  <a id="DCore_DiscordBot_RestartAsync_" data-uid="DCore.DiscordBot.RestartAsync*"></a>
+  <h4 id="DCore_DiscordBot_RestartAsync" data-uid="DCore.DiscordBot.RestartAsync">RestartAsync()</h4>
+  <div class="markdown level1 summary"><p>Restarts the bot connection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task RestartAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_DiscordBot_SetGameAsync.md&amp;value=---%0Auid%3A%20DCore.DiscordBot.SetGameAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/DiscordBot.cs/#L158">View Source</a>
+  </span>
+  <a id="DCore_DiscordBot_SetGameAsync_" data-uid="DCore.DiscordBot.SetGameAsync*"></a>
+  <h4 id="DCore_DiscordBot_SetGameAsync" data-uid="DCore.DiscordBot.SetGameAsync">SetGameAsync()</h4>
+  <div class="markdown level1 summary"><p>Sets the game status using values from config.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task SetGameAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>The task that sets the game status.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_DiscordBot_SetGameAsync_Discord_ActivityType_System_String_System_String_.md&amp;value=---%0Auid%3A%20DCore.DiscordBot.SetGameAsync(Discord.ActivityType%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/DiscordBot.cs/#L146">View Source</a>
+  </span>
+  <a id="DCore_DiscordBot_SetGameAsync_" data-uid="DCore.DiscordBot.SetGameAsync*"></a>
+  <h4 id="DCore_DiscordBot_SetGameAsync_Discord_ActivityType_System_String_System_String_" data-uid="DCore.DiscordBot.SetGameAsync(Discord.ActivityType,System.String,System.String)">SetGameAsync(ActivityType, String, String)</h4>
+  <div class="markdown level1 summary"><p>Sets game status using provided values.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task SetGameAsync(ActivityType activity, string game, string streamUrl = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Discord.ActivityType</span></td>
+        <td><span class="parametername">activity</span></td>
+        <td><p>The type of activity.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">game</span></td>
+        <td><p>The displayed string.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">streamUrl</span></td>
+        <td><p>The link to the stream, if <span class="xref">Discord.ActivityType</span> is <span class="xref">Discord.ActivityType.Streaming</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>The task that sets the game status.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_DiscordBot_SetUserStatusAsync.md&amp;value=---%0Auid%3A%20DCore.DiscordBot.SetUserStatusAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/DiscordBot.cs/#L186">View Source</a>
+  </span>
+  <a id="DCore_DiscordBot_SetUserStatusAsync_" data-uid="DCore.DiscordBot.SetUserStatusAsync*"></a>
+  <h4 id="DCore_DiscordBot_SetUserStatusAsync" data-uid="DCore.DiscordBot.SetUserStatusAsync">SetUserStatusAsync()</h4>
+  <div class="markdown level1 summary"><p>Sets the user status using the value from the config.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task SetUserStatusAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>The task that sets the status.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_DiscordBot_SetUserStatusAsync_Discord_UserStatus_.md&amp;value=---%0Auid%3A%20DCore.DiscordBot.SetUserStatusAsync(Discord.UserStatus)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/DiscordBot.cs/#L177">View Source</a>
+  </span>
+  <a id="DCore_DiscordBot_SetUserStatusAsync_" data-uid="DCore.DiscordBot.SetUserStatusAsync*"></a>
+  <h4 id="DCore_DiscordBot_SetUserStatusAsync_Discord_UserStatus_" data-uid="DCore.DiscordBot.SetUserStatusAsync(Discord.UserStatus)">SetUserStatusAsync(UserStatus)</h4>
+  <div class="markdown level1 summary"><p>Sets the user status using the provided value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task SetUserStatusAsync(UserStatus status)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Discord.UserStatus</span></td>
+        <td><span class="parametername">status</span></td>
+        <td><p>The status to set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>The task that sets the status.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_DiscordBot_StartAsync_Discord_WebSocket_DiscordSocketConfig_.md&amp;value=---%0Auid%3A%20DCore.DiscordBot.StartAsync(Discord.WebSocket.DiscordSocketConfig)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/DiscordBot.cs/#L71">View Source</a>
+  </span>
+  <a id="DCore_DiscordBot_StartAsync_" data-uid="DCore.DiscordBot.StartAsync*"></a>
+  <h4 id="DCore_DiscordBot_StartAsync_Discord_WebSocket_DiscordSocketConfig_" data-uid="DCore.DiscordBot.StartAsync(Discord.WebSocket.DiscordSocketConfig)">StartAsync(DiscordSocketConfig)</h4>
+  <div class="markdown level1 summary"><p>Logs in and starts the <a class="xref" href="DCore.DiscordBot.html">DiscordBot</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task StartAsync(DiscordSocketConfig config = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Discord.WebSocket.DiscordSocketConfig</span></td>
+        <td><span class="parametername">config</span></td>
+        <td><p>The <span class="xref">Discord.WebSocket.DiscordSocketConfig</span> to use. Null to use default.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>The task that starts up the <a class="xref" href="DCore.DiscordBot.html">DiscordBot</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>Thrown when attempting starting on already running bot.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_DiscordBot_StopAsync.md&amp;value=---%0Auid%3A%20DCore.DiscordBot.StopAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/DiscordBot.cs/#L116">View Source</a>
+  </span>
+  <a id="DCore_DiscordBot_StopAsync_" data-uid="DCore.DiscordBot.StopAsync*"></a>
+  <h4 id="DCore_DiscordBot_StopAsync" data-uid="DCore.DiscordBot.StopAsync">StopAsync()</h4>
+  <div class="markdown level1 summary"><p>Stops the connection between Discord and the application.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task StopAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>The task that stops the bot.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>Thrown when attempting to stop a bot that's not running.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_DiscordBot_BotReadyEvent.md&amp;value=---%0Auid%3A%20DCore.DiscordBot.BotReadyEvent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Matusson/DCore/blob/master/src/DiscordBot.cs/#L209">View Source</a>
+  </span>
+  <h4 id="DCore_DiscordBot_BotReadyEvent" data-uid="DCore.DiscordBot.BotReadyEvent">BotReadyEvent</h4>
+  <div class="markdown level1 summary"><p>Fires when the bot is ready.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event DiscordBot.BotReady BotReadyEvent</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="DCore.DiscordBot.BotReady.html">DiscordBot.BotReady</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="DCore.Interfaces.IBot.html">IBot</a>
+  </div>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="DCore.DCoreExtensions.html#DCore_DCoreExtensions_GetString_DCore_DiscordBot_System_String_">DCoreExtensions.GetString(DiscordBot, String)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Matusson/DCore/new/master/apiSpec/new?filename=DCore_DiscordBot.md&amp;value=---%0Auid%3A%20DCore.DiscordBot%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Matusson/DCore/blob/master/src/DiscordBot.cs/#L16" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

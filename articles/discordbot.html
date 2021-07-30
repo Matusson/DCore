@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Basic Features </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Basic Features ">
+    <meta name="generator" content="docfx 2.58.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+
+<p>In the previous guide, you used BotManager to request accounts. This guide will cover how to use the DiscordBot class, created as a result.</p>
+<h1 id="basic-features">Basic Features</h1>
+<p>Use DiscordBot.StartAsync(), StopAsync(), and RestartAsync() for those basic functions:</p>
+<pre><code class="lang-cs">await bot.StartAsync();
+await bot.StopAsync();
+await bot.RestartAsync();
+</code></pre>
+<p>You can fetch the underlying Discord.NET client, the logger for this DiscordBot, the bot's config, the language manager, and the BotManager that created this DiscordBot.</p>
+<pre><code class="lang-cs"> DiscordSocketClient discordClient = bot.Client;
+DCoreLogger logger = bot.Logger;
+BotConfig botConfig = bot.Config;
+
+BotManager manager = bot.Manager;
+LanguageManager languagesManager = bot.Languages;
+</code></pre>
+<h1 id="services">Services</h1>
+<p>These services are also available via Dependency Injection if you followed the &quot;Dependency Injection&quot; steps in the last guide.</p>
+<h2 id="logger">Logger</h2>
+<p>DCore Logger is the basic logging solution. It supports logging to console (with color depending on log severity) and to a text file.
+It can be configured with DCore Config used while creating the BotManager. Its features are self-explanatory.</p>
+<h2 id="bot-config">Bot Config</h2>
+<p>The bot config contains basic variables that might be useful to all bots, and a save function. However each bot is different, so a config extension can be added.  The extension is a custom class that is serialized alongside the config.</p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Please note the distinction between GlobalBotConfig, BotConfig, and DCoreConfig. They are explained more thoroughly in the Configuration guide, alongside a more thorough explanation of the Extension system.</p>
+</div>
+<h2 id="language-manager">Language Manager</h2>
+<p>The Language Manager allows you to use multiple languages in your bot. It uses JSON files in the format of key-value pairs for each language, which should be placed in the LanguagesPath directory specified in the config.<br>
+The built-in way to handle languages requires you to set a language in the BotConfig, and then use LanguageManager.GetString(). This will fetch the specified string in bot's language.
+The recommended way to handle the language files is to create them in the project itself, and then use Copy To Output Directory option.</p>
+<pre><code class="lang-cs">LanguageManager languages = discordBot.Languages;
+string noPermissionsMessage = languages.GetString(&quot;no-permissions&quot;);
+</code></pre>
+<p>Optionally you can use the extension method for quick access:</p>
+<pre><code class="lang-cs">string noPermissionsMessage = discordBot.GetString(&quot;no-permissions&quot;);
+</code></pre>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Matusson/DCore/blob/master/docs/articles/discordbot.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="toggle-mode">
+                <div class="icon">
+                  <i aria-hidden="true">☀</i>
+                </div>
+                <label class="switch">
+                  <input type="checkbox" id="switch-style">
+                  <span class="slider round"></span>
+                </label>
+                <div class="icon">
+                  <i aria-hidden="true">☾</i>
+                </div>
+                <script type="text/javascript" src="../styles/toggle-theme.js"></script>
+              </div>
+          
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
