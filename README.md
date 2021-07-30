@@ -12,8 +12,8 @@ DCore is simple library providing common functionality for [Discord.NET](https:/
 <br><br>
 
 # Installation
-DCore can be installed via NuGet, or via the releases.
+DCore can be installed via NuGet.
 <br><br>
 
 # Quick Start
-Please refer to the quides in `docs` or on `GitHub Pages website`.
+Please refer to the quides on `https://matusson.github.io/DCore/`.
